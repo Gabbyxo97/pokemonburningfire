@@ -91,7 +91,7 @@ void TryFieldPoisonWhiteOut(void)
 
 s32 DoPoisonFieldEffect(void)
 {
-    int i;
+    /*int i;
     u32 hp;
     
     struct Pokemon *pokemon = gPlayerParty;
@@ -114,6 +114,6 @@ s32 DoPoisonFieldEffect(void)
     if (numFainted)
         return FLDPSN_FNT;
     if (numPoisoned)
-        return FLDPSN_PSN;
+        return FLDPSN_PSN;*/
     return FLDPSN_NONE;
 }
