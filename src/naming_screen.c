@@ -134,7 +134,7 @@ static bool8 PageSwapAnimState_Init(struct Task * task);
 static bool8 PageSwapAnimState_1(struct Task * task);
 static bool8 PageSwapAnimState_2(struct Task * task);
 static bool8 PageSwapAnimState_Done(struct Task * task);
-static void sub_809E518(u8 a0, u8 a1, u8 a2);
+static void TryStartButtonFlash(u8 a0, u8 a1, u8 a2);
 static void Task_809E58C(u8 taskId);
 static u16 sub_809E644(u8 tag);
 static void sub_809E6B8(u8 a0);
@@ -646,7 +646,7 @@ static bool8 pokemon_store(void)
     CopyStringToDestBuffer();
     SetInputState(INPUT_STATE_DISABLED);
     sub_809EA64(0);
-    sub_809E518(3, 0, 1);
+    TryStartButtonFlash(3, 0, 1);
     if (sNamingScreenData->templateNum == NAMING_SCREEN_CAUGHT_MON &&
         CalculatePlayerPartyCount() >= 6)
     {
@@ -726,7 +726,7 @@ static bool8 MainState_StartPageSwap(void)
     sub_809EC20();
     StartPageSwapAnim();
     sub_809EA0C(1);
-    sub_809E518(0, 0, 1);
+    TryStartButtonFlash(0, 0, 1);
     PlaySE(SE_WIN_OPEN);
     sNamingScreenData->state = MAIN_STATE_WAIT_PAGE_SWAP;
     return FALSE;
@@ -877,7 +877,7 @@ static void sub_809E4F0(void)
     gTasks[taskId].data[0] = 3;
 }
 
-static void sub_809E518(u8 a, u8 b, u8 c)
+static void TryStartButtonFlash(u8 a, u8 b, u8 c)
 {
     struct Task *task = &gTasks[FindTaskIdByFunc(Task_809E58C)];
 
@@ -1104,7 +1104,7 @@ static void sub_809EA64(u8 a)
     gSprites[sNamingScreenData->cursorSpriteId].data[4] |= a << 8;
 }
 
-static void sub_809EAA8(void)
+static void SquishCursor(void)
 {
     StartSpriteAnim(&gSprites[sNamingScreenData->cursorSpriteId], 1);
 }
@@ -1392,13 +1392,16 @@ static bool8 HandleKeyboardEvent(void)
 
 static bool8 KeyboardKeyHandler_Character(u8 event)
 {
-    sub_809E518(3, 0, 0);
+    TryStartButtonFlash(3, 0, 0);
     if (event == KBEVENT_PRESSED_A)
     {
-        bool8 var = AppendCharToBuffer_CheckBufferFull();
+        bool8 textFull = AppendCharToBuffer_CheckBufferFull();
 
-        sub_809EAA8();
-        if (var)
+        if (sNamingScreenData->currentPage == KBPAGE_LETTERS_UPPER && GetTextCaretPosition() == 1)
+            MainState_StartPageSwap();
+
+        SquishCursor();
+        if (textFull)
         {
             SetInputState(INPUT_STATE_DISABLED);
             sNamingScreenData->state = MAIN_STATE_MOVE_TO_OK_BUTTON;
@@ -1409,7 +1412,7 @@ static bool8 KeyboardKeyHandler_Character(u8 event)
 
 static bool8 KeyboardKeyHandler_Page(u8 event)
 {
-    sub_809E518(0, 1, 0);
+    TryStartButtonFlash(0, 1, 0);
     if (event == KBEVENT_PRESSED_A)
         return TriggerKeyboardChange();
     else
@@ -1418,7 +1421,7 @@ static bool8 KeyboardKeyHandler_Page(u8 event)
 
 static bool8 KeyboardKeyHandler_Backspace(u8 event)
 {
-    sub_809E518(1, 1, 0);
+    TryStartButtonFlash(1, 1, 0);
     if (event == KBEVENT_PRESSED_A)
         DeleteTextCharacter();
     return FALSE;
@@ -1426,7 +1429,7 @@ static bool8 KeyboardKeyHandler_Backspace(u8 event)
 
 static bool8 KeyboardKeyHandler_OK(u8 event)
 {
-    sub_809E518(2, 1, 0);
+    TryStartButtonFlash(2, 1, 0);
     if (event == KBEVENT_PRESSED_A)
     {
         PlaySE(SE_SELECT);
@@ -1712,7 +1715,7 @@ static void DeleteTextCharacter(void)
     sNamingScreenData->textBuffer[index] = EOS;
     var2 = GetKeyRoleAtCursorPos();
     if (var2 == KEY_ROLE_CHAR || var2 == KEY_ROLE_BACKSPACE)
-        sub_809E518(1, 0, 1);
+        TryStartButtonFlash(1, 0, 1);
     PlaySE(SE_BALL);
 }
 
