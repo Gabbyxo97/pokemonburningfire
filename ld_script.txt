@@ -78,6 +78,8 @@ SECTIONS {
         src/util.o(.text);
         src/blend_palette.o(.text);
         src/daycare.o(.text);
+        src/oak_speech.o(.text);
+        src/debug.o(.text);
         src/battle_interface.o(.text);
         src/smokescreen.o(.text);
         src/pokeball.o(.text);
@@ -262,7 +264,6 @@ SECTIONS {
         src/quest_log_battle.o(.text);
         src/fame_checker.o(.text);
         src/menu2.o(.text);
-        src/oak_speech.o(.text);
         src/tm_case.o(.text);
         src/menu_indicators.o(.text);
         src/pokedex_area_markers.o(.text);
@@ -416,6 +417,8 @@ SECTIONS {
         src/trig.o(.rodata);
         src/util.o(.rodata);
         src/daycare.o(.rodata);
+        src/oak_speech.o(.rodata);
+        src/debug.o(.rodata);
         src/battle_gfx_sfx_util.o(.rodata);
         src/battle_interface.o(.rodata);
         src/pokeball.o(.rodata);
@@ -558,7 +561,6 @@ SECTIONS {
         src/help_system.o(.rodata);
         src/fame_checker.o(.rodata);
         src/menu2.o(.rodata);
-        src/oak_speech.o(.rodata);
         src/tm_case.o(.rodata);
         src/menu_indicators.o(.rodata);
         src/pokedex_area_markers.o(.rodata);

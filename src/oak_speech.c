@@ -16,6 +16,7 @@
 #include "random.h"
 #include "data.h"
 #include "constants/songs.h"
+#include "oak_speech.h"
 
 struct OakSpeechResources
 {
@@ -91,7 +92,6 @@ static void DestroyOaksSpeechTrainerPic(void);
 static void CreateFadeInTask(u8 taskId, u8 state);
 static void CreateFadeOutTask(u8 taskId, u8 state);
 static void PrintNameChoiceOptions(u8 taskId, u8 state);
-static void GetDefaultName(u8 hasPlayerBeenNamed, u8 rivalNameChoice);
 
 extern const u8 gText_Controls[];
 extern const u8 gText_ABUTTONNext[];
@@ -1884,7 +1884,7 @@ static void PrintNameChoiceOptions(u8 taskId, u8 hasPlayerBeenNamed)
     CopyWindowToVram(data[13], COPYWIN_BOTH);
 }
 
-static void GetDefaultName(u8 hasPlayerBeenNamed, u8 rivalNameChoice)
+void GetDefaultName(u8 hasPlayerBeenNamed, u8 rivalNameChoice)
 {
     const u8 * src;
     u8 * dest;

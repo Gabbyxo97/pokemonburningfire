@@ -268,6 +268,11 @@ ifeq ($(DINFO),1)
 override CFLAGS += -g
 endif
 
+ifeq ($(DDEBUGGING),1)
+override ASFLAGS += --defsym DEBUGGING=1
+override CPPFLAGS += -D DEBUGGING=1
+endif
+
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
 	@$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
 	@$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt | $(CC1) $(CFLAGS) -o $(C_BUILDDIR)/$*.s
