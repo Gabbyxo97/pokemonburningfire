@@ -70,12 +70,15 @@ const struct MoveMenuInfoIcon gMoveMenuInfoIcons[] =
     { 32, 12, 0x4C },       // Ice icon
     { 32, 12, 0xA0 },       // Dragon icon
     { 32, 12, 0x8C },       // Dark icon
-    { 32, 12, 0x04 },       // Fairy icon
-    { 40, 12, 0xA8 },       // -Type- icon
-    { 40, 12, 0xC0 },       // -Power- icon
-    { 40, 12, 0xC8 },       // -Accuracy- icon
-    { 40, 12, 0xE0 },       // -PP- icon
-    { 40, 12, 0xE8 },       // -Effect- icon
+    { 32, 12, 0xC0 },       // Fairy icon
+    { 40, 12, 0xAB },       // -Type- icon
+    { 40, 12, 0xC6 },       // -Power- icon
+    { 40, 12, 0xCB },       // -Accuracy- icon
+    { 40, 12, 0xE6 },       // -PP- icon
+    { 40, 12, 0xEB },       // -Effect- icon
+    { 32, 16, 0x04 },       // Physical icon
+    { 32, 16, 0x08 },       // Special icon
+    { 32, 16, 0x0C },       // Status icon
 };
 
 static void ListMenuDummyTask(u8 taskId)
