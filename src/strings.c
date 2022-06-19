@@ -255,6 +255,7 @@ const u8 gText_PauseUntilPress[] = _("{PAUSE_UNTIL_PRESS}");
 const u8 gText_WontHaveEffect[] = _("It won't have any effect.{PAUSE_UNTIL_PRESS}");
 const u8 gUnknown_84169F8[] = _("This can't be used on\nthat POKéMON.{PAUSE_UNTIL_PRESS}");
 const u8 gText_PkmnCantSwitchOut[] = _("{STR_VAR_1} can't be switched\nout!{PAUSE_UNTIL_PRESS}");
+const u8 gText_Nickname[] = _("NICKNAME");
 const u8 gText_PkmnAlreadyInBattle[] = _("{STR_VAR_1} is already\nin battle!{PAUSE_UNTIL_PRESS}");
 const u8 gText_PkmnAlreadySelected[] = _("{STR_VAR_1} has already been\nselected.{PAUSE_UNTIL_PRESS}");
 const u8 gText_PkmnHasNoEnergy[] = _("{STR_VAR_1} has no energy\nleft to battle!{PAUSE_UNTIL_PRESS}");
