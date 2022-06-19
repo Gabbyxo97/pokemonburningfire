@@ -1022,10 +1022,21 @@ static void BuyMenuSubtractMoney(u8 taskId)
 
 static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
 {
+    s16 *data = gTasks[taskId].data;
+
     if (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
-        BuyMenuReturnToItemList(taskId);
+
+        if ((ItemId_GetPocket(tItemId) == POCKET_POKE_BALLS) && tItemCount > 9 && AddBagItem(ITEM_PREMIER_BALL, tItemCount / 10) == TRUE) {
+            if (tItemCount > 19) {
+                BuyMenuDisplayMessage(taskId, gText_ThrowInPremierBalls, BuyMenuReturnToItemList);
+            } else {
+                BuyMenuDisplayMessage(taskId, gText_ThrowInPremierBall, BuyMenuReturnToItemList);
+            }
+        } else {
+            BuyMenuReturnToItemList(taskId);
+        }
     }
 }
 
