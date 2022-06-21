@@ -82,6 +82,8 @@ static void Task_OakSpeech38_sub2(u8 taskId);
 static void Task_OakSpeech40(u8 taskId);
 static void Task_OakSpeech41(u8 taskId);
 static void Task_OakSpeech42(u8 taskId);
+static void Task_OakSpeech43(u8 taskId);
+static void Task_OakSpeech44(u8 taskId);
 
 static void CB2_ReturnFromNamingScreen(void);
 static void CreateNidoranFSprite(u8 taskId);
@@ -1135,14 +1137,62 @@ static void Task_OakSpeech23(u8 taskId)
 
     if (tTrainerPicFadeState != 0)
     {
-        if (data[3] != 0)
-            data[3]--;
+        // if (data[3] != 0)
+        //     data[3]--;
+        // else
+        // {
+            // tTrainerPicPosX = 0;
+            OaksSpeechPrintMessage(gOakText_AskPlayerName, sOakSpeechResources->textSpeed);
+            gTasks[taskId].func = Task_OakSpeech43;
+        // }
+    }
+}
+
+static void Task_OakSpeech43(u8 taskId)
+{
+    s16 * data = gTasks[taskId].data;
+
+    if (!IsTextPrinterActive(0))
+    {
+        if (tTrainerPicPosX > -60)
+        {
+            tTrainerPicPosX -= 2;
+            gSpriteCoordOffsetX += 2;
+            ChangeBgX(2, 0x200, 2);
+        }
         else
         {
-            tTrainerPicPosX = 0;
-            OaksSpeechPrintMessage(gOakText_AskPlayerName, sOakSpeechResources->textSpeed);
-            gTasks[taskId].func = Task_OakSpeech24;
+            tTrainerPicPosX = -60;
+            PrintNameChoiceOptions(taskId, sOakSpeechResources->hasPlayerBeenNamed);
+            gTasks[taskId].func = Task_OakSpeech44;
         }
+    }
+}
+
+static void Task_OakSpeech44(u8 taskId)
+{
+    s16 * data = gTasks[taskId].data;
+    s8 input = Menu_ProcessInput();
+    switch (input)
+    {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrameToTransparent(data[13], TRUE);
+        RemoveWindow(data[13]);
+        GetDefaultName(sOakSpeechResources->hasPlayerBeenNamed, input - 1);
+        data[15] = 1;
+        gTasks[taskId].func = Task_OakSpeech26;
+        break;
+    case 0:
+        PlaySE(SE_SELECT);
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, 0);
+        gTasks[taskId].func = Task_OakSpeech25;
+        break;
+    case -1:
+        break;
     }
 }
 
@@ -1295,7 +1345,7 @@ static void Task_OakSpeech27(u8 taskId)
     case -1:
         PlaySE(SE_SELECT);
         if (sOakSpeechResources->hasPlayerBeenNamed == FALSE)
-            gTasks[taskId].func = Task_OakSpeech24;
+            gTasks[taskId].func = Task_OakSpeech28;
         else
             gTasks[taskId].func = Task_OakSpeech28;
         break;
