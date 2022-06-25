@@ -9,6 +9,7 @@
 #include "event_data.h"
 #include "constants/flags.h"
 #include "data.h"
+#include "constants/region_map_sections.h"
 
 const u8 gDeoxysGiftPassword[] = _("DEOXYS22");
 
@@ -36,6 +37,9 @@ const struct MysteryGiftMon gMysteryGift[] = {
 
 void giveMysteryGiftMon(struct MysteryGiftMon mgmon) {    
     u8 data;
+    u16 ball = ITEM_CHERISH_BALL;
+    bool32 isEventLegal = TRUE;
+    u8 metLocation = METLOC_FATEFUL_ENCOUNTER;
 
     struct Pokemon *mon = AllocZeroed(sizeof(struct Pokemon));
     CreateMon(mon, mgmon.species, mgmon.level, 32, 0, 0, OT_ID_PRESET, 16980);
@@ -68,6 +72,9 @@ void giveMysteryGiftMon(struct MysteryGiftMon mgmon) {
     SetMonData(mon, MON_DATA_FRIENDSHIP, &mgmon.friendship);
     SetMonData(mon, MON_DATA_HELD_ITEM, &mgmon.heldItem);
     SetMonData(mon, MON_DATA_OT_NAME, &mgmon.otName);
+    SetMonData(mon, MON_DATA_POKEBALL, &ball);
+    SetMonData(mon, MON_DATA_EVENT_LEGAL, &isEventLegal);
+    SetMonData(mon, MON_DATA_MET_LOCATION, &metLocation);
 
     GiveMysteryGiftMon(mon);
 }

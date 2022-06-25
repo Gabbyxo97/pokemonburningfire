@@ -27,6 +27,8 @@ extern const u32 gInterfaceGfx_LuxuryBall[];
 extern const u32 gInterfacePal_LuxuryBall[];
 extern const u32 gInterfaceGfx_PremierBall[];
 extern const u32 gInterfacePal_PremierBall[];
+extern const u32 gInterfaceGfx_CherishBall[];
+extern const u32 gInterfacePal_CherishBall[];
 extern const u32 gOpenPokeballGfx[];
 
 // pokemon gfx
@@ -3823,6 +3825,7 @@ extern const u32 gBattleAnimSpriteGfx_Smoke[];
 extern const u32 gBattleAnimSpriteGfx_Smoke2[];
 extern const u32 gBattleAnimSpriteGfx_Impact[];
 extern const u32 gBattleAnimSpriteGfx_Particles[];
+extern const u32 gBattleAnimSpriteGfx_Particles2[];
 extern const u32 gBattleAnimSpriteGfx_CircleImpact[];
 extern const u32 gBattleAnimSpriteGfx_Scratch[];
 extern const u32 gBattleAnimSpriteGfx_Cut[];
@@ -4083,6 +4086,7 @@ extern const u32 gBattleAnimSpritePal_Whirlwind[];
 extern const u32 gBattleAnimSpritePal_Explosion4[];
 extern const u32 gBattleAnimSpritePal_Tongue[];
 extern const u32 gBattleAnimSpritePal_Smoke[];
+extern const u32 gBattleAnimSpritePal_Particles2[];
 extern const u32 gBattleAnimSpritePal_Impact[];
 extern const u32 gBattleAnimSpritePal_CircleImpact[];
 extern const u32 gBattleAnimSpritePal_SharpTeeth[];

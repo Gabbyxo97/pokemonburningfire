@@ -9059,6 +9059,7 @@ static void atkEF_handleballthrow(void)
                     break;
                 case ITEM_LUXURY_BALL:
                 case ITEM_PREMIER_BALL:
+                case ITEM_CHERISH_BALL:
                     ballMultiplier = 10;
                     break;
                 }

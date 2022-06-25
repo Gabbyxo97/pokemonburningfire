@@ -4066,6 +4066,10 @@ static void HandleAction_UseItem(void)
     {
         gBattlescriptCurrInstr = gBattlescriptsForBallThrow[gLastUsedItem];
     }
+    if (gLastUsedItem == ITEM_CHERISH_BALL) // new balls
+    {
+        gBattlescriptCurrInstr = gBattlescriptsForBallThrow[0];
+    }
     else if (gLastUsedItem == ITEM_POKE_DOLL || gLastUsedItem == ITEM_FLUFFY_TAIL)
     {
         gBattlescriptCurrInstr = gBattlescriptsForRunningByItem[0];
