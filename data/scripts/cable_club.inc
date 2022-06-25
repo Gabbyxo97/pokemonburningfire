@@ -1,26 +1,21 @@
 CableClub_OnTransition:: @ 81BB1B4
-	call CableClub_EventScript_HideOrShowMysteryGiftMan
 	end
 
-CableClub_EventScript_HideOrShowMysteryGiftMan:: @ 81BB1BA
-	specialvar VAR_RESULT, ValidateReceivedWonderCard
-	compare VAR_RESULT, FALSE
-	goto_if_eq EventScript_HideMysteryGiftMan
-	clearflag FLAG_HIDE_MG_DELIVERYMEN
-	return
-
-EventScript_HideMysteryGiftMan:: @ 81BB1CE
-	setflag FLAG_HIDE_MG_DELIVERYMEN
-	return
-
 CableClub_EventScript_MysteryGiftMan:: @ 81BB1D2
-	goto_if_questlog EventScript_ReleaseEnd
-	special QuestLog_CutRecording
-	execram
+	lockall
+	special DoMysteryGiftScreen
+	waitstate
+	compare VAR_0x8004, 1
+	goto_if_eq SuccessMysteryGift
+	msgbox MysteryGiftUnsuccessMsg
+	closemessage
+	releaseall
+	end
 
-@ Unused
-EventScript_MysteryGiftThankYou:: @ 81BB1E4
-	msgbox Text_ThankYouForAccessingMysteryGift, MSGBOX_NPC
+SuccessMysteryGift::
+	msgbox MysteryGiftSuccessMsg
+	closemessage
+	releaseall
 	end
 
 CableClub_OnWarp:: @ 81BB1ED
@@ -78,7 +73,6 @@ EventScript_OnLoadFromGameCorner:: @ 81BB29D
 	end
 
 CableClub_OnFrame:: @ 81BB2A3
-	map_script_2 VAR_MAP_SCENE_POKEMON_CENTER_TEALA, 1, CableClub_EventScript_Tutorial
 	map_script_2 VAR_CABLE_CLUB_STATE, USING_SINGLE_BATTLE, CableClub_EventScript_ExitLinkRoom
 	map_script_2 VAR_CABLE_CLUB_STATE, USING_DOUBLE_BATTLE, CableClub_EventScript_ExitLinkRoom
 	map_script_2 VAR_CABLE_CLUB_STATE, USING_MULTI_BATTLE, CableClub_EventScript_ExitLinkRoom
@@ -189,21 +183,6 @@ CableClub_EventScript_PlayerExitLinkRoom:: @ 81BB40A
 	applymovement OBJ_EVENT_ID_PLAYER, Movement_PlayerExitLinkRoom
 	waitmovement 0
 	return
-
-CableClub_EventScript_Tutorial:: @ 81BB415
-	lockall
-	textcolor 1
-	applymovement OBJ_EVENT_ID_PLAYER, Movement_WalkInPlaceFastestUp
-	waitmovement 0
-	msgbox CableClub_Text_FirstTimeRightThisWay
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Movement_PlayerApproachCounter
-	waitmovement 0
-	delay 30
-	msgbox CableClub_Text_ExplainWirelessClubFirstTime
-	setvar VAR_MAP_SCENE_POKEMON_CENTER_TEALA, 2
-	releaseall
-	end
 
 Movement_PlayerApproachCounter: @ 81BB447
 	walk_up
@@ -1840,3 +1819,9 @@ CableClub_Text_ExplainWirelessClub:: @ 81BDBF8
 CableClub_Text_HopeYouEnjoyWirelessSystem:: @ 81BDEDF
 	.string "I hope you enjoy the Wireless\n"
 	.string "Communication System.$"
+
+MysteryGiftSuccessMsg::
+	.string "Sucesss$"
+
+MysteryGiftUnsuccessMsg::
+	.string "Unsuccess$"

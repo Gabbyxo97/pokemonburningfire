@@ -41,6 +41,7 @@
 #include "constants/menu.h"
 #include "constants/event_objects.h"
 #include "constants/metatile_labels.h"
+#include "mystery_gift.h"
 
 static EWRAM_DATA u8 sElevatorCurrentFloorWindowId = 0;
 static EWRAM_DATA u16 sElevatorScroll = 0;
@@ -80,6 +81,7 @@ static void Task_DoDeoxysTriangleInteraction(u8 taskId);
 static void MoveDeoxysObject(u8 num);
 static void Task_WaitDeoxysFieldEffect(u8 taskId);
 static void Task_WingFlapSound(u8 taskId);
+static void CheckMysteryGift(void);
 
 static u8 *const sStringVarPtrs[] = {
     gStringVar1,
@@ -2461,6 +2463,22 @@ bool8 IsBadEggInParty(void)
             return TRUE;
     }
     return FALSE;
+}
+
+void DoMysteryGiftScreen(void)
+{
+    DoNamingScreen(NAMING_SCREEN_MYSTERY_GIFT, gStringVar2, 0, 0, 0, CheckMysteryGift);
+}
+
+static void CheckMysteryGift(void)
+{
+    if (checkGift(gStringVar2) == FALSE) {
+        gSpecialVar_0x8004 = 0;
+    } else {
+        gSpecialVar_0x8004 = 1;
+    }
+
+    CB2_ReturnToFieldContinueScriptPlayMapMusic();
 }
 
 bool8 IsPlayerNotInTrainerTowerLobby(void)

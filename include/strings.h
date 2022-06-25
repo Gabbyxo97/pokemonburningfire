@@ -1394,6 +1394,7 @@ extern const u8 gText_YourName[];
 extern const u8 gText_BoxName[];
 extern const u8 gText_PkmnsNickname[];
 extern const u8 gText_RivalsName[];
+extern const u8 gText_MysteryGiftPassword[];
 
 // pokemon_storage_system
 extern const u8 gText_WithdrawPokemon[];
@@ -1552,5 +1553,8 @@ extern const u8 gText_PokeSum_EggOrigin_Trade[];
 extern const u8 gText_PokeSum_EggOrigin_NicePlace[];
 extern const u8 gText_PokeSum_EggOrigin_Spa[];
 extern const u8 gText_PokeSum_EggOrigin_Trade[];
+
+// Mystery gifts
+extern const u8 gText_MysteryGift_Password_Deoxys[];
 
 #endif //GUARD_STRINGS_H

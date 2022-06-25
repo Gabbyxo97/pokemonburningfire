@@ -775,6 +775,7 @@ const u8 gText_YourName[] = _("YOUR NAME?");
 const u8 gText_BoxName[] = _("BOX NAME?");
 const u8 gText_PkmnsNickname[] = _("'s nickname?");
 const u8 gText_RivalsName[] = _("RIVAL's NAME?");
+const u8 gText_MysteryGiftPassword[] = _("PASSWORD");
 const u8 gText_MoveOkBack[] = _("{DPAD_ANY}MOVE {A_BUTTON}OK {B_BUTTON}BACK");
 const u8 gText_AlphabetUpperLower[] = _("");
 const u8 gText_RegionMap_Space[] = _(" ");
@@ -1338,3 +1339,6 @@ const u8 gText_Receive[] = _("RECEIVE");
 const u8 gText_Send[] = _("SEND");
 const u8 gText_Toss[] = _("TOSS");
 const u8 gUnknown_841EE2B[] = _("DEL. ALL{CLEAR_TO 0x57}CANCEL{CLEAR_TO 0xA4}OK");
+
+// Mystery gifts
+const u8 gText_MysteryGift_Password_Deoxys[] = _("A");

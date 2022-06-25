@@ -1627,7 +1627,8 @@ static void (*const sPrintTitleFuncs[])(void) = {
     [NAMING_SCREEN_BOX]        = PrintTitleFunction_NoMon,
     [NAMING_SCREEN_CAUGHT_MON] = PrintTitleFunction_WithMon,
     [NAMING_SCREEN_NAME_RATER] = PrintTitleFunction_WithMon,
-    [NAMING_SCREEN_RIVAL]      = PrintTitleFunction_NoMon
+    [NAMING_SCREEN_RIVAL]      = PrintTitleFunction_NoMon,
+    [NAMING_SCREEN_MYSTERY_GIFT] = PrintTitleFunction_NoMon
 };
 
 static void PrintTitle(void)
@@ -2013,12 +2014,22 @@ static const struct NamingScreenTemplate sRivalNamingScreenTemplate = {
     .title = gText_RivalsName,
 };
 
+static const struct NamingScreenTemplate sMysteryGiftNamingScreenTemplate = {
+    .copyExistingString = FALSE,
+    .maxChars = 15,
+    .iconFunction = 0,
+    .addGenderIcon = 0,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .title = gText_MysteryGiftPassword,
+};
+
 static const struct NamingScreenTemplate *const sNamingScreenTemplates[] = {
     &sPlayerNamingScreenTemplate,
     &sPcBoxNamingScreenTemplate,
     &sMonNamingScreenTemplate,
     &sMonNamingScreenTemplate,
     &sRivalNamingScreenTemplate,
+    &sMysteryGiftNamingScreenTemplate,
 };
 
 static const struct OamData gOamData_858BFEC = {

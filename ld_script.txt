@@ -308,6 +308,7 @@ SECTIONS {
         src/berry_fix_program.o(.text);
         src/mgba.o(.text);
         src/mini_printf.o(.text);
+        src/mystery_gift.o(.text);
     } =0
 
     script_data :
@@ -607,6 +608,7 @@ SECTIONS {
         src/trainer_tower_sets.o(.rodata);
         src/move_descriptions.o(.rodata);
         src/mgba.o(.rodata);
+        src/mystery_gift.o(.rodata);
 
         /* These should not be moved to C files */
         src/mystery_event_msg.o(.rodata);
