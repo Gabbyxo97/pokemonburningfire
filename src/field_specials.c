@@ -2472,11 +2472,8 @@ void DoMysteryGiftScreen(void)
 
 static void CheckMysteryGift(void)
 {
-    if (checkGift(gStringVar2) == FALSE) {
-        gSpecialVar_0x8004 = 0;
-    } else {
-        gSpecialVar_0x8004 = 1;
-    }
+    gSpecialVar_0x8004 = checkGift(gStringVar2, gStringVar3);
+    //gSpecialVar_0x8005, species;
 
     CB2_ReturnToFieldContinueScriptPlayMapMusic();
 }

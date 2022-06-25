@@ -5,15 +5,29 @@ CableClub_EventScript_MysteryGiftMan:: @ 81BB1D2
 	lockall
 	special DoMysteryGiftScreen
 	waitstate
+	compare VAR_0x8004, 0
+	goto_if_eq MysteryGiftReceived
 	compare VAR_0x8004, 1
-	goto_if_eq SuccessMysteryGift
-	msgbox MysteryGiftUnsuccessMsg
+	goto_if_eq MysteryGiftIncorrectPassword
+	compare VAR_0x8004, 2
+	goto_if_eq MysteryGiftAlreadyReceived
+	
+MysteryGiftReceived:
+	playfanfare MUS_LEVEL_UP
+	msgbox MysteryGiftReceivedMsg
+	closemessage
+	waitfanfare
+	releaseall
+	end
+
+MysteryGiftIncorrectPassword::
+	msgbox MysteryGiftIncorrectPasswordMsg
 	closemessage
 	releaseall
 	end
 
-SuccessMysteryGift::
-	msgbox MysteryGiftSuccessMsg
+MysteryGiftAlreadyReceived::
+	msgbox MysteryGiftAlreadyReceivedMsg
 	closemessage
 	releaseall
 	end
@@ -1820,8 +1834,11 @@ CableClub_Text_HopeYouEnjoyWirelessSystem:: @ 81BDEDF
 	.string "I hope you enjoy the Wireless\n"
 	.string "Communication System.$"
 
-MysteryGiftSuccessMsg::
-	.string "Sucesss$"
+MysteryGiftReceivedMsg::
+	 .string "{PLAYER} received a {STR_VAR_3}\nfrom the delivery man!$"
 
-MysteryGiftUnsuccessMsg::
-	.string "Unsuccess$"
+MysteryGiftIncorrectPasswordMsg::
+	.string "Oops, there's no\nmystery gift with that password.$"
+
+MysteryGiftAlreadyReceivedMsg::
+	.string "You already received\nthat mystery gift.$"

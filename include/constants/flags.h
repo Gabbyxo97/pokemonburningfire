@@ -181,8 +181,8 @@
 #define FLAG_HIDE_MISC_KANTO_ROCKETS                       0x0AD
 #define FLAG_HIDE_SAFFRON_CITY_POKECENTER_SABRINA_JOURNALS 0x0AE
 
-// Unused?
-#define FLAG_0x0AF               0x0AF
+// New features + reserved for new features
+#define FLAG_SHINY_MON    0x0AF
 #define FLAG_0x0B0               0x0B0
 #define FLAG_0x0B1               0x0B1
 #define FLAG_0x0B2               0x0B2
@@ -327,7 +327,9 @@
 #define FLAG_0x13D               0x13D
 #define FLAG_0x13E               0x13E
 #define FLAG_0x13F               0x13F
-#define FLAG_0x140               0x140
+
+// Mystery gift and reserved for mystery gift
+#define MYSTERY_GIFT_SPACE_DEOXYS 0x140
 #define FLAG_0x141               0x141
 #define FLAG_0x142               0x142
 #define FLAG_0x143               0x143

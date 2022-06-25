@@ -176,7 +176,7 @@
 #define NUM_BATTLE_STATS 8
 
 // Shiny odds
-#define SHINY_ODDS 8 // Actual probability is SHINY_ODDS/65536
+#define SHINY_ODDS 16 // Actual probability is SHINY_ODDS/65536
 
 // Learning moves
 #define MON_ALREADY_KNOWS_MOVE 0xFFFE
