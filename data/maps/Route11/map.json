@@ -234,7 +234,7 @@
       "x": 58,
       "y": 5,
       "elevation": 0,
-      "item": "ITEM_ESCAPE_ROPE",
+      "item": "ITEM_GREAT_BALL",
       "flag": "HIDDEN_ITEM_ROUTE11_ESCAPE_ROPE",
       "quantity": 1,
       "underfoot": false

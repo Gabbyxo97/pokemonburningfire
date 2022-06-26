@@ -35,7 +35,7 @@ MtMoon_1F_EventScript_ItemRareCandy:: @ 81BE5F6
 	end
 
 MtMoon_1F_EventScript_ItemEscapeRope:: @ 81BE603
-	finditem ITEM_ESCAPE_ROPE
+	finditem ITEM_GREAT_BALL
 	end
 
 MtMoon_1F_EventScript_ItemMoonStone:: @ 81BE610
@@ -95,7 +95,7 @@ Route9_EventScript_ItemTM40:: @ 81BE6B9
 	end
 
 RocketHideout_B1F_EventScript_ItemEscapeRope:: @ 81BE6C6
-	finditem ITEM_ESCAPE_ROPE
+	finditem ITEM_GREAT_BALL
 	end
 
 RocketHideout_B1F_EventScript_ItemHyperPotion:: @ 81BE6D3
@@ -139,7 +139,7 @@ RocketHideout_B4F_EventScript_ItemCalcium:: @ 81BE748
 	end
 
 PokemonTower_3F_EventScript_ItemEscapeRope:: @ 81BE755
-	finditem ITEM_ESCAPE_ROPE
+	finditem ITEM_GREAT_BALL
 	end
 
 PokemonTower_4F_EventScript_ItemElixir:: @ 81BE762
@@ -231,7 +231,7 @@ SilphCo_4F_EventScript_ItemMaxRevive:: @ 81BE873
 	end
 
 SilphCo_4F_EventScript_ItemEscapeRope:: @ 81BE880
-	finditem ITEM_ESCAPE_ROPE
+	finditem ITEM_GREAT_BALL
 	end
 
 SilphCo_4F_EventScript_ItemFullHeal:: @ 81BE88D
@@ -303,7 +303,7 @@ PokemonMansion_1F_EventScript_ItemCarbos:: @ 81BE95D
 	end
 
 PokemonMansion_1F_EventScript_ItemEscapeRope:: @ 81BE96A
-	finditem ITEM_ESCAPE_ROPE
+	finditem ITEM_GREAT_BALL
 	end
 
 PokemonMansion_2F_EventScript_ItemCalcium:: @ 81BE977
@@ -439,7 +439,7 @@ RockTunnel_1F_EventScript_ItemPearl:: @ 81BEB17
 	end
 
 RockTunnel_1F_EventScript_ItemEscapeRope:: @ 81BEB24
-	finditem ITEM_ESCAPE_ROPE
+	finditem ITEM_GREAT_BALL
 	end
 
 RockTunnel_B1F_EventScript_ItemRevive:: @ 81BEB31

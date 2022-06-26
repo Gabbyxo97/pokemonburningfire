@@ -1554,7 +1554,6 @@ extern const u8 gText_PokeSum_EggOrigin_NicePlace[];
 extern const u8 gText_PokeSum_EggOrigin_Spa[];
 extern const u8 gText_PokeSum_EggOrigin_Trade[];
 
-// Mystery gifts
-extern const u8 gText_MysteryGift_Password_Deoxys[];
+extern const u8 gString_UsedEscapeRope[];
 
 #endif //GUARD_STRINGS_H
