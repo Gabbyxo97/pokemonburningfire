@@ -16,5 +16,6 @@ void ScriptMenu_DisplayPCStartupPrompt(void);
 bool8 (*ScriptMenu_GetPicboxWaitFunc(void))(void);
 void QLPlaybackCB_DestroyScriptMenuMonPicSprites(void);
 void PicboxCancel(void);
+u8 TryDrawRepelMenu(void);
 
 #endif //GUARD_SCRIPT_MENU_H

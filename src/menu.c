@@ -601,6 +601,29 @@ static void MultichoiceGrid_PrintItemsCustomOrder(u8 windowId, u8 fontId, u8 ite
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
 
+u8 InitMenuInUpperLeftCorner(u8 windowId, u8 itemCount, u8 initialCursorPos, bool8 APressMuted)
+{
+    s32 pos;
+
+    sMenu.left = 0;
+    sMenu.top = 1;
+    sMenu.minCursorPos = 0;
+    sMenu.maxCursorPos = itemCount - 1;
+    sMenu.windowId = windowId;
+    sMenu.fontId = 0;
+    sMenu.optionHeight = 16;
+    sMenu.APressMuted = APressMuted;
+
+    pos = initialCursorPos;
+
+    if (pos < 0 || pos > sMenu.maxCursorPos)
+        sMenu.cursorPos = 0;
+    else
+        sMenu.cursorPos = pos;
+
+    return MultichoiceGrid_MoveCursor(0, 0);
+}
+
 static u8 MultichoiceGrid_InitCursorInternal(u8 windowId, u8 fontId, u8 left, u8 top, u8 optionWidth, u8 cursorHeight, u8 cols, u8 rows, u8 numChoices, u8 cursorPos)
 {
     s32 pos;

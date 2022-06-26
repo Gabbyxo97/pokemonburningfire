@@ -13,6 +13,8 @@
 #include "constants/songs.h"
 #include "constants/seagallop.h"
 #include "constants/menu.h"
+#include "constants/items.h"
+#include "item.h"
 
 struct MultichoiceListStruct
 {
@@ -1294,4 +1296,105 @@ u16 GetSelectedSeagallopDestination(void)
             return gSpecialVar_Result;
     }
     return SEAGALLOP_VERMILION_CITY;
+}
+
+static int DisplayTextAndGetWidthInternal(const u8 *str)
+{
+    u8 temp[64];
+    StringExpandPlaceholders(temp, str);
+    return GetStringWidth(0, temp, 0);
+}
+
+int DisplayTextAndGetWidth(const u8 *str, int prevWidth)
+{
+    int width = DisplayTextAndGetWidthInternal(str);
+    if (width < prevWidth)
+    {
+        width = prevWidth;
+    }
+    return width;
+}
+
+int ConvertPixelWidthToTileWidth(int width)
+{
+    return (((width + 9) / 8) + 1) > 28 ? 28 : (((width + 9) / 8) + 1);
+}
+
+int ScriptMenu_AdjustLeftCoordFromWidth(int left, int width)
+{
+    int adjustedLeft = left;
+
+    if (left + width > 28)
+    {
+        if (28 - width < 0)
+        {
+            adjustedLeft = 0;
+        }
+        else
+        {
+            adjustedLeft = 28 - width;
+        }
+    }
+
+    return adjustedLeft;
+}
+
+void SetStandardWindowBorderStyle(u8 windowId, bool8 copyToVram)
+{
+    DrawStdFrameWithCustomTileAndPalette(windowId, copyToVram, STD_WINDOW_BASE_TILE_NUM, STD_WINDOW_PALETTE_NUM);
+}
+
+static void DrawMultichoiceMenuCustom(u8 left, u8 top, u8 multichoiceId, u8 ignoreBPress, u8 cursorPos, const struct MenuAction *actions, int count)
+{
+    int i, windowId, width = 0;
+    u8 newWidth;
+
+    for (i = 0; i < count; i++)
+    {
+        width = DisplayTextAndGetWidth(actions[i].text, width);
+    }
+
+    newWidth = ConvertPixelWidthToTileWidth(width);
+    left = ScriptMenu_AdjustLeftCoordFromWidth(left, newWidth);
+    windowId = CreateWindowFromRect(left, top, newWidth, count * 2);
+    SetStandardWindowBorderStyle(windowId, 0);
+    //MultichoiceList_PrintItems(u8 windowId, u8 fontId, u8 left, u8 top, u8 lineHeight, u8 itemCount, const struct MenuAction *strs, u8 letterSpacing, u8 lineSpacing);
+    PrintTextArray(windowId, 1, 8, 1, 16, count, actions);
+    //static u8 MultichoiceGrid_InitCursorInternal(u8 windowId, u8 fontId, u8 left, u8 top, u8 optionWidth, u8 cursorHeight, u8 cols, u8 rows, u8 numChoices, u8 cursorPos)
+    InitMenuInUpperLeftCorner(windowId, count, cursorPos, 0);
+    ScheduleBgCopyTilemapToVram(0);
+    CreateMCMenuInputHandlerTask(ignoreBPress, count, windowId, multichoiceId);
+}
+
+static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, u8 ignoreBPress, u8 cursorPos)
+{
+    DrawMultichoiceMenuCustom(left, top, multichoiceId, ignoreBPress, cursorPos, gScriptMultiChoiceMenus[multichoiceId].list, gScriptMultiChoiceMenus[multichoiceId].count);
+}
+
+u8 TryDrawRepelMenu(void)
+{
+    static const u16 repelItems[] = {ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL};
+    struct MenuAction menuItems[4] = {NULL};
+    int i, count = 0;
+
+    for (i = 0; i < NELEMS(repelItems); i++)
+    {
+        if (CheckBagHasItem(repelItems[i], 1))
+        {
+            VarSet(VAR_0x8004 + count, repelItems[i]);
+            menuItems[count].text = ItemId_GetName(repelItems[i]);
+            count++;
+        }
+    }
+
+    if (count > 1)
+        DrawMultichoiceMenuCustom(0, 0, 0, FALSE, 0, menuItems, count);
+
+    gSpecialVar_Result = (count > 1);
+}
+
+void HandleRepelMenuChoice(void)
+{
+    gSpecialVar_0x8004 = VarGet(VAR_0x8004 + gSpecialVar_Result); // Get item Id;
+    VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_0x8004));
 }

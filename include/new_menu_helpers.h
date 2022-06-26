@@ -5,6 +5,11 @@
 #include "text.h"
 #include "task.h"
 
+#define DLG_WINDOW_PALETTE_NUM 15
+#define DLG_WINDOW_BASE_TILE_NUM 0x200
+#define STD_WINDOW_PALETTE_NUM 14
+#define STD_WINDOW_BASE_TILE_NUM 0x214
+
 void ClearScheduledBgCopiesToVram(void);
 void ScheduleBgCopyTilemapToVram(u8 bgId);
 void DoScheduledBgTilemapCopiesToVram(void);
