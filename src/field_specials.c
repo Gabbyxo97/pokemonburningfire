@@ -42,6 +42,7 @@
 #include "constants/event_objects.h"
 #include "constants/metatile_labels.h"
 #include "mystery_gift.h"
+#include "mgba.h"
 
 static EWRAM_DATA u8 sElevatorCurrentFloorWindowId = 0;
 static EWRAM_DATA u16 sElevatorScroll = 0;
@@ -1756,6 +1757,52 @@ u16 GetHiddenItemAttr(u32 hiddenItem, u8 attr)
         return (hiddenItem >> 31) & 0x01;
     else
         return 1;
+}
+
+bool8 PlayerHasDeoxysInParty(void)
+{
+    u8 partyCount = CalculatePlayerPartyCount();
+    u8 i;
+    for (i = 0; i < partyCount; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) ;
+
+        if (species == SPECIES_DEOXYS || species == SPECIES_DEOXYS_ATTACK || species == SPECIES_DEOXYS_DEFENSE || species == SPECIES_DEOXYS_SPEED)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+void ChangeDeoxys(void)
+{
+    u16 newSpecies;
+    u8 partyCount = CalculatePlayerPartyCount();
+    u8 i;
+
+    switch (gSpecialVar_0x8004)
+    {
+        case 1:
+            newSpecies = SPECIES_DEOXYS_ATTACK;
+            break;
+        case 2:
+            newSpecies = SPECIES_DEOXYS_DEFENSE;
+            break;
+        case 3:
+            newSpecies = SPECIES_DEOXYS_SPEED;
+            break;
+        default:
+        case 0:
+            newSpecies = SPECIES_DEOXYS;
+            break;
+    }
+    
+    for (i = 0; i < partyCount; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) ;
+
+        if (species == SPECIES_DEOXYS || species == SPECIES_DEOXYS_ATTACK || species == SPECIES_DEOXYS_DEFENSE || species == SPECIES_DEOXYS_SPEED)
+            SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &newSpecies);
+    }
 }
 
 bool8 DoesPlayerPartyContainSpecies(void)

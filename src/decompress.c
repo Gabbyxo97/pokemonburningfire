@@ -101,13 +101,13 @@ void LoadSpecialPokePic(const struct CompressedSpriteSheet *src, void *dest, s32
     else
         LZ77UnCompWram(src->data, dest);
 
-    DuplicateDeoxysTiles(dest, species);
+    // DuplicateDeoxysTiles(dest, species);
     DrawSpindaSpots(species, personality, dest, isFrontPic);
 }
 
 static void DuplicateDeoxysTiles(void *pointer, s32 species)
 {
-    if (species == SPECIES_DEOXYS)
+    if (species == SPECIES_DEOXYS || species == SPECIES_DEOXYS_ATTACK || species == SPECIES_DEOXYS_DEFENSE || species == SPECIES_DEOXYS_SPEED)
         CpuCopy32(pointer + 0x800, pointer, 0x800);
 }
 

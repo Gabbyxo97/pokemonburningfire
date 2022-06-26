@@ -30,3 +30,52 @@ CinnabarIsland_PokemonLab_Entrance_EventScript_RAndDRoomSign:: @ 816E2A6
 CinnabarIsland_PokemonLab_Entrance_EventScript_TestingRoomSign:: @ 816E2AF
 	msgbox CinnabarIsland_PokemonLab_Entrance_Text_TestingRoomSign, MSGBOX_SIGN
 	end
+
+CinnabarIsland_PokemonLab_Entrance_EventScript_MeteoriteNormal::
+	lock
+	specialvar VAR_RESULT, PlayerHasDeoxysInParty
+	compare VAR_RESULT, FALSE
+	goto_if_eq CinnabarIsland_PokemonLab_Entrance_EventScript_MeteoriteNoDeoxys
+	setvar VAR_0x8004, 0
+	special ChangeDeoxys
+	msgbox CinnabarIsland_PokemonLab_Entrance_Text_MeteoriteNormal
+	release
+	end
+
+CinnabarIsland_PokemonLab_Entrance_EventScript_MeteoriteAttack::
+	lock
+	specialvar VAR_RESULT, PlayerHasDeoxysInParty
+	compare VAR_RESULT, FALSE
+	goto_if_eq CinnabarIsland_PokemonLab_Entrance_EventScript_MeteoriteNoDeoxys
+	setvar VAR_0x8004, 1
+	special ChangeDeoxys
+	msgbox CinnabarIsland_PokemonLab_Entrance_Text_MeteoriteAttack
+	release
+	end	
+
+CinnabarIsland_PokemonLab_Entrance_EventScript_MeteoriteDefense::
+	lock
+	specialvar VAR_RESULT, PlayerHasDeoxysInParty
+	compare VAR_RESULT, FALSE
+	goto_if_eq CinnabarIsland_PokemonLab_Entrance_EventScript_MeteoriteNoDeoxys
+	setvar VAR_0x8004, 2
+	special ChangeDeoxys
+	msgbox CinnabarIsland_PokemonLab_Entrance_Text_MeteoriteDefense
+	release
+	end
+
+CinnabarIsland_PokemonLab_Entrance_EventScript_MeteoriteSpeed::
+	lock
+	specialvar VAR_RESULT, PlayerHasDeoxysInParty
+	compare VAR_RESULT, FALSE
+	goto_if_eq CinnabarIsland_PokemonLab_Entrance_EventScript_MeteoriteNoDeoxys
+	setvar VAR_0x8004, 3
+	special ChangeDeoxys
+	msgbox CinnabarIsland_PokemonLab_Entrance_Text_MeteoriteSpeed
+	release
+	end
+
+CinnabarIsland_PokemonLab_Entrance_EventScript_MeteoriteNoDeoxys:
+	msgbox CinnabarIsland_PokemonLab_Entrance_Text_MeteoriteNoDeoxys
+	release
+	end

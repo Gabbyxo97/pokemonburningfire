@@ -2200,4 +2200,19 @@ const struct MonCoords gMonFrontPicCoords[] =
         .size = 0x35,
         .y_offset = 0x0d,
     },
+    [SPECIES_DEOXYS_ATTACK] =
+    {
+        .size = 0x88,
+        .y_offset = 0x01,
+    },
+    [SPECIES_DEOXYS_DEFENSE] =
+    {
+        .size = 0x88,
+        .y_offset = 0x01,
+    },
+    [SPECIES_DEOXYS_SPEED] =
+    {
+        .size = 0x88,
+        .y_offset = 0x01,
+    },
 };

@@ -440,4 +440,7 @@ const struct CompressedSpritePalette gMonPaletteTable[] =
     SPECIES_PAL(UNOWN_Z, gMonPalette_Unown),
     SPECIES_PAL(UNOWN_EMARK, gMonPalette_Unown),
     SPECIES_PAL(UNOWN_QMARK, gMonPalette_Unown),
+    SPECIES_PAL(DEOXYS_ATTACK, gMonPalette_DeoxysAttack),
+    SPECIES_PAL(DEOXYS_DEFENSE, gMonPalette_DeoxysDefense),
+    SPECIES_PAL(DEOXYS_SPEED, gMonPalette_DeoxysSpeed),
 };

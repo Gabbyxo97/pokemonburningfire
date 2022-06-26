@@ -1597,6 +1597,9 @@ static bool8 IsSpeciesFromSpecialEncounter(u16 species)
     case SPECIES_LUGIA:
     case SPECIES_HO_OH:
     case SPECIES_DEOXYS:
+    case SPECIES_DEOXYS_ATTACK:
+    case SPECIES_DEOXYS_DEFENSE:
+    case SPECIES_DEOXYS_SPEED:
         return TRUE;
     }
     return FALSE;

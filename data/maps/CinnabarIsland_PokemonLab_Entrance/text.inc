@@ -26,3 +26,22 @@ CinnabarIsland_PokemonLab_Entrance_Text_TestingRoomSign:: @ 8199F9A
     .string "POKéMON LAB\n"
     .string "Testing Room$"
 
+CinnabarIsland_PokemonLab_Entrance_Text_MeteoriteNoDeoxys::
+    .string "It's a mysterious meteorite\n"
+    .string "that fell from the stars...$"
+
+CinnabarIsland_PokemonLab_Entrance_Text_MeteoriteNormal::
+    .string "Touching the meteorite balanced out\n"
+    .string "the attributes of a certain POKéMON.$"
+
+CinnabarIsland_PokemonLab_Entrance_Text_MeteoriteAttack::
+    .string "Touching the meteorite boosted\n"
+    .string "the Attack of a certain POKéMON.$"
+
+CinnabarIsland_PokemonLab_Entrance_Text_MeteoriteDefense::
+    .string "Touching the meteorite boosted\n"
+    .string "the Defense of a certain POKéMON.$"
+
+CinnabarIsland_PokemonLab_Entrance_Text_MeteoriteSpeed::
+    .string "Touching the meteorite boosted\n"
+    .string "the Speed of a certain POKéMON.$"

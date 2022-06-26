@@ -465,7 +465,10 @@ const u8 *const gMonIconTable[] = {
     [SPECIES_UNOWN_Y]     = gMonIcon_UnownY,
     [SPECIES_UNOWN_Z]     = gMonIcon_UnownZ,
     [SPECIES_UNOWN_EMARK] = gMonIcon_UnownExclamationMark,
-    [SPECIES_UNOWN_QMARK] = gMonIcon_UnownQuestionMark
+    [SPECIES_UNOWN_QMARK] = gMonIcon_UnownQuestionMark,
+    [SPECIES_DEOXYS_ATTACK] = gMonIcon_DeoxysAttack,
+    [SPECIES_DEOXYS_DEFENSE] = gMonIcon_DeoxysDefense,
+    [SPECIES_DEOXYS_SPEED] = gMonIcon_DeoxysSpeed
 };
 
 const u8 gMonIconPaletteIndices[] = {
@@ -908,7 +911,10 @@ const u8 gMonIconPaletteIndices[] = {
     [SPECIES_UNOWN_Y]     = 0,
     [SPECIES_UNOWN_Z]     = 0,
     [SPECIES_UNOWN_EMARK] = 0,
-    [SPECIES_UNOWN_QMARK] = 0
+    [SPECIES_UNOWN_QMARK] = 0,
+    [SPECIES_DEOXYS_ATTACK] = 0,
+    [SPECIES_DEOXYS_DEFENSE] = 0,
+    [SPECIES_DEOXYS_SPEED] = 0
 };
 
 const struct SpritePalette gMonIconPaletteTable[] = {
@@ -1108,7 +1114,7 @@ u16 MailSpeciesToIconSpecies(u16 species)
 const u8 *GetMonIconTiles(u16 species, bool32 extra)
 {
     const u8 *iconSprite = gMonIconTable[species];
-    if (species == SPECIES_DEOXYS && extra == TRUE)
+    if ((species == SPECIES_DEOXYS || species == SPECIES_DEOXYS_ATTACK || species == SPECIES_DEOXYS_DEFENSE || species == SPECIES_DEOXYS_SPEED) && extra == TRUE)
         iconSprite += 0x400;
     return iconSprite;
 }

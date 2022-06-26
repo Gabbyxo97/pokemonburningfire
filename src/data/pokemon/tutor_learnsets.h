@@ -2810,4 +2810,40 @@ static const u16 sTutorLearnsets[] =
                        | TUTOR(MOVE_MIMIC)
                        | TUTOR(MOVE_DREAM_EATER)
                        | TUTOR(MOVE_SUBSTITUTE),
+
+    [SPECIES_DEOXYS_ATTACK] = TUTOR(MOVE_BODY_SLAM)
+                     | TUTOR(MOVE_COUNTER)
+                     | TUTOR(MOVE_DOUBLE_EDGE)
+                     | TUTOR(MOVE_DREAM_EATER)
+                     | TUTOR(MOVE_MEGA_KICK)
+                     | TUTOR(MOVE_MEGA_PUNCH)
+                     | TUTOR(MOVE_MIMIC)
+                     | TUTOR(MOVE_ROCK_SLIDE)
+                     | TUTOR(MOVE_SEISMIC_TOSS)
+                     | TUTOR(MOVE_SUBSTITUTE)
+                     | TUTOR(MOVE_THUNDER_WAVE),
+
+    [SPECIES_DEOXYS_DEFENSE] = TUTOR(MOVE_BODY_SLAM)
+                     | TUTOR(MOVE_COUNTER)
+                     | TUTOR(MOVE_DOUBLE_EDGE)
+                     | TUTOR(MOVE_DREAM_EATER)
+                     | TUTOR(MOVE_MEGA_KICK)
+                     | TUTOR(MOVE_MEGA_PUNCH)
+                     | TUTOR(MOVE_MIMIC)
+                     | TUTOR(MOVE_ROCK_SLIDE)
+                     | TUTOR(MOVE_SEISMIC_TOSS)
+                     | TUTOR(MOVE_SUBSTITUTE)
+                     | TUTOR(MOVE_THUNDER_WAVE),
+
+    [SPECIES_DEOXYS_SPEED] = TUTOR(MOVE_BODY_SLAM)
+                     | TUTOR(MOVE_COUNTER)
+                     | TUTOR(MOVE_DOUBLE_EDGE)
+                     | TUTOR(MOVE_DREAM_EATER)
+                     | TUTOR(MOVE_MEGA_KICK)
+                     | TUTOR(MOVE_MEGA_PUNCH)
+                     | TUTOR(MOVE_MIMIC)
+                     | TUTOR(MOVE_ROCK_SLIDE)
+                     | TUTOR(MOVE_SEISMIC_TOSS)
+                     | TUTOR(MOVE_SUBSTITUTE)
+                     | TUTOR(MOVE_THUNDER_WAVE),
 };

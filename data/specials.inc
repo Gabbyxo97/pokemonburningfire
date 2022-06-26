@@ -15,8 +15,8 @@ gSpecials:: @ 815FD60
 	def_special CleanupLinkRoomState
 	def_special ExitLinkRoom
 	def_special DoMysteryGiftScreen  @ Secret Base specials
-	def_special NullFieldSpecial
-	def_special NullFieldSpecial
+	def_special PlayerHasDeoxysInParty
+	def_special ChangeDeoxys
 	def_special NullFieldSpecial
 	def_special NullFieldSpecial
 	def_special NullFieldSpecial
