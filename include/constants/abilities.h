@@ -79,7 +79,9 @@
 #define ABILITY_SHELL_ARMOR 75
 #define ABILITY_CACOPHONY 76
 #define ABILITY_AIR_LOCK 77
+// Abilities introduced in gen 4
+#define ABILITY_ADAPTABILITY 78
 
-#define ABILITIES_COUNT 78
+#define ABILITIES_COUNT 79
 
 #endif  // GUARD_CONSTANTS_ABILITIES_H

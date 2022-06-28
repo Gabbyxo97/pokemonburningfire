@@ -1477,8 +1477,12 @@ u8 TypeCalc(u16 move, u8 attacker, u8 defender)
     // check stab
     if (IS_BATTLER_OF_TYPE(attacker, moveType))
     {
-        gBattleMoveDamage = gBattleMoveDamage * 15;
-        gBattleMoveDamage = gBattleMoveDamage / 10;
+        if (gBattleMons[attacker].ability == ABILITY_ADAPTABILITY) {
+            gBattleMoveDamage = gBattleMoveDamage * 2;
+        } else {
+            gBattleMoveDamage = gBattleMoveDamage * 15;
+            gBattleMoveDamage = gBattleMoveDamage / 10;
+        }
     }
 
     if (gBattleMons[defender].ability == ABILITY_LEVITATE && moveType == TYPE_GROUND)
