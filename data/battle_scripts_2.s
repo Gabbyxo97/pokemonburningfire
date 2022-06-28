@@ -20,18 +20,7 @@
 
 gBattlescriptsForBallThrow::
 	.4byte BattleScript_ThrowBall
-	.4byte BattleScript_ThrowBall
-	.4byte BattleScript_ThrowBall
-	.4byte BattleScript_ThrowBall
-	.4byte BattleScript_ThrowBall
 	.4byte BattleScript_ThrowSafariBall
-	.4byte BattleScript_ThrowBall
-	.4byte BattleScript_ThrowBall
-	.4byte BattleScript_ThrowBall
-	.4byte BattleScript_ThrowBall
-	.4byte BattleScript_ThrowBall
-	.4byte BattleScript_ThrowBall
-	.4byte BattleScript_ThrowBall
 
 gBattlescriptsForUsingItem::
 	.4byte BattleScript_PlayerUseItem

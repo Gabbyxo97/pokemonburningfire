@@ -43,6 +43,7 @@
 #include "constants/pokemon.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
+#include "wild_encounter.h"
 
 static void SpriteCB_UnusedDebugSprite(struct Sprite *sprite);
 static void HandleAction_UseMove(void);
@@ -3769,6 +3770,9 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
 {
     if (!gPaletteFade.active)
     {
+        gIsFishingEncounter = FALSE;
+        gIsSurfingEncounter = FALSE;
+
         ResetSpriteData();
         if (gLeveledUpInBattle == 0 || gBattleOutcome != B_OUTCOME_WON)
             gBattleMainFunc = ReturnFromBattleToOverworld;
@@ -4060,11 +4064,7 @@ static void HandleAction_UseItem(void)
     gBattle_BG0_Y = 0;
     ClearFuryCutterDestinyBondGrudge(gBattlerAttacker);
     gLastUsedItem = gBattleBufferB[gBattlerAttacker][1] | (gBattleBufferB[gBattlerAttacker][2] << 8);
-    if (gLastUsedItem <= ITEM_PREMIER_BALL) // is ball
-    {
-        gBattlescriptCurrInstr = gBattlescriptsForBallThrow[gLastUsedItem];
-    }
-    if (gLastUsedItem == ITEM_CHERISH_BALL) // new balls
+    if (ItemId_GetPocket(gLastUsedItem) == POCKET_POKE_BALLS) // is ball
     {
         gBattlescriptCurrInstr = gBattlescriptsForBallThrow[0];
     }
@@ -4285,7 +4285,7 @@ static void HandleAction_SafariZoneBallThrow(void)
     gBattle_BG0_Y = 0;
     --gNumSafariBalls;
     gLastUsedItem = ITEM_SAFARI_BALL;
-    gBattlescriptCurrInstr = gBattlescriptsForBallThrow[ITEM_SAFARI_BALL];
+    gBattlescriptCurrInstr = gBattlescriptsForBallThrow[1];
     gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
 }
 

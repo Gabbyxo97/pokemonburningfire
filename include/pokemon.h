@@ -462,5 +462,6 @@ void OakSpeechNidoranFFreeResources(void);
 void *OakSpeechNidoranFGetBuffer(u8 bufferId);
 u8 GetNatureFromPersonality(u32 personality);
 u8 SendMonToPC(struct Pokemon* mon);
+bool8 HealStatusConditions(struct Pokemon *mon, u32 unused, u32 healMask, u8 battleId);
 
 #endif // GUARD_POKEMON_H
