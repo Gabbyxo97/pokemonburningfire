@@ -450,6 +450,8 @@ struct BattleStruct
         struct LinkPartnerHeader linkPartnerHeader;
         struct MultiBattlePokemonTx multiBattleMons[3];
     } multiBuffer;
+    u8 activeAbilityPopUps; // as bits for each battler
+    u8 abilityPopUpSpriteIds[MAX_BATTLERS_COUNT][2];    // two per battler
     u8 padding_1E4[0x1C];
 }; // size == 0x200 bytes
 
@@ -509,6 +511,8 @@ struct BattleScripting
     u8 reshowMainState;
     u8 reshowHelperState;
     u8 field_23;
+    bool8 fixedPopup;   // Force ability popup to stick until manually called back
+    u16 abilityPopupOverwrite;
 };
 
 enum
