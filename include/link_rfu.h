@@ -78,7 +78,7 @@ struct __attribute__((packed, aligned(2))) GFtgtGname
     // u8 gender:1;
     // u8 unk_4:3
     // u8 active:1
-    u16 species:10;
+    u16 species;
     u16 type:6;
     u8 activity:7;
     u8 started:1;

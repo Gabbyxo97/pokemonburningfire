@@ -394,6 +394,8 @@ static const u8 *const sHelpDocsPtrs[] = {
     gNewGame_HelpDocs5, gNewGame_HelpDocs6, gNewGame_HelpDocs7
 };
 
+EWRAM_DATA static const u8 *currentNameChoices[4] = {};
+
 static const u8 *const sMaleNameChoices[] = {
 #if defined(FIRERED)
     gNameChoice_Red,
@@ -1926,15 +1928,25 @@ static void PrintNameChoiceOptions(u8 taskId, u8 hasPlayerBeenNamed)
         textPtrs = gSaveBlock2Ptr->playerGender == MALE ? sMaleNameChoices : sFemaleNameChoices;
     else
         textPtrs = sRivalNameChoices;
+
     for (i = 0; i < 4; i++)
     {
-        AddTextPrinterParameterized(data[13], 2, textPtrs[i], 8, 16 * (i + 1) + 1, 0, NULL);
+        if (hasPlayerBeenNamed == FALSE)
+        {
+            u8 rndNumber = Random() % 19;
+            currentNameChoices[i] = textPtrs[rndNumber];
+            AddTextPrinterParameterized(data[13], 2, textPtrs[rndNumber], 8, 16 * (i + 1) + 1, 0, NULL);
+        }
+        else
+        {
+            AddTextPrinterParameterized(data[13], 2, textPtrs[i], 8, 16 * (i + 1) + 1, 0, NULL);
+        }
     }
     Menu_InitCursor(data[13], 2, 0, 1, 16, 5, 0);
     CopyWindowToVram(data[13], COPYWIN_BOTH);
 }
 
-void GetDefaultName(u8 hasPlayerBeenNamed, u8 rivalNameChoice)
+void GetDefaultName(u8 hasPlayerBeenNamed, u8 nameChoice)
 {
     const u8 * src;
     u8 * dest;
@@ -1942,15 +1954,12 @@ void GetDefaultName(u8 hasPlayerBeenNamed, u8 rivalNameChoice)
 
     if (hasPlayerBeenNamed == FALSE)
     {
-        if (gSaveBlock2Ptr->playerGender == MALE)
-            src = sMaleNameChoices[Random() % 19];
-        else
-            src = sFemaleNameChoices[Random() % 19];
+        src = currentNameChoices[nameChoice];
         dest = gSaveBlock2Ptr->playerName;
     }
     else
     {
-        src = sRivalNameChoices[rivalNameChoice];
+        src = sRivalNameChoices[nameChoice];
         dest = gSaveBlock1Ptr->rivalName;
     }
     for (i = 0; i < PLAYER_NAME_LENGTH && src[i] != EOS; i++)
