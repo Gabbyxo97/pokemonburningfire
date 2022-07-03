@@ -3671,6 +3671,17 @@ BattleScript_FocusPunchSetUp::
 	waitmessage 0x40
 	end2
 
+BattleScript_AftermathDmg::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_AFTERMATHDMG
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER, 0, NULL
+	return
+
 BattleScript_MoveUsedIsAsleep::
 	printstring STRINGID_PKMNFASTASLEEP
 	waitmessage 0x40
@@ -3940,6 +3951,13 @@ BattleScript_DrizzleActivates::
 	playanimation BS_BATTLER_0, B_ANIM_RAIN_CONTINUES, NULL
 	call BattleScript_HandleWeatherFormChanges
 	end3
+
+BattleScript_AbilityPopUp:
+	showabilitypopup BS_ABILITY_BATTLER
+	recordability BS_ABILITY_BATTLER
+	pause 40
+	sethword sABILITY_OVERWRITE, 0
+	return
 
 BattleScript_SpeedBoostActivates::
 	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1

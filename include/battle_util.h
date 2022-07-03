@@ -89,4 +89,10 @@ void HandleAction_RunBattleScript(void);
 u8 GetMoveTarget(u16 move, u8 setTarget);
 u8 IsMonDisobedient(void);
 
+u32 GetBattlerAbility(u8 battlerId);
+bool32 IsBattlerAlive(u8 battlerId);
+bool32 IsMoveMakingContact(u16 move, u8 battlerAtk);
+u32 IsAbilityOnField(u32 ability);
+u32 IsAbilityOnFieldExcept(u32 battlerId, u32 ability);
+
 #endif // GUARD_BATTLE_UTIL_H

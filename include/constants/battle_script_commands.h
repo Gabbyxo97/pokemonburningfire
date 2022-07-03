@@ -26,9 +26,10 @@
 #define sRESHOW_MAIN_STATE gBattleScripting + 0x21
 #define sRESHOW_HELPER_STATE gBattleScripting + 0x22
 #define sFIELD_23 gBattleScripting + 0x23
-#define sWINDOWS_TYPE gBattleScripting + 0x24
-#define sMULTIPLAYER_ID gBattleScripting + 0x25
-#define sSPECIAL_TRAINER_BATTLE_TYPE gBattleScripting + 0x26
+#define sABILITY_OVERWRITE           gBattleScripting + 0x24 // abilityPopupOverwrite
+// #define sWINDOWS_TYPE gBattleScripting + 0x24
+// #define sMULTIPLAYER_ID gBattleScripting + 0x25
+// #define sSPECIAL_TRAINER_BATTLE_TYPE gBattleScripting + 0x26
 
 #define cEFFECT_CHOOSER gBattleCommunication + 3
 #define cMULTISTRING_CHOOSER gBattleCommunication + 5
@@ -49,6 +50,7 @@
 #define BS_OPPONENT1                12
 #define BS_PLAYER2                  13 // for atk98_updatestatusicon
 #define BS_OPPONENT2                14
+#define BS_ABILITY_BATTLER          15
 
 // used for openpartyscreen
 #define OPEN_PARTY_ALLOW_CANCEL     0x80
@@ -81,6 +83,7 @@
 #define VARIOUS_RETURN_OPPONENT_MON2            10
 #define VARIOUS_CHECK_POKEFLUTE                 11
 #define VARIOUS_WAIT_FANFARE                    12
+#define VARIOUS_ABILITY_POPUP                       13
 
 // atk80, dmg manipulation
 #define ATK80_DMG_CHANGE_SIGN                               0

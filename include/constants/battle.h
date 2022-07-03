@@ -309,6 +309,11 @@
 #define BATTLE_TERRAIN_LANCE       18
 #define BATTLE_TERRAIN_CHAMPION    19
 
+#define B_WAIT_TIME_LONG     64
+#define B_WAIT_TIME_MED      48
+#define B_WAIT_TIME_SHORT    32
+#define B_WAIT_TIME_SHORTEST 16
+
 // Return value for IsRunningFromBattleImpossible. 
 #define BATTLE_RUN_SUCCESS        0
 #define BATTLE_RUN_FORBIDDEN      1
