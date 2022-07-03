@@ -1738,6 +1738,38 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     BattleScriptPushCursorAndCallback(BattleScript_OverworldWeatherStarts);
                 }
                 break;
+            case ABILITY_ANTICIPATION:
+                if (!gSpecialStatuses[battler].switchInAbilityDone)
+                {
+                    u32 side = GetBattlerSide(battler);
+                    u8 j;
+                    u8 move;
+
+                    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+                    {
+                        if (IsBattlerAlive(i) && side != GetBattlerSide(i))
+                        {
+                            for (j = 0; j < MAX_MON_MOVES; j++)
+                            {
+                                move = gBattleMons[i].moves[j];
+                                GET_MOVE_TYPE(move, moveType);
+                                if (MOVE_RESULT_SUPER_EFFECTIVE & TypeCalc(move, i, battler))
+                                {
+                                    effect++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (effect)
+                    {
+                        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_ANTICIPATION;
+                        gSpecialStatuses[battler].switchInAbilityDone = 1;
+                        BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
+                    }
+                }
+                break;
             case ABILITY_DRIZZLE:
                 if (!(gBattleWeather & WEATHER_RAIN_PERMANENT))
                 {
