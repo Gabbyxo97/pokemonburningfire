@@ -1686,8 +1686,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
         else
             gLastUsedAbility = gBattleMons[battler].ability;
 
-        MgbaPrintf(MGBA_LOG_INFO, "LastUsedAbility: %d", gLastUsedAbility);
-
         if (!moveArg)
             moveArg = gCurrentMove;
         GET_MOVE_TYPE(moveArg, moveType);
@@ -1960,12 +1958,10 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && IsBattlerAlive(battler)
              && CompareStat(battler, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
-                MgbaPrintf(MGBA_LOG_INFO, "Attack: %d", gBattleMons[battler].statStages[STAT_ATK]);
                 gBattleMons[battler].statStages[STAT_ATK] = 12;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_TargetsStatWasMaxedOut;
                 effect++;
-                MgbaPrintf(MGBA_LOG_INFO, "Attack: %d", gBattleMons[battler].statStages[STAT_ATK]);
             }
             break;
             case ABILITY_COLOR_CHANGE:
@@ -1999,12 +1995,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 }
                 break;
             case ABILITY_AFTERMATH:
-                MgbaPrintf(MGBA_LOG_INFO, "Damp on field: %d", IsAbilityOnField(ABILITY_DAMP));
-                MgbaPrintf(MGBA_LOG_INFO, "Move no effect: %d", (gMoveResultFlags & MOVE_RESULT_NO_EFFECT));
-                MgbaPrintf(MGBA_LOG_INFO, "Hp == 0: %d", gBattleMons[gBattlerTarget].hp == 0);
-                MgbaPrintf(MGBA_LOG_INFO, "Attacker alive: %d", IsBattlerAlive(gBattlerAttacker));
-                MgbaPrintf(MGBA_LOG_INFO, "Making contact: %d", IsMoveMakingContact(moveArg, gBattlerAttacker));
-
                 if (!IsAbilityOnField(ABILITY_DAMP)
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 && gBattleMons[gBattlerTarget].hp == 0
