@@ -175,6 +175,12 @@
 #define NUM_STATS 6
 #define NUM_BATTLE_STATS 8
 
+#define MIN_STAT_STAGE     0
+#define DEFAULT_STAT_STAGE 6
+#define MAX_STAT_STAGE    12
+
+#define STAT_BUFF_NOT_PROTECT_AFFECTED      (1 << 5)
+
 // Shiny odds
 #define SHINY_ODDS 16 // Actual probability is SHINY_ODDS/65536
 

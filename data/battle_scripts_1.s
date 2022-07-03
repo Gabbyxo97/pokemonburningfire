@@ -4180,6 +4180,15 @@ BattleScript_ColorChangeActivates::
 	waitmessage 0x40
 	return
 
+BattleScript_TargetsStatWasMaxedOut::
+	call BattleScript_AbilityPopUp
+	statbuffchange STAT_BUFF_NOT_PROTECT_AFFECTED | MOVE_EFFECT_CERTAIN, NULL
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_TARGETSSTATWASMAXEDOUT
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_RoughSkinActivates::
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER

@@ -1953,6 +1953,21 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
         case ABILITYEFFECT_MOVE_END: // Think contact abilities.
             switch (gLastUsedAbility)
             {
+            case ABILITY_ANGER_POINT:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gCritMultiplier == 2
+             && TARGET_TURN_DAMAGED
+             && IsBattlerAlive(battler)
+             && CompareStat(battler, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
+            {
+                MgbaPrintf(MGBA_LOG_INFO, "Attack: %d", gBattleMons[battler].statStages[STAT_ATK]);
+                gBattleMons[battler].statStages[STAT_ATK] = 12;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_TargetsStatWasMaxedOut;
+                effect++;
+                MgbaPrintf(MGBA_LOG_INFO, "Attack: %d", gBattleMons[battler].statStages[STAT_ATK]);
+            }
+            break;
             case ABILITY_COLOR_CHANGE:
                 if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                  && moveArg != MOVE_STRUGGLE
@@ -3295,6 +3310,57 @@ u8 IsMonDisobedient(void)
             return 1;
         }
     }
+}
+
+bool32 CompareStat(u8 battlerId, u8 statId, u8 cmpTo, u8 cmpKind)
+{
+    bool8 ret = FALSE;
+    u8 statValue = gBattleMons[battlerId].statStages[statId];
+
+    // Because this command is used as a way of checking if a stat can be lowered/raised,
+    // we need to do some modification at run-time.
+    if (GetBattlerAbility(battlerId) == ABILITY_CONTRARY)
+    {
+        if (cmpKind == CMP_GREATER_THAN)
+            cmpKind = CMP_LESS_THAN;
+        else if (cmpKind == CMP_LESS_THAN)
+            cmpKind = CMP_GREATER_THAN;
+
+        if (cmpTo == MIN_STAT_STAGE)
+            cmpTo = MAX_STAT_STAGE;
+        else if (cmpTo == MAX_STAT_STAGE)
+            cmpTo = MIN_STAT_STAGE;
+    }
+
+    switch (cmpKind)
+    {
+    case CMP_EQUAL:
+        if (statValue == cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_NOT_EQUAL:
+        if (statValue != cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_GREATER_THAN:
+        if (statValue > cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_LESS_THAN:
+        if (statValue < cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_COMMON_BITS:
+        if (statValue & cmpTo)
+            ret = TRUE;
+        break;
+    case CMP_NO_COMMON_BITS:
+        if (!(statValue & cmpTo))
+            ret = TRUE;
+        break;
+    }
+
+    return ret;
 }
 
 u32 IsAbilityOnField(u32 ability)

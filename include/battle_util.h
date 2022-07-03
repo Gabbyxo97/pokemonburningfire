@@ -94,5 +94,6 @@ bool32 IsBattlerAlive(u8 battlerId);
 bool32 IsMoveMakingContact(u16 move, u8 battlerAtk);
 u32 IsAbilityOnField(u32 ability);
 u32 IsAbilityOnFieldExcept(u32 battlerId, u32 ability);
+bool32 CompareStat(u8 battlerId, u8 statId, u8 cmpTo, u8 cmpKind);
 
 #endif // GUARD_BATTLE_UTIL_H
