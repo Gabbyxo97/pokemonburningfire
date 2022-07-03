@@ -3775,12 +3775,6 @@ static const struct TrainerMonNoItemCustomMoves sParty_RivalRoute22EarlyCharmand
     {
         .iv = 50,
         .lvl = 9,
-        .species = SPECIES_MANKEY,
-        .moves = {MOVE_LOW_KICK},
-    },
-    {
-        .iv = 50,
-        .lvl = 9,
         .species = SPECIES_PIDGEY,
         .moves = {MOVE_TACKLE, MOVE_SAND_ATTACK, MOVE_NONE, MOVE_NONE},
     },
