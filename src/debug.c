@@ -254,11 +254,7 @@ extern u8 Debug_Script_8[];
 
 extern u8 Debug_ShowFieldMessageStringVar4[];
 extern u8 Debug_CheatStart[];
-#ifdef BATTLE_ENGINE
 #define ABILITY_NAME_LENGTH 16
-#else
-#define ABILITY_NAME_LENGTH 12
-#endif
 extern const u8 gAbilityNames[][ABILITY_NAME_LENGTH + 1];
 
 
@@ -2118,7 +2114,7 @@ static void DebugAction_Give_Pokemon_SelectNature(u8 taskId)
 }
 static void DebugAction_Give_Pokemon_SelectAbility(u8 taskId)
 {
-    u8 abilityId;
+    u16 abilityId;
     u8 abilityCount = NUM_ABILITY_SLOTS - 1; //-1 for proper iteration
     u8 i = 0;
 

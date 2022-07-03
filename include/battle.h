@@ -655,7 +655,7 @@ extern u16 gChosenMove;
 extern u16 gCalledMove;
 extern u8 gCritMultiplier;
 extern u16 gBattleWeather;
-extern u8 gLastUsedAbility;
+extern u16 gLastUsedAbility;
 extern u8 gBattlerInMenuId;
 extern u8 gPotentialItemEffectBattler;
 extern u8 gBattlersCount;
