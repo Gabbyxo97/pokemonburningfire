@@ -1770,6 +1770,45 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     }
                 }
                 break;
+        case ABILITY_DOWNLOAD:
+            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                u32 statId, opposingBattler;
+                u32 opposingDef = 0, opposingSpDef = 0;
+
+                gBattlerAbility = battler;
+                opposingBattler = BATTLE_OPPOSITE(battler);
+                for (i = 0; i < 2; opposingBattler ^= BIT_FLANK, i++)
+                {
+                    if (IsBattlerAlive(opposingBattler))
+                    {
+                        opposingDef += gBattleMons[opposingBattler].defense
+                                    * gStatStageRatios[gBattleMons[opposingBattler].statStages[STAT_DEF]][0]
+                                    / gStatStageRatios[gBattleMons[opposingBattler].statStages[STAT_DEF]][1];
+                        opposingSpDef += gBattleMons[opposingBattler].spDefense
+                                      * gStatStageRatios[gBattleMons[opposingBattler].statStages[STAT_SPDEF]][0]
+                                      / gStatStageRatios[gBattleMons[opposingBattler].statStages[STAT_SPDEF]][1];
+                    }
+                }
+
+                if (opposingDef < opposingSpDef)
+                    statId = STAT_ATK;
+                else
+                    statId = STAT_SPATK;
+
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+
+                if (CompareStat(battler, statId, MAX_STAT_STAGE, CMP_LESS_THAN))
+                {
+                    gBattleMons[battler].statStages[statId]++;
+                    SET_STATCHANGER(statId, 1, FALSE);
+                    gBattlerAttacker = battler;
+                    PREPARE_STAT_BUFFER(gBattleTextBuff1, statId);
+                    BattleScriptPushCursorAndCallback(BattleScript_AttackerAbilityStatRaiseEnd3);
+                    effect++;
+                }
+            }
+            break;
             case ABILITY_DRIZZLE:
                 if (!(gBattleWeather & WEATHER_RAIN_PERMANENT))
                 {
