@@ -1534,7 +1534,7 @@ static void Task_ListMenuRemoveScrollIndicatorArrowPair(u8 taskId)
 
 void ForcePlayerToStartSurfing(void)
 {
-    SetHelpContext(HELPCONTEXT_SURFING);
+    //SetHelpContext(HELPCONTEXT_SURFING);
     SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_SURFING);
 }
 

@@ -1637,7 +1637,7 @@ static void Task_WaitStopSurfing(u8 taskId)
         UnfreezeObjectEvents();
         DestroySprite(&gSprites[playerObjEvent->fieldEffectSpriteId]);
         DestroyTask(taskId);
-        SetHelpContextForMap();
+        //SetHelpContextForMap();
     }
 }
 

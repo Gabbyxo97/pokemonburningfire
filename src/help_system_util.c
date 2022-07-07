@@ -10,7 +10,7 @@
 
 #define ZERO 0
 
-bool8 gHelpSystemEnabled;
+//bool8 gHelpSystemEnabled;
 
 struct HelpSystemVideoState
 {
@@ -24,7 +24,7 @@ struct HelpSystemVideoState
     /*0x12*/ u8 savedTextColor[3];
     /*0x15*/ u8 state;
 };
-
+/*/
 static EWRAM_DATA u8 sMapTilesBackup[BG_CHAR_SIZE] = {0};
 EWRAM_DATA u8 gDisableHelpSystemVolumeReduce = 0;
 EWRAM_DATA bool8 gHelpSystemToggleWithRButtonDisabled = FALSE;
@@ -32,11 +32,12 @@ static EWRAM_DATA u8 sDelayTimer = 0;
 static EWRAM_DATA u8 sInHelpSystem = 0;
 static EWRAM_DATA struct HelpSystemVideoState sVideoState = {0};
 EWRAM_DATA struct HelpSystemListMenu gHelpSystemListMenu = {0};
-EWRAM_DATA struct ListMenuItem gHelpSystemListMenuItems[52] = {0};
+EWRAM_DATA struct ListMenuItem gHelpSystemListMenuItems[52] = {0};/*/
 
 static const u16 sTiles[] = INCBIN_U16("graphics/help_system/bg_tiles.4bpp");
 static const u16 sPals[] = INCBIN_U16("graphics/help_system/bg_tiles.gbapal");
 
+/*
 u8 RunHelpSystemCallback(void)
 {
     s32 i;
@@ -134,13 +135,13 @@ u8 RunHelpSystemCallback(void)
         break;
     }
     return sVideoState.state;
-}
+}/*/
 
 void SaveCallbacks(void)
 {
     vu16 * dma;
-    sVideoState.savedVblankCb = gMain.vblankCallback;
-    sVideoState.savedHblankCb = gMain.hblankCallback;
+    //sVideoState.savedVblankCb = gMain.vblankCallback;
+    //sVideoState.savedHblankCb = gMain.hblankCallback;
     gMain.vblankCallback = NULL;
     gMain.hblankCallback = NULL;
 
@@ -152,54 +153,61 @@ void SaveCallbacks(void)
 
 void SaveMapGPURegs(void)
 {
-    sVideoState.savedDispCnt = GetGpuReg(REG_OFFSET_DISPCNT);
+    return;
+	/*sVideoState.savedDispCnt = GetGpuReg(REG_OFFSET_DISPCNT);
     sVideoState.savedBg0Cnt = GetGpuReg(REG_OFFSET_BG0CNT);
     sVideoState.savedBg0Hofs = GetGpuReg(REG_OFFSET_BG0HOFS);
     sVideoState.savedBg0Vofs = GetGpuReg(REG_OFFSET_BG0VOFS);
-    sVideoState.savedBldCnt = GetGpuReg(REG_OFFSET_BLDCNT);
+    sVideoState.savedBldCnt = GetGpuReg(REG_OFFSET_BLDCNT);*/
 }
 
 void SaveMapTiles(void)
 {
-    RequestDma3Copy((void *)BG_CHAR_ADDR(3), sMapTilesBackup, BG_CHAR_SIZE, DMA3_16BIT);
+	return;
+    //RequestDma3Copy((void *)BG_CHAR_ADDR(3), sMapTilesBackup, BG_CHAR_SIZE, DMA3_16BIT);
 }
 
 void SaveMapTextColors(void)
 {
-    SaveTextColors(
+	return;
+    /*/SaveTextColors(
         &sVideoState.savedTextColor[0],
         &sVideoState.savedTextColor[1],
         &sVideoState.savedTextColor[2]
-    );
+    );/*/
 }
 
 void RestoreCallbacks(void)
 {
-    gMain.vblankCallback = sVideoState.savedVblankCb;
-    gMain.hblankCallback = sVideoState.savedHblankCb;
+	return;
+    /*/gMain.vblankCallback = sVideoState.savedVblankCb;
+    gMain.hblankCallback = sVideoState.savedHblankCb;/*/
 }
 
 void RestoreGPURegs(void)
 {
-    SetGpuReg(REG_OFFSET_BLDCNT, sVideoState.savedBldCnt);
+    return;
+    /*/SetGpuReg(REG_OFFSET_BLDCNT, sVideoState.savedBldCnt);
     SetGpuReg(REG_OFFSET_BG0HOFS, sVideoState.savedBg0Hofs);
     SetGpuReg(REG_OFFSET_BG0VOFS, sVideoState.savedBg0Vofs);
     SetGpuReg(REG_OFFSET_BG0CNT, sVideoState.savedBg0Cnt);
-    SetGpuReg(REG_OFFSET_DISPCNT, sVideoState.savedDispCnt);
+    SetGpuReg(REG_OFFSET_DISPCNT, sVideoState.savedDispCnt);/*/
 }
 
 void RestoreMapTiles(void)
 {
-    RequestDma3Copy(sMapTilesBackup, (void *)BG_CHAR_ADDR(3), BG_CHAR_SIZE, DMA3_16BIT);
+    return;
+	//RequestDma3Copy(sMapTilesBackup, (void *)BG_CHAR_ADDR(3), BG_CHAR_SIZE, DMA3_16BIT);
 }
 
 void RestoreMapTextColors(void)
 {
-    RestoreTextColors(
+    return;
+	/*/RestoreTextColors(
         &sVideoState.savedTextColor[0],
         &sVideoState.savedTextColor[1],
         &sVideoState.savedTextColor[2]
-    );
+    );/*/
 }
 
 void CommitTilemap(void)
@@ -370,6 +378,7 @@ void HS_ShowOrHideScrollArrows(u8 which, u8 mode)
     }
 }
 
+/*/
 void HelpSystemRenderText(u8 font, u8 * dest, const u8 * src, u8 x, u8 y, u8 width, u8 height)
 {
     // font -> sp+24
@@ -846,3 +855,4 @@ bool8 MoveCursor(u8 by, u8 dirn)
     }
     return FALSE;
 }
+/*/

@@ -496,9 +496,9 @@ static bool8 LoadBagMenuGraphics(void)
         break;
     case 19:
         if (gBagMenuState.location == ITEMMENULOCATION_ITEMPC)
-            SetHelpContext(HELPCONTEXT_PLAYERS_PC_ITEMS);
-        else
-            SetHelpContext(HELPCONTEXT_BAG);
+            //SetHelpContext(HELPCONTEXT_PLAYERS_PC_ITEMS);
+        //else
+           // SetHelpContext(HELPCONTEXT_BAG);
         gPaletteFade.bufferTransferDisabled = FALSE;
         gMain.state++;
         break;

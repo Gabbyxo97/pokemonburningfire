@@ -1668,7 +1668,7 @@ void task00_mystery_gift(u8 taskId)
         break;
     case 37:
         CloseLink();
-        HelpSystem_Enable();
+        //HelpSystem_Enable();
         Free(data->buffer);
         DestroyTask(taskId);
         SetMainCallback2(MainCB_FreeAllBuffersAndReturnToInitTitleScreen);

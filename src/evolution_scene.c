@@ -299,7 +299,7 @@ void EvolutionScene(struct Pokemon* mon, u16 speciesToEvolve, bool8 canStopEvo, 
     SetHBlankCallback(EvoDummyFunc);
     SetVBlankCallback(VBlankCB_EvolutionScene);
     m4aMPlayAllStop();
-    HelpSystem_Disable();
+    //HelpSystem_Disable();
     SetMainCallback2(CB2_EvolutionSceneUpdate);
 }
 
@@ -732,7 +732,7 @@ static void Task_EvolutionScene(u8 taskId)
     case 15: // check if it wants to learn a new move
         if (!IsTextPrinterActive(0))
         {
-            HelpSystem_Enable();
+            //HelpSystem_Enable();
             var = MonTryLearningNewMove(mon, gTasks[taskId].tLearnsFirstMove);
             if (var != 0 && !gTasks[taskId].tEvoWasStopped)
             {

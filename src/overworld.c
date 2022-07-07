@@ -1793,7 +1793,7 @@ static bool32 map_loading_iteration_3(u8 *state)
         sub_8057074();
         sub_80571A8();
         SetCameraToTrackGuestPlayer();
-        SetHelpContextForMap();
+        //SetHelpContextForMap();
         (*state)++;
         break;
     case 4:
@@ -1878,7 +1878,7 @@ static bool32 load_map_stuff(u8 *state, bool32 a1)
             QuestLog_CheckDepartingIndoorsMap();
             QuestLog_TryRecordDepartedLocation();
         }
-        SetHelpContextForMap();
+        //SetHelpContextForMap();
         (*state)++;
         break;
     case 5:
@@ -1952,7 +1952,7 @@ static bool32 sub_8056CD8(u8 *state)
         break;
     case 2:
         sub_8056F08();
-        SetHelpContextForMap();
+        //SetHelpContextForMap();
         (*state)++;
         break;
     case 3:
@@ -1983,7 +1983,7 @@ static bool32 map_loading_iteration_2_link(u8 *state)
         CreateLinkPlayerSprites();
         ReloadObjectsAndRunReturnToFieldMapScript();
         SetCameraToTrackGuestPlayer_2();
-        SetHelpContextForMap();
+        //SetHelpContextForMap();
         (*state)++;
         break;
     case 3:

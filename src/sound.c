@@ -632,12 +632,12 @@ bool8 IsSpecialSEPlaying(void)
 
 void SetBGMVolume_SuppressHelpSystemReduction(u16 volume)
 {
-    gDisableHelpSystemVolumeReduce = TRUE;
+    //gDisableHelpSystemVolumeReduce = TRUE;
     m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, volume);
 }
 
 void BGMVolumeMax_EnableHelpSystemReduction(void)
 {
-    gDisableHelpSystemVolumeReduce = FALSE;
+    //gDisableHelpSystemVolumeReduce = FALSE;
     m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 256);
 }

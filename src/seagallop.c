@@ -174,7 +174,7 @@ static const struct SpriteTemplate sWakeSpriteTemplate = {
 void DoSeagallopFerryScene(void)
 {
     SetVBlankCallback(NULL);
-    HelpSystem_Disable();
+    //HelpSystem_Disable();
     SetMainCallback2(CB2_SetUpSeagallopScene);
 }
 
@@ -301,7 +301,7 @@ static void Task_Seagallop_2(u8 taskId)
     if (BGMusicStopped() && !gPaletteFade.active)
     {
         Task_Seagallop_3();
-        HelpSystem_Enable();
+        //HelpSystem_Enable();
         DestroyTask(taskId);
     }
 }
