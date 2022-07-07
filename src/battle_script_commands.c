@@ -308,6 +308,7 @@ static void atkF4_subattackerhpbydmg(void);
 static void atkF5_removeattackerstatus1(void);
 static void atkF6_finishaction(void);
 static void atkF7_finishturn(void);
+static void Cmd_trygetbaddreamstarget(void);
 
 void (* const gBattleScriptingCommandsTable[])(void) =
 {
@@ -559,6 +560,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     atkF5_removeattackerstatus1,
     atkF6_finishaction,
     atkF7_finishturn,
+    Cmd_trygetbaddreamstarget,
 };
 
 struct StatFractions
@@ -6225,6 +6227,11 @@ static void atk80_manipulatedamage(void)
     case ATK80_DMG_DOUBLED:
         gBattleMoveDamage *= 2;
         break;
+    case DMG_1_8_TARGET_HP:
+        gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 8;
+        if (gBattleMoveDamage == 0)
+            gBattleMoveDamage = 1;
+        break;
     }
     gBattlescriptCurrInstr += 2;
 }
@@ -9435,4 +9442,22 @@ static void atkF7_finishturn(void)
 {
     gCurrentActionFuncId = B_ACTION_FINISHED;
     gCurrentTurnActionNumber = gBattlersCount;
+}
+
+static void Cmd_trygetbaddreamstarget(void)
+{
+    u8 badDreamsMonSide = GetBattlerSide(gBattlerAttacker);
+    for (;gBattlerTarget < gBattlersCount; gBattlerTarget++)
+    {
+        if (GetBattlerSide(gBattlerTarget) == badDreamsMonSide)
+            continue;
+        if ((gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP || GetBattlerAbility(gBattlerTarget) == ABILITY_COMATOSE)
+            && IsBattlerAlive(gBattlerTarget))
+            break;
+    }
+
+    if (gBattlerTarget >= gBattlersCount)
+        gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
+    else
+        gBattlescriptCurrInstr += 5;
 }

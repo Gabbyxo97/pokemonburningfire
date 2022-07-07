@@ -234,6 +234,7 @@ extern const u8 BattleScript_AftermathDmg[];
 extern const u8 BattleScript_TargetsStatWasMaxedOut[];
 extern const u8 BattleScript_SwitchInAbilityMsg[];
 extern const u8 BattleScript_SwitchInAbilityMsgRet[];
+extern const u8 BattleScript_BadDreamsActivates[];
 
 extern const u8 *const gBattleScriptsForMoveEffects[];
 extern const u8 *const gBattlescriptsForBallThrow[];

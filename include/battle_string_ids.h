@@ -389,8 +389,9 @@
 #define STRINGID_AFTERMATHDMG                         386
 #define STRINGID_TARGETSSTATWASMAXEDOUT               387
 #define STRINGID_ANTICIPATIONACTIVATES                388
+#define STRINGID_BADDREAMSDMG                         389
 
-#define BATTLESTRINGS_COUNT     389
+#define BATTLESTRINGS_COUNT     390
 
 #define B_MSG_SWITCHIN_ANTICIPATION     5
 

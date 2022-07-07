@@ -4054,6 +4054,26 @@ BattleScript_DroughtActivates::
 	call BattleScript_HandleWeatherFormChanges
 	end3
 
+BattleScript_BadDreamsActivates::
+	setbyte gBattlerTarget, 0
+	call BattleScript_AbilityPopUp
+BattleScript_BadDreamsLoop:
+	trygetbaddreamstarget BattleScript_BadDreamsEnd
+	manipulatedamage DMG_1_8_TARGET_HP
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	printstring STRINGID_BADDREAMSDMG
+	waitmessage B_WAIT_TIME_LONG
+	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_BadDreamsIncrement
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	tryfaintmon BS_TARGET, 0, NULL
+	checkteamslost BattleScript_BadDreamsIncrement
+BattleScript_BadDreamsIncrement:
+	addbyte gBattlerTarget, 1
+	goto BattleScript_BadDreamsLoop
+BattleScript_BadDreamsEnd:
+	end3
+
 BattleScript_TookAttack::
 	attackstring
 	pause 0x20
