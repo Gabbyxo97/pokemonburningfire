@@ -605,7 +605,7 @@ static void SetTitleScreenScene_Run(s16 * data)
             DestroyTask(FindTaskIdByFunc(Task_TitleScreenMain));
             SetMainCallback2(CB2_FadeOutTransitionToSaveClearScreen);
         }
-        else if (JOY_HELD(KEYSTROKE_RESET_RTC) == KEYSTROKE_RESET_RTC && CanResetRTC() == TRUE)
+        else if (JOY_HELD(KEYSTROKE_RESET_RTC) == KEYSTROKE_RESET_RTC)
         {
             ScheduleHideSlashSprite(data[6]);
             DestroyTask(FindTaskIdByFunc(Task_TitleScreenMain));

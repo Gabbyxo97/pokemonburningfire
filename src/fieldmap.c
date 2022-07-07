@@ -4,6 +4,7 @@
 #include "script.h"
 #include "new_menu_helpers.h"
 #include "quest_log.h"
+#include "day_night.h"
 #include "fieldmap.h"
 
 struct ConnectionFlags
@@ -888,18 +889,21 @@ static void LoadTilesetPalette(struct Tileset const *tileset, u16 destOffset, u1
     {
         if (tileset->isSecondary == FALSE)
         {
-            LoadPalette(&black, destOffset, 2);
-            LoadPalette(((u16*)tileset->palettes) + 1, destOffset + 1, size - 2);
+            gPaletteOverrides[0] = tileset->paletteOverrides;
+            LoadPaletteDayNight(&black, destOffset, 2);
+            LoadPaletteDayNight(((u16*)tileset->palettes) + 1, destOffset + 1, size - 2);
             Fieldmap_ApplyGlobalTintToPaletteEntries(destOffset + 1, (size - 2) >> 1);
         }
         else if (tileset->isSecondary == TRUE)
         {
-            LoadPalette(((u16*)tileset->palettes) + (NUM_PALS_IN_PRIMARY * 16), destOffset, size);
+            gPaletteOverrides[1] = tileset->paletteOverrides;
+            LoadPaletteDayNight(((u16*)tileset->palettes) + (NUM_PALS_IN_PRIMARY * 16), destOffset, size);
             Fieldmap_ApplyGlobalTintToPaletteEntries(destOffset, size >> 1);
         }
         else
         {
-            LoadCompressedPalette((u32*)tileset->palettes, destOffset, size);
+            gPaletteOverrides[2] = tileset->paletteOverrides;
+            LoadCompressedPaletteDayNight((u32*)tileset->palettes, destOffset, size);
             Fieldmap_ApplyGlobalTintToPaletteEntries(destOffset, size >> 1);
         }
     }

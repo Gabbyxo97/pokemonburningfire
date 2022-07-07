@@ -32,6 +32,7 @@
 #include "constants/trade.h"
 #include "constants/quest_log.h"
 #include "constants/daycare.h"
+#include "constants/day_night.h"
 #include "constants/easy_chat.h"
 #include "constants/trainer_card.h"
 #include "constants/help_system.h"

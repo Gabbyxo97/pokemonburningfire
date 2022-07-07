@@ -62,6 +62,7 @@ struct Tileset
     /*0x0c*/ void *metatiles;
     /*0x10*/ TilesetCB callback;
     /*0x14*/ u32 *metatileAttributes;
+	/*0x18*/ struct PaletteOverride *paletteOverrides;
 };
 
 struct MapLayout

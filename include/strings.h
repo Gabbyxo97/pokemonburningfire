@@ -1575,4 +1575,15 @@ extern const u8 gText_PokeSum_EggOrigin_Trade[];
 
 extern const u8 gString_UsedEscapeRope[];
 
+
+//Day and Night
+extern const u8 gText_Sunday[];
+extern const u8 gText_Monday[];
+extern const u8 gText_Tuesday[];
+extern const u8 gText_Wednesday[];
+extern const u8 gText_Thursday[];
+extern const u8 gText_Friday[];
+extern const u8 gText_Saturday[];
+extern const u8 gText_None[];
+
 #endif //GUARD_STRINGS_H

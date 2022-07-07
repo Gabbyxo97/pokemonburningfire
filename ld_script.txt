@@ -314,6 +314,7 @@ SECTIONS {
         src/mgba.o(.text);
         src/mini_printf.o(.text);
         src/mystery_gift.o(.text);
+		src/day_night.o(.text);
     } =0
 
     script_data :
@@ -625,6 +626,7 @@ SECTIONS {
         data/mystery_event_msg.o(.rodata);
         src/m4a_tables.o(.rodata);
         data/sound_data.o(.rodata);
+		src/day_night.o(.rodata);
     } =0
 
     song_data :

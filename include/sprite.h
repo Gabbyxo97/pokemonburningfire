@@ -318,5 +318,6 @@ void ResetAffineAnimData(void);
 void FreeSpriteTilesIfNotUsingSheet(struct Sprite *sprite);
 s16 AllocSpriteTiles(u16 tileCount);
 void obj_pos2_update_enable(struct Sprite* sprite, s16 xmod, s16 ymod);
+u8 LoadSpritePaletteDayNight(const struct SpritePalette *palette);
 
 #endif //GUARD_SPRITE_H

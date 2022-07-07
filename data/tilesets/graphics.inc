@@ -1469,3 +1469,8 @@ gTilesetPalettes_HallOfFame:: @ 829F4C8
 	.incbin "data/tilesets/secondary/hall_of_fame/palettes/13.gbapal"
 	.incbin "data/tilesets/secondary/hall_of_fame/palettes/14.gbapal"
 	.incbin "data/tilesets/secondary/hall_of_fame/palettes/15.gbapal"
+	
+
+	.align 2
+gTilesetPalOverride_General05::
+	.incbin "data/tilesets/primary/general/palettes/05_over.gbapal"

@@ -51,6 +51,7 @@ struct PaletteFadeControl
 
 extern struct PaletteFadeControl gPaletteFade;
 extern u32 gPlttBufferTransferPending;
+extern u8 gPaletteDecompressionBuffer[];
 extern u16 gPlttBufferUnfaded[PLTT_BUFFER_SIZE];
 extern u16 gPlttBufferFaded[PLTT_BUFFER_SIZE];
 
@@ -80,5 +81,6 @@ bool32 sub_807185C(u8 var);
 void sub_8071898(void);
 void ResetPaletteStructByUid(u16 a1);
 void ResetPaletteStruct(u8 paletteNum);
+void TintPalette_CustomToneWithCopy(const u16 *src, u16 *dest, u16 count, u16 rTone, u16 gTone, u16 bTone, bool8 excludeZeroes);
 
 #endif // GUARD_PALETTE_H

@@ -1357,3 +1357,12 @@ const u8 gText_Toss[] = _("TOSS");
 const u8 gUnknown_841EE2B[] = _("DEL. ALL{CLEAR_TO 0x57}CANCEL{CLEAR_TO 0xA4}OK");
 
 const u8 gString_UsedEscapeRope[] = _("{PLAYER} used the\nEscape Rope.");
+
+const u8 gText_Sunday[] = _("Sunday");
+const u8 gText_Monday[] = _("Monday");
+const u8 gText_Tuesday[] = _("Tuesday");
+const u8 gText_Wednesday[] = _("Wednesday");
+const u8 gText_Thursday[] = _("Thursday");
+const u8 gText_Friday[] = _("Friday");
+const u8 gText_Saturday[] = _("Saturday");
+const u8 gText_None[] = _("None");

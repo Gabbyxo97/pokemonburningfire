@@ -1219,9 +1219,9 @@
 #define HIDDEN_ITEM_SEVEN_ISLAND_SEVAULT_CANYON_ENTRANCE_RAWST_BERRY  188
 #define HIDDEN_ITEM_VIRIDIAN_CITY_GYM_MACHO_BRACE                     189
 #define HIDDEN_ITEM_SSANNE_EXTERIOR_LAVA_COOKIE                       190
+#define FLAG_SYS_DAYLIGHT_SAVING              						  0x4A7
 
 // Unused?
-#define FLAG_0x4A7               0x4A7
 #define FLAG_0x4A8               0x4A8
 #define FLAG_0x4A9               0x4A9
 #define FLAG_0x4AA               0x4AA
