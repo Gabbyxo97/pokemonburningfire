@@ -293,10 +293,12 @@
 	@ In FireRed, this command is a nop.
 	.macro initclock hour:req minute:req
 	.byte 0x2c
+	.2byte \hour
+	.2byte \minute
 	.endm
 
 	@ In FireRed, this command is a nop.
-	.macro dodailyevents
+	.macro dotimebasedevents
 	.byte 0x2d
 	.endm
 
