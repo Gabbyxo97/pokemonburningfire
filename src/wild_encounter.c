@@ -15,6 +15,8 @@
 #include "constants/maps.h"
 #include "constants/abilities.h"
 #include "constants/items.h"
+#include "constants/day_night.h"
+#include "day_night.h"
 
 struct WildEncounterData
 {
@@ -393,12 +395,16 @@ bool8 StandardWildEncounter(u32 currMetatileAttrs, u16 previousMetatileBehavior)
             }
             else
             {
-
-                // try a regular wild land encounter
-                if (TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_REPEL) == TRUE)
+				// try a regular wild land encounter
+				if (GetCurrentTimeOfDay() != TIME_NIGHT && TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
                 {
-                    StartWildBattle();
-                    return TRUE;
+					StartWildBattle();
+					return TRUE;
+                }
+                else if (TryGenerateWildMon(gWildMonHeaders[headerId].landMonsNightInfo, WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
+                {
+					StartWildBattle();
+					return TRUE;
                 }
                 else
                 {
@@ -487,7 +493,10 @@ bool8 SweetScentWildEncounter(void)
             if (gWildMonHeaders[headerId].landMonsInfo == NULL)
                 return FALSE;
 
-            TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, 0);
+            if (GetCurrentTimeOfDay() != TIME_NIGHT)
+                TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, 0);
+            else
+                TryGenerateWildMon(gWildMonHeaders[headerId].landMonsNightInfo, WILD_AREA_LAND, 0);
 
             StartWildBattle();
             return TRUE;
@@ -540,6 +549,7 @@ u16 GetLocalWildMon(bool8 *isWaterMon)
     headerId = GetCurrentMapWildMonHeaderId();
     if (headerId == 0xFFFF)
         return SPECIES_NONE;
+	
     landMonsInfo = gWildMonHeaders[headerId].landMonsInfo;
     waterMonsInfo = gWildMonHeaders[headerId].waterMonsInfo;
     // Neither
