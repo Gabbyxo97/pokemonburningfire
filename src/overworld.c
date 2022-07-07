@@ -2,7 +2,9 @@
 #include "gflib.h"
 #include "bg_regs.h"
 #include "cable_club.h"
+#include "clock.h"
 #include "credits.h"
+#include "day_night.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -129,7 +131,6 @@ static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStr
 static u16 GetCenterScreenMetatileBehavior(void);
 static void SetDefaultFlashLevel(void);
 static void Overworld_TryMapConnectionMusicTransition(void);
-static void ChooseAmbientCrySpecies(void);
 
 static void CB2_Overworld(void);
 static void CB2_LoadMap2(void);
@@ -759,6 +760,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
     MapResetTrainerRematches(mapGroup, mapNum);
+    DoTimeBasedEvents();
     SetSav1WeatherFromCurrMapHeader();
     ChooseAmbientCrySpecies();
     SetDefaultFlashLevel();
@@ -794,6 +796,7 @@ static void mli0_load_map(bool32 a1)
     ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
     MapResetTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+    DoTimeBasedEvents();
     SetSav1WeatherFromCurrMapHeader();
     ChooseAmbientCrySpecies();
     if (isOutdoors)
@@ -816,6 +819,7 @@ static void sub_80559A8(void)
     LoadObjEventTemplatesFromHeader();
     isOutdoors = IsMapTypeOutdoors(gMapHeader.mapType);
     TrySetMapSaveWarpStatus();
+    DoTimeBasedEvents();
     SetSav1WeatherFromCurrMapHeader();
     ChooseAmbientCrySpecies();
     SetDefaultFlashLevel();
@@ -1186,7 +1190,7 @@ void UpdateAmbientCry(s16 *state, u16 *delayCounter)
     }
 }
 
-static void ChooseAmbientCrySpecies(void)
+void ChooseAmbientCrySpecies(void)
 {
     sAmbientCrySpecies = GetLocalWildMon(&sIsAmbientCryWaterMon);
 }
@@ -1466,6 +1470,7 @@ static void OverworldBasic(void)
     sub_8115798();
     UpdateCameraPanning();
     BuildOamBuffer();
+	ProcessImmediateTimeEvents();
     UpdatePaletteFade();
     UpdateTilesetAnimations();
     DoScheduledBgTilemapCopiesToVram();
@@ -1691,6 +1696,7 @@ void CB2_ContinueSavedGame(void)
     LoadSaveblockMapHeader();
     LoadSaveblockObjEventScripts();
     UnfreezeObjectEvents();
+    DoTimeBasedEvents();
     Overworld_ResetStateOnContinue();
     InitMapFromSavedGame();
     PlayTimeCounter_Start();
@@ -1746,6 +1752,7 @@ static void VBlankCB_Field(void)
     FieldUpdateBgTilemapScroll();
     TransferPlttBuffer();
     TransferTilesetAnimsBuffer();
+	CheckClockForImmediateTimeEvents();
 }
 
 static void InitCurrentFlashLevelScanlineEffect(void)
@@ -1786,7 +1793,7 @@ static bool32 map_loading_iteration_3(u8 *state)
         sub_8057074();
         sub_80571A8();
         SetCameraToTrackGuestPlayer();
-        SetHelpContextForMap();
+        //SetHelpContextForMap();
         (*state)++;
         break;
     case 4:
@@ -1871,7 +1878,7 @@ static bool32 load_map_stuff(u8 *state, bool32 a1)
             QuestLog_CheckDepartingIndoorsMap();
             QuestLog_TryRecordDepartedLocation();
         }
-        SetHelpContextForMap();
+        //SetHelpContextForMap();
         (*state)++;
         break;
     case 5:
@@ -1945,7 +1952,7 @@ static bool32 sub_8056CD8(u8 *state)
         break;
     case 2:
         sub_8056F08();
-        SetHelpContextForMap();
+        //SetHelpContextForMap();
         (*state)++;
         break;
     case 3:
@@ -1976,7 +1983,7 @@ static bool32 map_loading_iteration_2_link(u8 *state)
         CreateLinkPlayerSprites();
         ReloadObjectsAndRunReturnToFieldMapScript();
         SetCameraToTrackGuestPlayer_2();
-        SetHelpContextForMap();
+        //SetHelpContextForMap();
         (*state)++;
         break;
     case 3:
@@ -3554,5 +3561,34 @@ static void SpriteCB_LinkPlayer(struct Sprite *sprite)
     {
         sprite->invisible = ((sprite->data[7] & 4) >> 2);
         sprite->data[7]++;
+    }
+}
+
+void TintPalette_CustomToneWithCopy(const u16 *src, u16 *dest, u16 count, u16 rTone, u16 gTone, u16 bTone, bool8 excludeZeroes)
+{
+    s32 r, g, b, i;
+    u32 gray;
+
+    for (i = 0; i < count; i++, src++, dest++)
+    {
+        if (excludeZeroes && *src == RGB_BLACK)
+            continue;
+
+        r = (*src >>  0) & 0x1F;
+        g = (*src >>  5) & 0x1F;
+        b = (*src >> 10) & 0x1F;
+
+        r = (u16)((rTone * r)) >> 8;
+        g = (u16)((gTone * g)) >> 8;
+        b = (u16)((bTone * b)) >> 8;
+
+        if (r > 31)
+            r = 31;
+        if (g > 31)
+            g = 31;
+        if (b > 31)
+            b = 31;
+
+        *dest = (b << 10) | (g << 5) | (r << 0);
     }
 }

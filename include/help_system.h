@@ -6,7 +6,7 @@
 #include "blit.h"
 #include "constants/help_system.h"
 
-struct HelpSystemListMenu_sub
+/*struct HelpSystemListMenu_sub
 {
     struct ListMenuItem * items;
     u16 totalItems;
@@ -27,18 +27,18 @@ struct HelpSystemListMenu
 extern struct HelpSystemListMenu gHelpSystemListMenu;
 extern struct ListMenuItem gHelpSystemListMenuItems[];
 extern bool8 gHelpSystemEnabled;
-extern bool8 gHelpSystemToggleWithRButtonDisabled;
+extern bool8 gHelpSystemToggleWithRButtonDisabled;*/
 
 // help_system_812B1E0
-void SetHelpContextDontCheckBattle(u8);
+//void SetHelpContextDontCheckBattle(u8);
 void SetHelpContextForMap(void);
 void SetHelpContext(u8);
-bool8 HelpSystem_UpdateHasntSeenIntro(void);
-bool8 HelpSystem_IsSinglePlayer(void);
+//bool8 HelpSystem_UpdateHasntSeenIntro(void);
+//bool8 HelpSystem_IsSinglePlayer(void);
 void HelpSystem_Disable(void);
 void HelpSystem_Enable(void);
 void HelpSystem_EnableToggleWithRButton(void);
-bool8 RunHelpMenuSubroutine(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer);
+/*bool8 RunHelpMenuSubroutine(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer);
 bool8 HelpSystemSubroutine_PrintWelcomeMessage(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer);
 bool8 HelpSystemSubroutine_WelcomeWaitButton(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer);
 bool8 HelpSystemSubroutine_WelcomeEndGotoMenu(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer);
@@ -49,7 +49,7 @@ bool8 HelpMenuSubroutine_SubmenuInputHandler(struct HelpSystemListMenu * helpLis
 void HelpSystem_PrintTopicLabel(void);
 bool8 HelpMenuSubroutine_HelpItemPrint(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer);
 bool8 HelpMenuSubroutine_ReturnFromHelpItem(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer);
-bool8 HelpMenuSubroutine_HelpItemWaitButton(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer);
+bool8 HelpMenuSubroutine_HelpItemWaitButton(struct HelpSystemListMenu * helpListMenu, struct ListMenuItem * listMenuItemsBuffer);*/
 bool8 GetHelpSystemMenuLevel(void);
 
 // help_system
@@ -80,7 +80,7 @@ void HelpSystem_PrintQuestionAndAnswerPair(const u8 *a0, const u8 *a1);
 void HelpSystem_PrintTopicMouseoverDescription(const u8 *str);
 void HelpSystem_FillPanel2(void);
 void HelpSystem_FillPanel1(void);
-void HelpSystem_InitListMenuController(struct HelpSystemListMenu *, u8, u8);
+//void HelpSystem_InitListMenuController(struct HelpSystemListMenu *, u8, u8);
 void HelpSystem_SetInputDelay(u8);
 s32 HelpSystem_GetMenuInput(void);
 void HS_UpdateMenuScrollArrows(void);

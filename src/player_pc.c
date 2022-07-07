@@ -153,7 +153,7 @@ void BedroomPC(void)
     u8 taskId;
 
     gPlayerPcMenuManager.notInRoom = FALSE;
-    BackupHelpContext();
+    //BackupHelpContext();
     sItemOrder = gUnknown_8402200;
     sTopMenuItemCount = 3;
     taskId = CreateTask(TaskDummy, 0);
@@ -165,7 +165,7 @@ void PlayerPC(void)
     u8 taskId;
 
     gPlayerPcMenuManager.notInRoom = TRUE;
-    BackupHelpContext();
+    //BackupHelpContext();
     sItemOrder = gUnknown_8402203;
     sTopMenuItemCount = 3;
     taskId = CreateTask(TaskDummy, 0);
@@ -214,7 +214,7 @@ static void Task_TopMenuHandleInput(u8 taskId)
 
 static void Task_ReturnToTopMenu(u8 taskId)
 {
-    RestoreHelpContext();
+    //RestoreHelpContext();
     DisplayItemMessageOnField(taskId, 2, gText_WhatWouldYouLikeToDo, Task_DrawPlayerPcTopMenu);
 }
 
@@ -238,9 +238,10 @@ static void Task_PlayerPcMailbox(u8 taskId)
         PCMailCompaction();
         Task_SetPageItemVars(taskId);
         if (gPlayerPcMenuManager.notInRoom == FALSE)
-            SetHelpContext(HELPCONTEXT_BEDROOM_PC_MAILBOX);
-        else
-            SetHelpContext(HELPCONTEXT_PLAYERS_PC_MAILBOX);
+			return;
+            //SetHelpContext(HELPCONTEXT_BEDROOM_PC_MAILBOX);
+        //else
+            //SetHelpContext(HELPCONTEXT_PLAYERS_PC_MAILBOX);
         if (MailboxPC_InitBuffers(gPlayerPcMenuManager.count) == TRUE)
         {
             ClearDialogWindowAndFrame(0, FALSE);
@@ -267,9 +268,9 @@ static void Task_CreateItemStorageSubmenu(u8 taskId, u8 cursorPos)
 {
     s16 *data = gTasks[taskId].data;
     if (gPlayerPcMenuManager.notInRoom == FALSE)
-        SetHelpContext(HELPCONTEXT_BEDROOM_PC_ITEMS);
-    else
-        SetHelpContext(HELPCONTEXT_PLAYERS_PC_ITEMS);
+        //SetHelpContext(HELPCONTEXT_BEDROOM_PC_ITEMS);
+    //else
+        //SetHelpContext(HELPCONTEXT_PLAYERS_PC_ITEMS);
     tWindowId = AddWindow(&sWindowTemplate_ItemStorageSubmenu);
     SetStdWindowBorderStyle(tWindowId, FALSE);
     PrintTextArray(tWindowId, 2, GetMenuCursorDimensionByFont(2, 0), 2, 16, 3, sMenuActions_ItemPc);
@@ -579,10 +580,10 @@ static void Task_WaitFadeAndReturnToMailboxPcInputHandler(u8 taskId)
 static void CB2_ReturnToMailbox(void)
 {
     u8 taskId;
-    if (gPlayerPcMenuManager.notInRoom == FALSE)
-        SetHelpContext(HELPCONTEXT_BEDROOM_PC_MAILBOX);
-    else
-        SetHelpContext(HELPCONTEXT_PLAYERS_PC_MAILBOX);
+    if (!(gPlayerPcMenuManager.notInRoom == FALSE))
+        //SetHelpContext(HELPCONTEXT_BEDROOM_PC_MAILBOX);
+    //else
+        //SetHelpContext(HELPCONTEXT_PLAYERS_PC_MAILBOX);
     LoadStdWindowFrameGfx();
     taskId = CreateTask(Task_WaitFadeAndReturnToMailboxPcInputHandler, 0);
     if (MailboxPC_InitBuffers(gPlayerPcMenuManager.count) == TRUE)
@@ -682,10 +683,10 @@ static void CB2_ReturnToMailboxPc_UpdateScrollVariables(void)
 {
     u8 taskId;
     u8 count;
-    if (gPlayerPcMenuManager.notInRoom == FALSE)
-        SetHelpContext(HELPCONTEXT_BEDROOM_PC_MAILBOX);
-    else
-        SetHelpContext(HELPCONTEXT_PLAYERS_PC_MAILBOX);
+    if (!(gPlayerPcMenuManager.notInRoom == FALSE))
+        //SetHelpContext(HELPCONTEXT_BEDROOM_PC_MAILBOX);
+    //else
+       // SetHelpContext(HELPCONTEXT_PLAYERS_PC_MAILBOX);
     taskId = CreateTask(Task_WaitFadeAndReturnToMailboxPcInputHandler, 0);
     count = gPlayerPcMenuManager.count;
     gPlayerPcMenuManager.count = CountPCMail();

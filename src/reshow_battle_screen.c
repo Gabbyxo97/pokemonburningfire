@@ -30,18 +30,19 @@ void ReshowBattleScreenAfterMenu(void)
     {
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
         {
-            if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+            return;
+			/*/if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
                 SetHelpContext(HELPCONTEXT_TRAINER_BATTLE_DOUBLE);
             else
-                SetHelpContext(HELPCONTEXT_TRAINER_BATTLE_SINGLE);
+                SetHelpContext(HELPCONTEXT_TRAINER_BATTLE_SINGLE);/*/
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
         {
-            SetHelpContext(HELPCONTEXT_SAFARI_BATTLE);
+            //SetHelpContext(HELPCONTEXT_SAFARI_BATTLE);
         }
         else
         {
-            SetHelpContext(HELPCONTEXT_WILD_BATTLE);
+            //SetHelpContext(HELPCONTEXT_WILD_BATTLE);
         }
     }
     SetMainCallback2(CB2_ReshowBattleScreenAfterMenu);

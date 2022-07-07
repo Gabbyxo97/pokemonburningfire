@@ -13,7 +13,7 @@ gText_PlayerSavedTheGame:: @ 81C5647
 	.string "{PLAYER} saved the game.$"
 
 gText_SaveFailed::
-	.string "セーブに　しっぱい　しました‥$"
+	.string "Save failed…$"
 
 gText_DifferentGameFile:: @ 81C566A
 	.string "WARNING!\p"

@@ -518,8 +518,8 @@ static void sub_809DD60(void)
 {
     CreateTask(sub_809DD88, 2);
     SetMainCallback2(sub_809FB70);
-    BackupHelpContext();
-    SetHelpContext(HELPCONTEXT_NAMING_SCREEN);
+    //BackupHelpContext();
+    //SetHelpContext(HELPCONTEXT_NAMING_SCREEN);
 }
 
 static void sub_809DD88(u8 taskId)
@@ -678,7 +678,7 @@ static bool8 MainState_WaitFadeOutAndExit(void)
         DestroyTask(FindTaskIdByFunc(sub_809DD88));
         FreeAllWindowBuffers();
         FREE_AND_SET_NULL(sNamingScreenData);
-        RestoreHelpContext();
+        //RestoreHelpContext();
     }
     return FALSE;
 }

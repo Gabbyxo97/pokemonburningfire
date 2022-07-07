@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "day_night.h"
 #include "decompress.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -448,7 +449,7 @@ static void FieldEffectScript_LoadFadedPal(const u8 **script)
 {
     const struct SpritePalette * spritePalette = (const struct SpritePalette * )FieldEffectScript_ReadWord(script);
     u8 idx = IndexOfSpritePaletteTag(spritePalette->tag);
-    LoadSpritePalette(spritePalette);
+    LoadSpritePaletteDayNight(spritePalette);
     if (idx == 0xFF)
         ApplyGlobalFieldPaletteTint(IndexOfSpritePaletteTag(spritePalette->tag));
     UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(spritePalette->tag));
@@ -456,6 +457,21 @@ static void FieldEffectScript_LoadFadedPal(const u8 **script)
 }
 
 static void FieldEffectScript_LoadPal(const u8 **script)
+{
+    struct SpritePalette *palette = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
+    LoadSpritePaletteDayNight(palette);
+    (*script) += 4;
+}
+
+void FieldEffectScript_LoadFadedPaletteNoTint(const u8 **script)
+{
+    struct SpritePalette *palette = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
+    LoadSpritePalette(palette);
+    UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
+    (*script) += 4;
+}
+
+void FieldEffectScript_LoadPaletteNoTint(const u8 **script)
 {
     const struct SpritePalette * spritePalette = (const struct SpritePalette * )FieldEffectScript_ReadWord(script);
     u8 idx = IndexOfSpritePaletteTag(spritePalette->tag);
@@ -1237,7 +1253,7 @@ static bool8 FallWarpEffect_7(struct Task * task)
     {
         VarSet(VAR_TEMP_1, 1);
         SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_SURFING);
-        SetHelpContext(HELPCONTEXT_SURFING);
+        //SetHelpContext(HELPCONTEXT_SURFING);
     }
     DestroyTask(FindTaskIdByFunc(Task_FallWarpFieldEffect));
     return FALSE;
@@ -2968,7 +2984,7 @@ static void UseSurfEffect_5(struct Task * task)
         ScriptContext2_Disable();
         FieldEffectActiveListRemove(FLDEFF_USE_SURF);
         DestroyTask(FindTaskIdByFunc(Task_FldEffUseSurf));
-        SetHelpContext(HELPCONTEXT_SURFING);
+        //SetHelpContext(HELPCONTEXT_SURFING);
     }
 }
 

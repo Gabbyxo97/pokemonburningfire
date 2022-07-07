@@ -467,7 +467,7 @@ static void Task_EReaderComm(u8 taskId)
                 data->state = 0;
             break;
         case 26:
-            HelpSystem_Enable();
+           // HelpSystem_Enable();
             Free(data->t10);
             DestroyTask(taskId);
             SetMainCallback2(MainCB_FreeAllBuffersAndReturnToInitTitleScreen);

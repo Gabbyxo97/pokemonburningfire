@@ -118,7 +118,6 @@ CableClub_EventScript_ExitMinigameRoom:: @ 81BB2FD
 
 CableClub_EventScript_CloseLinkAndExitLinkRoom:: @ 81BB315
 	special CloseLink
-	special HelpSystem_Enable
 	special QuestLog_StartRecordingInputsAfterDeferredEvent
 	setvar VAR_CABLE_CLUB_STATE, 0
 	textcolor 1
@@ -144,7 +143,6 @@ CableClub_EventScript_ExitTradeCenter:: @ 81BB34F
 
 CableClub_EventScript_PlayerExitTradeCenter:: @ 81BB367
 	special CloseLink
-	special HelpSystem_Enable
 	special QuestLog_StartRecordingInputsAfterDeferredEvent
 	setvar VAR_CABLE_CLUB_STATE, 0
 	textcolor 1
@@ -168,7 +166,6 @@ CableClub_EventScript_ExitUnionRoom:: @ 81BB39C
 	end
 
 CableClub_EventScript_PlayerExitUnionRoom:: @ 81BB3B4
-	special HelpSystem_Enable
 	special QuestLog_StartRecordingInputsAfterDeferredEvent
 	setvar VAR_CABLE_CLUB_STATE, 0
 	textcolor 1
@@ -277,7 +274,6 @@ CableClub_EventScript_TryEnterColosseum:: @ 81BB54C
 	goto_if_eq CableClub_EventScript_AbortLink
 	message CableClub_Text_PleaseWaitBCancel
 	waitmessage
-	special HelpSystem_Disable
 	textcolor 3
 	special TryBattleLinkup
 	waitstate
@@ -369,7 +365,6 @@ CableClub_EventScript_AbortLinkWrongNumberForSingleBattle:: @ 81BB68A
 
 CableClub_EventScript_ConfirmNumberAndRestart:: @ 81BB69B
 	special CloseLink  @ Redundant
-	special HelpSystem_Enable
 	msgbox CableClub_Text_PleaseConfirmNumberAndRestart
 	release
 	end
@@ -384,7 +379,6 @@ CableClub_EventScript_TradeCenter:: @ 81BB6AB
 	goto_if_eq CableClub_EventScript_AbortLink
 	message CableClub_Text_PleaseWaitBCancel
 	waitmessage
-	special HelpSystem_Disable
 	textcolor 3
 	special TryTradeLinkup
 	waitstate
@@ -461,49 +455,42 @@ CableClub_EventScript_RecordCorner:: @ 81BB7DE
 
 CableClub_EventScript_AbortLinkPlayerNotReady:: @ 81BB7DF
 	special CloseLink
-	special HelpSystem_Enable
 	msgbox CableClub_Text_NotSetUpForFarAwayRegion
 	release
 	end
 
 CableClub_EventScript_AbortLinkOtherTrainerNotReady:: @ 81BB7EF
 	special CloseLink
-	special HelpSystem_Enable
 	msgbox CableClub_Text_OtherTrainerNotReady
 	release
 	end
 
 CableClub_EventScript_AbortLinkConnectionError:: @ 81BB7FF
 	special CloseLink
-	special HelpSystem_Enable
 	msgbox CableClub_Text_LinkErrorPleaseReset
 	release
 	end
 
 CableClub_EventScript_AbortLinkSomeoneNotReady:: @ 81BB80F
 	special CloseLink
-	special HelpSystem_Enable
 	msgbox CableClub_Text_SomeoneIsNotReadyToLink
 	release
 	end
 
 CableClub_EventScript_AbortLinkDifferentSelections:: @ 81BB81F
 	special CloseLink
-	special HelpSystem_Enable
 	msgbox CableClub_Text_PlayersMadeDifferentSelections
 	release
 	end
 
 CableClub_EventScript_AbortLink:: @ 81BB82F
 	special CloseLink
-	special HelpSystem_Enable
 	msgbox CableClub_Text_PleaseVisitAgain
 	release
 	end
 
 CableClub_EventScript_AbortMinigame:: @ 81BB83F
 	special CloseLink
-	special HelpSystem_Enable
 	msgbox CableClub_Text_ComeAgain
 	release
 	end
@@ -517,14 +504,12 @@ CableClub_EventScript_CableClubWarp:: @ 81BB84F
 
 CableClub_EventScript_AbortLinkIncorrectNumberOfParticipants:: @ 81BB857
 	special CloseLink
-	special HelpSystem_Enable
 	msgbox CableClub_Text_IncorrectNumberOfParticipants
 	release
 	end
 
 CableClub_EventScript_AbortLinkPlayerHasBadEgg:: @ 81BB867
 	special CloseLink
-	special HelpSystem_Enable
 	msgbox CableClub_Text_YouHaveAMonThatCantBeTaken
 	release
 	end
@@ -811,7 +796,6 @@ CableClub_EventScript_EnterUnionRoom:: @ 81BBA94
 	special HealPlayerParty
 	setvar VAR_0x8004, USING_UNION_ROOM
 	copyvar VAR_CABLE_CLUB_STATE, VAR_0x8004
-	special HelpSystem_Disable
 	call CableClub_EventScript_OpenUnionRoomBarrier
 	special DrawWholeMapView
 	playse SE_CLICK
@@ -1100,13 +1084,11 @@ CableClub_EventScript_TryJoinGroupXPlayers:: @ 81BBF50
 	return
 
 CableClub_EventScript_TryBecomeLinkLeader:: @ 81BBF78
-	special HelpSystem_Disable
 	special TryBecomeLinkLeader
 	waitstate
 	return
 
 CableClub_EventScript_TryJoinLinkGroup:: @ 81BBF80
-	special HelpSystem_Disable
 	special TryJoinLinkGroup
 	waitstate
 	return
@@ -1144,12 +1126,10 @@ CableClub_EventScript_ShowWirelessCommunicationScreen:: @ 81BBFD8
 	specialvar VAR_RESULT, IsWirelessAdapterConnected
 	compare VAR_RESULT, FALSE
 	goto_if_eq CableClub_EventScript_AdapterNotConnected
-	special HelpSystem_Disable
 	fadescreen FADE_TO_BLACK
 	special ShowWirelessCommunicationScreen
 	waitstate
 	msgbox CableClub_Text_ParticipantsStepUpToCounter
-	special HelpSystem_Enable
 	releaseall
 	end
 
@@ -1227,7 +1207,6 @@ JoyfulGameCorner_EventScript_MinigameAttendant:: @ 81BC0CE
 	compare VAR_RESULT, FALSE
 	goto_if_eq CableClub_EventScript_AdapterNotConnectedMinigame
 	delay 60
-	special HelpSystem_Disable
 	message Text_PlayWhichGame
 	waitmessage
 	multichoice 0, 0, MULTICHOICE_POKEJUMP_DODRIO, FALSE

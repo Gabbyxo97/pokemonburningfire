@@ -23,6 +23,15 @@ PalletTown_EventScript_TryReadySignLady:: @ 8165488
 	goto_if_ge EventScript_Return
 	setvar VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1
 	return
+	
+PalletTown_EventScript_StartWallClock:: @ 8165488
+	special StartWallClock
+	setflag FLAG_SET_WALL_CLOCK
+	end
+	
+PalletTown_EventScript_ViewWallClock:: @ 8165488
+	special Special_ViewWallClock
+	end
 
 PalletTown_EventScript_SetSignLadyDone:: @ 81654A2
 	setvar VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 2
@@ -403,6 +412,8 @@ PalletTown_Movement_SignLadyMoveOutOfWayLeft:: @ 816582C
 	step_end
 
 PalletTown_EventScript_FatMan:: @ 816582F
+	goto_if_unset FLAG_SET_WALL_CLOCK, PalletTown_EventScript_StartWallClock
+	goto_if_set FLAG_SET_WALL_CLOCK, PalletTown_EventScript_ViewWallClock
 	msgbox PalletTown_Text_CanStoreItemsAndMonsInPC, MSGBOX_NPC
 	end
 

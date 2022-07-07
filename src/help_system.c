@@ -16,7 +16,7 @@
 #include "constants/maps.h"
 #include "constants/songs.h"
 
-#define HELP_NONE  0
+/*/#define HELP_NONE  0
 #define HELP_END   0xFF
 
 // Help Main Topics
@@ -1837,7 +1837,7 @@ static bool8 IsInDungeonMap(void)
             if (
                    sDungeonMaps[i][0] == gSaveBlock1Ptr->location.mapGroup
                 && sDungeonMaps[i][1] + j == gSaveBlock1Ptr->location.mapNum
-                && (i != 15 /* TANOBY */ || FlagGet(FLAG_SYS_UNLOCKED_TANOBY_RUINS) == TRUE)
+                && (i != 15  || FlagGet(FLAG_SYS_UNLOCKED_TANOBY_RUINS) == TRUE)
             )
                 return TRUE;
         }
@@ -2477,4 +2477,4 @@ static void PrintHelpSystemTopicMouseoverDescription(struct HelpSystemListMenu *
     else
         HelpSystem_PrintTopicMouseoverDescription(sHelpSystemTopicMouseoverDescriptionPtrs[index]);
     HS_ShowOrHideToplevelTooltipWindow(1);
-}
+}/*/

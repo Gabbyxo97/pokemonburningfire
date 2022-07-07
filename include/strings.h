@@ -507,6 +507,7 @@ extern const u8 gText_ABtnRegistrationCounter[];
 extern const u8 gText_SaveFileCorruptedPrevWillBeLoaded[];
 extern const u8 gText_SaveFileHasBeenDeleted[];
 extern const u8 gText_1MSubCircuitBoardNotInstalled[];
+extern const u8 gText_BatteryRunDry[];
 extern const u8 gText_NewGame[];
 extern const u8 gText_Continue[];
 extern const u8 gText_MysteryGift[];
@@ -520,6 +521,11 @@ extern const u8 gTextJPDummy_Hiki[];
 extern const u8 gText_Badges[];
 extern const u8 gTextJPDummy_Ko[];
 extern const u8 gText_Register[];
+
+// wallclock
+extern const u8 gText_Confirm3[];
+extern const u8 gText_Cancel4[];
+extern const u8 gText_IsThisTheCorrectTime[];
 
 // mystery_gift_menu
 extern const u8 gText_PickOKExit[];
@@ -625,6 +631,19 @@ extern const u8 gText_WhatWouldYouLikeToDoWithPlayersMail[];
 extern const u8 gText_MessageWillBeLost[];
 extern const u8 gText_BagIsFull[];
 extern const u8 gText_MailReturnedToBagMessageErased[];
+
+// reset rtc screen texts
+extern const u8 gText_Day[];
+extern const u8 gText_Colon3[];
+extern const u8 gText_Confirm2[];
+extern const u8 gText_PresentTime[];
+extern const u8 gText_PreviousTime[];
+extern const u8 gText_ResetRTCConfirmCancel[];
+extern const u8 gText_NoSaveFileCantSetTime[];
+extern const u8 gText_PleaseResetTime[];
+extern const u8 gText_ClockHasBeenReset[];
+extern const u8 gText_SaveCompleted[];
+extern const u8 gText_SaveFailed[];
 
 // start_menu
 extern const u8 gStartMenuText_Pokedex[];
@@ -1555,5 +1574,16 @@ extern const u8 gText_PokeSum_EggOrigin_Spa[];
 extern const u8 gText_PokeSum_EggOrigin_Trade[];
 
 extern const u8 gString_UsedEscapeRope[];
+
+
+//Day and Night
+extern const u8 gText_Sunday[];
+extern const u8 gText_Monday[];
+extern const u8 gText_Tuesday[];
+extern const u8 gText_Wednesday[];
+extern const u8 gText_Thursday[];
+extern const u8 gText_Friday[];
+extern const u8 gText_Saturday[];
+extern const u8 gText_None[];
 
 #endif //GUARD_STRINGS_H

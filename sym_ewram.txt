@@ -138,3 +138,4 @@
 	.include "src/trainer_tower.o"
 	.include "src/berry_powder.o"
 	.include "src/debug.o"
+	.include "src/day_night.o"
