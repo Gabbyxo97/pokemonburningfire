@@ -9,6 +9,7 @@
 #include "random.h"
 #include "constants/moves.h"
 #include "menu.h"
+#include "item.h"
 #include "new_menu_helpers.h"
 #include "script.h"
 #include "strings.h"
@@ -70,6 +71,7 @@ static void SpriteCB_EggShard(struct Sprite* sprite);
 static void EggHatchPrintMessage(u8 windowId, u8* string, u8 x, u8 y, u8 speed);
 static void CreateRandomEggShardSprite(void);
 static void CreateEggShardSprite(u8 x, u8 y, s16 data1, s16 data2, s16 data3, u8 spriteAnimIndex);
+bool8 DaycareTryMakeShinyMon(struct DayCare *daycare);
 
 // IWRAM bss
 static struct EggHatchData *sEggHatchData;
@@ -1111,21 +1113,52 @@ void CreateEgg(struct Pokemon *mon, u16 species, bool8 setHotSpringsLocation)
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
 }
 
+bool8 DaycareTryMakeShinyMon(struct DayCare *daycare)
+{
+    u32 i, shinyRolls, chainBonus;
+    u32 charmBonus = 0;
+    u16 ShinyChances = 1;
+	
+	//Masuda Method
+	if(GetMonData(&daycare->mons[0].mon, MON_DATA_LANGUAGE, NULL) != GetMonData(&daycare->mons[1].mon, MON_DATA_LANGUAGE, NULL))
+		shinyRolls+= 5;
+    
+	//Shiny Charm
+    charmBonus = (CheckBagHasItem(ITEM_SHINY_CHARM, 1) > 0) ? 1 : 0;
+    shinyRolls+= charmBonus;
+	
+    for (i = 0; i < shinyRolls; i++)
+    {
+        if (Random() % 4096 < ShinyChances)//if you want Gen 3 Shiny chances change 4096 to 8192
+            return TRUE;
+    }
+    
+    return FALSE;
+}
+
 static void SetInitialEggData(struct Pokemon *mon, u16 species, struct DayCare *daycare)
 {
     u32 personality;
     u16 ball;
     u8 metLevel;
     u8 language;
-
-    personality = daycare->offspringPersonality | (Random() << 16);
+	bool8 isShiny = FALSE;
+	
+	personality = daycare->offspringPersonality | (Random() << 16);
+	
+	isShiny = DaycareTryMakeShinyMon(daycare);
+	
+	if (isShiny)
+		FlagSet(FLAG_SHINY_MON);
+	
     CreateMon(mon, species, EGG_HATCH_LEVEL, 32, TRUE, personality, OT_ID_PLAYER_ID, 0);
     metLevel = 0;
     ball = ITEM_POKE_BALL;
     language = LANGUAGE_JAPANESE;
     SetMonData(mon, MON_DATA_POKEBALL, &ball);
     SetMonData(mon, MON_DATA_NICKNAME, sJapaneseEggNickname);
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
+    //SetMonData(mon, MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
+	SetMonData(mon, MON_DATA_FRIENDSHIP, &metLevel);//To hatch eggs faster
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
     SetMonData(mon, MON_DATA_LANGUAGE, &language);
 }
