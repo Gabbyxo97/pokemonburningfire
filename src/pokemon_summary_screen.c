@@ -140,6 +140,15 @@ static void PokeSum_UpdateMonMarkingsAnim(void);
 static s8 SeekToNextMonInSingleParty(s8 direction);
 static s8 SeekToNextMonInMultiParty(s8 direction);
 
+const u8 gLanguageStrings[][NUM_LANGUAGES + 1] = {
+    [LANGUAGE_JAPANESE] = _("(JPN)"),
+    [LANGUAGE_FRENCH] = _("(FRA)"),
+    [LANGUAGE_ITALIAN] = _("(ITA)"),
+    [LANGUAGE_GERMAN] = _("(GER)"),
+    [LANGUAGE_KOREAN] = _("(KOR)"),
+    [LANGUAGE_SPANISH] = _("(SPA)")
+};
+
 struct PokemonSummaryScreenData
 {
     u16 bg1TilemapBuffer[0x800];
@@ -2463,6 +2472,7 @@ static void PokeSum_PrintControlsString(const u8 * str)
 
 static void PrintMonLevelNickOnWindow2(const u8 * str)
 {
+    u8 language;
     FillWindowPixelBuffer(sMonSummaryScreen->windowIds[POKESUM_WIN_LVL_NICK], 0);
 
     if (!sMonSummaryScreen->isEgg)
@@ -2470,7 +2480,13 @@ static void PrintMonLevelNickOnWindow2(const u8 * str)
         if (sMonSummaryScreen->curPageIndex != PSS_PAGE_MOVES_INFO)
             AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_LVL_NICK], 2, 4, 2, sLevelNickTextColors[1], TEXT_SPEED_FF, sMonSummaryScreen->summary.levelStrBuf);
 
-        AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_LVL_NICK], 2, 40, 2, sLevelNickTextColors[1], TEXT_SPEED_FF, sMonSummaryScreen->summary.nicknameStrBuf);
+        AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_LVL_NICK], 2, 25, 2, sLevelNickTextColors[1], TEXT_SPEED_FF, sMonSummaryScreen->summary.nicknameStrBuf);
+        
+        language = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_LANGUAGE);
+        if (language != LANGUAGE_ENGLISH) {
+            //gLanguageStrings
+            AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_LVL_NICK], 2, 75, 2, sLevelNickTextColors[1], TEXT_SPEED_FF, gLanguageStrings[language]);
+        }
 
         if (GetMonGender(&sMonSummaryScreen->currentMon) == MON_FEMALE)
             AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_LVL_NICK], 2, 105, 2, sLevelNickTextColors[3], 0, sMonSummaryScreen->summary.genderSymbolStrBuf);
