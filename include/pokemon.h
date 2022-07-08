@@ -311,11 +311,11 @@ enum
 #define EVO_BEAUTY           15 // Pokémon levels up with beauty ≥ specified value
 #define EVO_LEVEL_FEMALE                  16     // Pokémon reaches the specified level, is female
 #define EVO_LEVEL_MALE                    17     // Pokémon reaches the specified level, is male      
-//#define EVO_LEVEL_NIGHT                   18     // Pokémon reaches the specified level, is night
-//#define EVO_LEVEL_DAY                     19     // Pokémon reaches the specified level, is day
-//#define EVO_LEVEL_DUSK                    20     // Pokémon reaches the specified level, is dusk (5-6 P.M)
-//#define EVO_ITEM_HOLD_DAY                 21     // Pokémon levels up, holds specified item at day
-//#define EVO_ITEM_HOLD_NIGHT               22     // Pokémon levels up, holds specified item at night
+#define EVO_LEVEL_NIGHT                   18     // Pokémon reaches the specified level, is night
+#define EVO_LEVEL_DAY                     19     // Pokémon reaches the specified level, is day
+#define EVO_LEVEL_DUSK                    20     // Pokémon reaches the specified level, is dusk (5-6 P.M)
+#define EVO_ITEM_HOLD_DAY                 21     // Pokémon levels up, holds specified item at day
+#define EVO_ITEM_HOLD_NIGHT               22     // Pokémon levels up, holds specified item at night
 #define EVO_MOVE                          23     // Pokémon levels up, knows specified move
 #define EVO_MOVE_TYPE                     24     // Pokémon levels up, knows move with specified type
 #define EVO_MAPSEC                        25     // Pokémon levels up on specified mapsec
@@ -484,5 +484,6 @@ void *OakSpeechNidoranFGetBuffer(u8 bufferId);
 u8 GetNatureFromPersonality(u32 personality);
 u8 SendMonToPC(struct Pokemon* mon);
 bool8 HealStatusConditions(struct Pokemon *mon, u32 unused, u32 healMask, u8 battleId);
+u16 MonTryLearningNewMoveEvolution(struct Pokemon *mon, bool8 firstMove);
 
 #endif // GUARD_POKEMON_H

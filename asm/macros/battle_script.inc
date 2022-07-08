@@ -1372,6 +1372,16 @@
 	jumpifword CMP_NO_COMMON_BITS, gBattleTypeFlags, \flags, \jumpptr
 	.endm
 
+	.macro trygetbaddreamstarget ptr:req
+	.byte 0xf8
+	.4byte \ptr
+	.endm
+
+	.macro checkteamslost ptr:req
+	.byte 0x24
+	.4byte \ptr
+	.endm
+
 	.macro showabilitypopup battler:req
 	various \battler, VARIOUS_ABILITY_POPUP
 	.endm

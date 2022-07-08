@@ -2778,6 +2778,34 @@ u16 MonTryLearningNewMove(struct Pokemon *mon, bool8 firstMove)
     return retVal;
 }
 
+u16 MonTryLearningNewMoveEvolution(struct Pokemon *mon, bool8 firstMove)
+{
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u8 level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+
+    // since you can learn more than one move per level
+    // the game needs to know whether you decided to
+    // learn it or keep the old set to avoid asking
+    // you to learn the same move over and over again
+    if (firstMove)
+    {
+        sLearningMoveTableID = 0;
+    }
+    while(gLevelUpLearnsets[species][sLearningMoveTableID] != LEVEL_UP_END)
+    {
+        u16 moveLevel;
+        moveLevel = (gLevelUpLearnsets[species][sLearningMoveTableID] & 0xFE00);
+        while (moveLevel == 0 || moveLevel == (level << 9))
+        {
+            gMoveToLearn = (gLevelUpLearnsets[species][sLearningMoveTableID] & 0x01FF);
+            sLearningMoveTableID++;
+            return GiveMoveToMon(mon, gMoveToLearn);
+        }
+        sLearningMoveTableID++;
+    }
+    return 0;
+}
+
 void DeleteFirstMoveAndGiveMoveToMon(struct Pokemon *mon, u16 move)
 {
     s32 i;
@@ -5446,7 +5474,6 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
                 if (friendship >= 220)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
-            // FR/LG removed the time of day evolutions due to having no RTC.
             case EVO_FRIENDSHIP_DAY:
                 RtcCalcLocalTime();
                 if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && friendship >= 220)
@@ -5455,6 +5482,39 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
             case EVO_FRIENDSHIP_NIGHT:
                 RtcCalcLocalTime();
                 if (gLocalTime.hours >= 0 && gLocalTime.hours < 12 && friendship >= 220)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
+            case EVO_LEVEL_DAY:
+                RtcCalcLocalTime();
+                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && gEvolutionTable[species][i].param <= level)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
+            case EVO_LEVEL_NIGHT:
+                RtcCalcLocalTime();
+                if (gLocalTime.hours >= 0 && gLocalTime.hours < 12 && gEvolutionTable[species][i].param <= level)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
+            case EVO_ITEM_HOLD_NIGHT:
+                RtcCalcLocalTime();
+                if (gLocalTime.hours >= 0 && gLocalTime.hours < 12 && heldItem == gEvolutionTable[species][i].param)
+                {
+                    heldItem = 0;
+                    SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                }
+                break;
+            case EVO_ITEM_HOLD_DAY:
+                RtcCalcLocalTime();
+                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && heldItem == gEvolutionTable[species][i].param)
+                {
+                    heldItem = 0;
+                    SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                }
+                break;
+            case EVO_LEVEL_DUSK:
+                RtcCalcLocalTime();
+                if (gLocalTime.hours >= 17 && gLocalTime.hours < 18 && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL:

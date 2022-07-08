@@ -1,4 +1,5 @@
 #define LEVEL_UP_MOVE(lvl, move) ((lvl << 9) | move)
+#define EVOLUTION_MOVE(move) (0 | move)
 #define LEVEL_UP_END 0xFFFF
 
 static const u16 sBulbasaurLevelUpLearnset[] = {
@@ -5736,3 +5737,2565 @@ static const u16 sChimechoLevelUpLearnset[] = {
     LEVEL_UP_MOVE(46, MOVE_PSYCHIC),
     LEVEL_UP_END
 };
+
+static const u16 sSpeciesTurtwigLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGrotleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTorterraLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesChimcharLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMonfernoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesInfernapeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPiplupLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPrinplupLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesEmpoleonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesStarlyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesStaraviaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesStaraptorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBidoofLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBibarelLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKricketotLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKricketuneLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesShinxLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLuxioLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLuxrayLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBudewLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRoseradeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCranidosLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRampardosLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesShieldonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBastiodonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBurmyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesWormadamLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMothimLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCombeeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVespiquenLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPachirisuLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBuizelLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFloatzelLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCherubiLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCherrimLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesShellosLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGastrodonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAmbipomLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDrifloonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDrifblimLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBunearyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLopunnyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMismagiusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHonchkrowLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGlameowLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPuruglyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesChinglingLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesStunkyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSkuntankLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBronzorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBronzongLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBonslyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMimeJrLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHappinyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesChatotLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSpiritombLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGibleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGabiteLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGarchompLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMunchlaxLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRioluLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLucarioLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHippopotasLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHippowdonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSkorupiLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDrapionLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCroagunkLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesToxicroakLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCarnivineLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFinneonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLumineonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMantykeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSnoverLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAbomasnowLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesWeavileLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMagnezoneLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLickilickyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRhyperiorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTangrowthLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesElectivireLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMagmortarLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTogekissLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesYanmegaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLeafeonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGlaceonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGliscorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMamoswineLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPorygonZLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGalladeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesProbopassLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDusknoirLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFroslassLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRotomLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesUxieLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMespritLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAzelfLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDialgaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPalkiaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHeatranLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRegigigasLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGiratinaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCresseliaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPhioneLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesManaphyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDarkraiLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesShayminLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesArceusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVictiniLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSnivyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesServineLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSerperiorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTepigLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPigniteLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesEmboarLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesOshawottLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDewottLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSamurottLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPatratLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesWatchogLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLillipupLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHerdierLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesStoutlandLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPurrloinLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLiepardLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPansageLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSimisageLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPansearLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSimisearLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPanpourLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSimipourLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMunnaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMusharnaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPidoveLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTranquillLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesUnfezantLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBlitzleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesZebstrikaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRoggenrolaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBoldoreLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGigalithLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesWoobatLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSwoobatLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDrilburLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesExcadrillLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAudinoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTimburrLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGurdurrLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesConkeldurrLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTympoleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPalpitoadLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSeismitoadLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesThrohLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSawkLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSewaddleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSwadloonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLeavannyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVenipedeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesWhirlipedeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesScolipedeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCottoneeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesWhimsicottLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPetililLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLilligantLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBasculinLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSandileLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKrokorokLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKrookodileLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDarumakaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDarmanitanLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMaractusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDwebbleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCrustleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesScraggyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesScraftyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSigilyphLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesYamaskLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCofagrigusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTirtougaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCarracostaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesArchenLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesArcheopsLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTrubbishLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGarbodorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesZoruaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesZoroarkLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMinccinoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCinccinoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGothitaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGothoritaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGothitelleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSolosisLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDuosionLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesReuniclusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDucklettLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSwannaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVanilliteLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVanillishLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVanilluxeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDeerlingLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSawsbuckLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesEmolgaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKarrablastLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesEscavalierLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFoongusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAmoongussLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFrillishLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesJellicentLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAlomomolaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesJoltikLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGalvantulaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFerroseedLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFerrothornLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKlinkLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKlangLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKlinklangLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTynamoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesEelektrikLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesEelektrossLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesElgyemLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBeheeyemLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLitwickLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLampentLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesChandelureLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAxewLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFraxureLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHaxorusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCubchooLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBearticLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCryogonalLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesShelmetLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAccelgorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesStunfiskLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMienfooLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMienshaoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDruddigonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGolettLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGolurkLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPawniardLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBisharpLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBouffalantLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRuffletLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBraviaryLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVullabyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMandibuzzLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHeatmorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDurantLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDeinoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesZweilousLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHydreigonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLarvestaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVolcaronaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCobalionLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTerrakionLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVirizionLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTornadusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesThundurusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesReshiramLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesZekromLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLandorusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKyuremLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKeldeoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMeloettaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGenesectLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesChespinLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesQuilladinLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesChesnaughtLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFennekinLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBraixenLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDelphoxLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFroakieLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFrogadierLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGreninjaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBunnelbyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDiggersbyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFletchlingLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFletchinderLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTalonflameLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesScatterbugLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSpewpaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVivillonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLitleoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPyroarLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFlabebeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFloetteLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFlorgesLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSkiddoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGogoatLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPanchamLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPangoroLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFurfrouLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesEspurrLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMeowsticLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHonedgeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDoubladeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAegislashLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSpritzeeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAromatisseLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSwirlixLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSlurpuffLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesInkayLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMalamarLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBinacleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBarbaracleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSkrelpLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDragalgeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesClauncherLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesClawitzerLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHelioptileLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHelioliskLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTyruntLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTyrantrumLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAmauraLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAurorusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSylveonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHawluchaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDedenneLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCarbinkLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGoomyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSliggooLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGoodraLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKlefkiLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPhantumpLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTrevenantLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPumpkabooLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGourgeistLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBergmiteLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAvaluggLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesNoibatLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesNoivernLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesXerneasLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesYveltalLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesZygardeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDiancieLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHoopaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVolcanionLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRowletLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDartrixLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDecidueyeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLittenLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTorracatLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesIncineroarLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPopplioLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBrionneLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPrimarinaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPikipekLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTrumbeakLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesToucannonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesYungoosLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGumshoosLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGrubbinLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCharjabugLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesVikavoltLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCrabrawlerLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCrabominableLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesOricorioLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCutieflyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRibombeeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRockruffLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLycanrocLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    EVOLUTION_MOVE(MOVE_ROCK_SLIDE),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesWishiwashiLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMareanieLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesToxapexLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMudbrayLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMudsdaleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDewpiderLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAraquanidLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFomantisLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLurantisLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMorelullLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesShiinoticLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSalanditLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSalazzleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesStuffulLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBewearLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBounsweetLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSteeneeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTsareenaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesComfeyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesOranguruLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPassimianLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesWimpodLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGolisopodLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSandygastLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPalossandLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPyukumukuLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTypeNullLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSilvallyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMiniorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKomalaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTurtonatorLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTogedemaruLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMimikyuLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBruxishLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDrampaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDhelmiseLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesJangmoOLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHakamoOLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKommoOLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTapuKokoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTapuLeleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTapuBuluLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesTapuFiniLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCosmogLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCosmoemLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSolgaleoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesLunalaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesNihilegoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBuzzwoleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPheromosaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesXurkitreeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCelesteelaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKartanaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGuzzlordLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesNecrozmaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMagearnaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMarshadowLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPoipoleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesNaganadelLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesStakatakaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBlacephalonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesZeraoraLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMeltanLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMelmetalLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGrookeyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesThwackeyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRillaboomLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesScorbunnyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRabootLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCinderaceLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSobbleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDrizzileLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesInteleonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSkwovetLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGreedentLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRookideeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCorvisquireLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCorviknightLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBlipbugLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDottlerLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesOrbeetleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesNickitLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesThievulLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGossifleurLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesEldegossLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesWoolooLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDubwoolLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesChewtleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDrednawLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesYamperLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBoltundLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRolycolyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCarkolLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCoalossalLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesApplinLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFlappleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAppletunLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSilicobraLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSandacondaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCramorantLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesArrokudaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesBarraskewdaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesToxelLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesToxtricityLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSizzlipedeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCentiskorchLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesClobbopusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGrapploctLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSinisteaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPolteageistLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHatennaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHattremLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesHattereneLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesImpidimpLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMorgremLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGrimmsnarlLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesObstagoonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPerrserkerLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCursolaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSirfetchdLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMrRimeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRunerigusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMilceryLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesAlcremieLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFalinksLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesPincurchinLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSnomLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesFrosmothLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesStonjournerLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesEiscueLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesIndeedeeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesMorpekoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCufantLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCopperajahLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDracozoltLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesArctozoltLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDracovishLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesArctovishLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDuraludonLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDreepyLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDrakloakLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesDragapultLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesZacianLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesZamazentaLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesEternatusLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesKubfuLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesUrshifuLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesZarudeLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRegielekiLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesRegidragoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesGlastrierLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesSpectrierLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+
+static const u16 sSpeciesCalyrexLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_POUND),
+    LEVEL_UP_END
+};
+

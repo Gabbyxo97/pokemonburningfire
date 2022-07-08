@@ -584,16 +584,16 @@ static void Task_EvolutionScene(u8 taskId)
 
     // Automatically cancel if the Pokemon would evolve into a species you have not
     // yet unlocked, such as Crobat.
-    if (!IsNationalPokedexEnabled()
-        && gTasks[taskId].tState == 8
-        && gTasks[taskId].tPostEvoSpecies > SPECIES_MEW)
-    {
-        gTasks[taskId].tState = 17;
-        gTasks[taskId].tEvoWasStopped = TRUE;
-        gTasks[sEvoGraphicsTaskId].EvoGraphicsTaskEvoStop = TRUE;
-        DestroyMovingBackgroundTasks();
-        return;
-    }
+    // if (!IsNationalPokedexEnabled()
+    //     && gTasks[taskId].tState == 8
+    //     && gTasks[taskId].tPostEvoSpecies > SPECIES_MEW)
+    // {
+    //     gTasks[taskId].tState = 17;
+    //     gTasks[taskId].tEvoWasStopped = TRUE;
+    //     gTasks[sEvoGraphicsTaskId].EvoGraphicsTaskEvoStop = TRUE;
+    //     DestroyMovingBackgroundTasks();
+    //     return;
+    // }
 
     // check if B Button was held, so the evolution gets stopped
     if (gMain.heldKeys == B_BUTTON
@@ -733,7 +733,7 @@ static void Task_EvolutionScene(u8 taskId)
         if (!IsTextPrinterActive(0))
         {
             //HelpSystem_Enable();
-            var = MonTryLearningNewMove(mon, gTasks[taskId].tLearnsFirstMove);
+            var = MonTryLearningNewMoveEvolution(mon, gTasks[taskId].tLearnsFirstMove);
             if (var != 0 && !gTasks[taskId].tEvoWasStopped)
             {
                 u8 text[20];
@@ -1111,7 +1111,7 @@ static void Task_TradeEvolutionScene(u8 taskId)
     case 13:
         if (!IsTextPrinterActive(0) && IsFanfareTaskInactive() == TRUE)
         {
-            var = MonTryLearningNewMove(mon, gTasks[taskId].tLearnsFirstMove);
+            var = MonTryLearningNewMoveEvolution(mon, gTasks[taskId].tLearnsFirstMove);
             if (var != 0 && !gTasks[taskId].tEvoWasStopped)
             {
                 u8 text[20];
