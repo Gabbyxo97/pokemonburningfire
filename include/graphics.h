@@ -8022,6 +8022,14 @@ extern const u8 gFile_graphics_items_icons_gem_sheet[];
 extern const u8 gFile_graphics_items_icon_palettes_sapphire_palette[];
 extern const u8 gFile_graphics_items_icons_return_to_field_arrow_sheet[];
 extern const u8 gFile_graphics_items_icon_palettes_return_to_field_arrow_palette[];
+extern const u8 gItemIcon_OvalCharm[];
+extern const u8 gItemIconPalette_OvalCharm[];
+extern const u8 gItemIcon_ShinyCharm[];
+extern const u8 gItemIconPalette_ShinyCharm[];
+extern const u8 gItemIcon_MagmaEmblem[];
+extern const u8 gItemIconPalette_MagmaEmblem[];
+extern const u8 gItemIcon_OldSeaMap[];
+extern const u8 gItemIconPalette_OldSeaMap[];
 
 // battle_anim_utility_funcs
 extern const u32 gFile_graphics_battle_anims_masks_curse_sheet[];

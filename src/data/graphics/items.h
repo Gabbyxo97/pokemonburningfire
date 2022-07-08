@@ -715,3 +715,15 @@ const u32 gFile_graphics_items_icon_palettes_powder_jar_palette[] = INCBIN_U32("
 const u32 gFile_graphics_items_icon_palettes_ruby_palette[] = INCBIN_U32("graphics/items/icon_palettes/ruby.gbapal.lz");
 const u32 gFile_graphics_items_icons_gem_sheet[] = INCBIN_U32("graphics/items/icons/gem.4bpp.lz");
 const u32 gFile_graphics_items_icon_palettes_sapphire_palette[] = INCBIN_U32("graphics/items/icon_palettes/sapphire.gbapal.lz");
+
+const u32 gItemIcon_OldSeaMap[] = INCBIN_U32("graphics/items/icons/old_sea_map.4bpp.lz");
+const u32 gItemIconPalette_OldSeaMap[] = INCBIN_U32("graphics/items/icon_palettes/old_sea_map.gbapal.lz");
+
+const u32 gItemIcon_MagmaEmblem[] = INCBIN_U32("graphics/items/icons/magma_emblem.4bpp.lz");
+const u32 gItemIconPalette_MagmaEmblem[] = INCBIN_U32("graphics/items/icon_palettes/magma_emblem.gbapal.lz");
+
+const u32 gItemIcon_OvalCharm[] = INCBIN_U32("graphics/items/icons/oval_charm.4bpp.lz");
+const u32 gItemIconPalette_OvalCharm[] = INCBIN_U32("graphics/items/icon_palettes/oval_charm.gbapal.lz");
+
+const u32 gItemIcon_ShinyCharm[] = INCBIN_U32("graphics/items/icons/shiny_charm.4bpp.lz");
+const u32 gItemIconPalette_ShinyCharm[] = INCBIN_U32("graphics/items/icon_palettes/shiny_charm.gbapal.lz");
