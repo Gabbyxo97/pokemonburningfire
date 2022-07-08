@@ -2615,8 +2615,8 @@ u16 MailSpeciesToIconSpecies(u16 species)
 const u8 *GetMonIconTiles(u16 species, bool32 extra)
 {
     const u8 *iconSprite = gMonIconTable[species];
-    if ((species == SPECIES_DEOXYS || species == SPECIES_DEOXYS_ATTACK || species == SPECIES_DEOXYS_DEFENSE || species == SPECIES_DEOXYS_SPEED) && extra == TRUE)
-        iconSprite += 0x400;
+    // if ((species == SPECIES_DEOXYS || species == SPECIES_DEOXYS_ATTACK || species == SPECIES_DEOXYS_DEFENSE || species == SPECIES_DEOXYS_SPEED) && extra == TRUE)
+    //     iconSprite += 0x400;
     return iconSprite;
 }
 
