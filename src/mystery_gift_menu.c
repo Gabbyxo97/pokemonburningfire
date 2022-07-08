@@ -430,6 +430,7 @@ bool32 HandleMysteryGiftOrEReaderSetup(s32 mg_or_ereader)
     return FALSE;
 }
 
+//CB2_InitMysteryGift
 void c2_mystery_gift(void)
 {
     if (HandleMysteryGiftOrEReaderSetup(0))
@@ -438,6 +439,7 @@ void c2_mystery_gift(void)
         gGiftIsFromEReader = FALSE;
         task_add_00_mystery_gift();
     }
+	RunTasks();
 }
 
 void c2_ereader(void)
@@ -1102,6 +1104,7 @@ static bool32 PrintMGSendStatus(u8 * state, u16 * arg1, u8 arg2, u32 msgId)
     }
 }
 
+//CreateMysteryGiftTask
 void task_add_00_mystery_gift(void)
 {
     u8 taskId = CreateTask(task00_mystery_gift, 0);
@@ -1120,6 +1123,7 @@ void task_add_00_mystery_gift(void)
     data->buffer = AllocZeroed(0x40);
 }
 
+//Task_MysteryGift
 void task00_mystery_gift(u8 taskId)
 {
     struct MysteryGiftTaskData * data = (void *)gTasks[taskId].data;

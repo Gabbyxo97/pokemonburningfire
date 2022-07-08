@@ -236,7 +236,7 @@ static void Task_SetWin0BldRegsAndCheckSaveFile(u8 taskId)
         {
         case SAVE_STATUS_OK:
             LoadUserFrameToBg(0);
-            if (IsMysteryGiftEnabled() == TRUE)
+            if (TRUE)//
             {
                 gTasks[taskId].tMenuType = MAIN_MENU_MYSTERYGIFT;
             }
@@ -514,17 +514,7 @@ static void Task_ExecuteMainMenuSelection(u8 taskId)
                 menuAction = MAIN_MENU_NEWGAME;
                 break;
             case 2:
-                if (!IsWirelessAdapterConnected())
-                {
-                    SetStdFrame0OnBg(0);
-                    gTasks[taskId].func = Task_MysteryGiftError;
-                    BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
-                    return;
-                }
-                else
-                {
-                    menuAction = MAIN_MENU_MYSTERYGIFT;
-                }
+                 menuAction = MAIN_MENU_MYSTERYGIFT;
                 break;
             }
             break;
