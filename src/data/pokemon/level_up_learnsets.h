@@ -8299,3 +8299,15 @@ static const u16 sSpeciesCalyrexLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 
+static const u16 sHisuianVoltorbLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(1, MOVE_THUNDER_SHOCK),
+    LEVEL_UP_MOVE(5, MOVE_TACKLE),
+    LEVEL_UP_MOVE(9, MOVE_THUNDER_WAVE),
+    LEVEL_UP_MOVE(15, MOVE_SPARK),
+    // LEVEL_UP_MOVE(21, MOVE_ENERGY_BALL),
+    LEVEL_UP_MOVE(29, MOVE_THUNDERBOLT),
+    LEVEL_UP_MOVE(37, MOVE_THUNDER),
+    LEVEL_UP_MOVE(47, MOVE_SELF_DESTRUCT),
+    LEVEL_UP_END
+};
+

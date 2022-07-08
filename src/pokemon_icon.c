@@ -1238,6 +1238,7 @@ const u8 *const gMonIconTable[] =
     [SPECIES_ZARUDE_DADA] = gMonIcon_ZarudeDada,
     [SPECIES_CALYREX_ICE_RIDER] = gMonIcon_QuestionMark,//gMonIcon_CalyrexIceRider,
     [SPECIES_CALYREX_SHADOW_RIDER] = gMonIcon_QuestionMark,//gMonIcon_CalyrexShadowRider,
+    [SPECIES_HISUIAN_VOLTORB] = gMonIcon_QuestionMark,//gMonIcon_HisuianVoltorb
     [SPECIES_EGG] = gMonIcon_Egg,
 };
 

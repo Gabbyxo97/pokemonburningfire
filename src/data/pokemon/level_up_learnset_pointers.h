@@ -904,4 +904,5 @@ const u16 *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_GLASTRIER] = sSpeciesGlastrierLevelUpLearnset,
     [SPECIES_SPECTRIER] = sSpeciesSpectrierLevelUpLearnset,
     [SPECIES_CALYREX] = sSpeciesCalyrexLevelUpLearnset,
+    [SPECIES_HISUIAN_VOLTORB] = sHisuianVoltorbLevelUpLearnset,
 };

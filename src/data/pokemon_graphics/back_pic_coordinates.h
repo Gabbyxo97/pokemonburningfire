@@ -6104,6 +6104,11 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(64, 56),
         .y_offset = 7,
     },
+    [SPECIES_HISUIAN_VOLTORB] =
+    {
+        .size = MON_COORDS_SIZE(48, 40),
+        .y_offset = 14,
+    },
     // Egg
     [SPECIES_EGG] =
     {

@@ -2846,4 +2846,9 @@ static const u16 sTutorLearnsets[] =
                      | TUTOR(MOVE_SEISMIC_TOSS)
                      | TUTOR(MOVE_SUBSTITUTE)
                      | TUTOR(MOVE_THUNDER_WAVE),
+
+    [SPECIES_HISUIAN_VOLTORB] = TUTOR(MOVE_MIMIC)
+                      | TUTOR(MOVE_THUNDER_WAVE)
+                      | TUTOR(MOVE_EXPLOSION)
+                      | TUTOR(MOVE_SUBSTITUTE),
 };
