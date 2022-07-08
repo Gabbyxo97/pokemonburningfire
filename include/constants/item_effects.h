@@ -76,4 +76,7 @@
 #define ITEM_EFFECT_HEAL_PP 21
 #define ITEM_EFFECT_NONE 22
 
+// Item config
+#define I_SHINY_CHARM_REROLLS   3       // Amount of re-rolls if the player has the Shiny Charm. Set to 0 to disable Shiny Charm's effects.
+
 #endif // GUARD_CONSTANTS_ITEM_EFFECTS_H
