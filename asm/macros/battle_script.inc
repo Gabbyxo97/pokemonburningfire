@@ -1390,3 +1390,7 @@
 	.byte 0x70
 	.byte \battler
 	.endm
+
+	.macro setroost
+	.byte 0xf9
+	.endm

@@ -130,6 +130,7 @@ struct ResourceFlags
 };
 
 #define RESOURCE_FLAG_FLASH_FIRE 1
+#define RESOURCE_FLAG_ROOST             2
 
 struct DisableStruct
 {
@@ -453,7 +454,7 @@ struct BattleStruct
     } multiBuffer;
     u8 activeAbilityPopUps; // as bits for each battler
     u8 abilityPopUpSpriteIds[MAX_BATTLERS_COUNT][2];    // two per battler
-    u8 padding_1E4[0x1C];
+    u8 roostTypes[MAX_BATTLERS_COUNT][3];
 }; // size == 0x200 bytes
 
 extern struct BattleStruct *gBattleStruct;

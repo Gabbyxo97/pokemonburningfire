@@ -773,6 +773,7 @@ AI_CheckViability:: @ 81DA445
 	if_effect EFFECT_WATER_SPORT, AI_CV_WaterSport
 	if_effect EFFECT_CALM_MIND, AI_CV_SpDefUp
 	if_effect EFFECT_DRAGON_DANCE, AI_CV_DragonDance
+	if_effect EFFECT_ROOST, AI_CV_Heal
 	end
 
 AI_CV_Sleep:: @ 81DA71C
@@ -3009,6 +3010,7 @@ AI_HPAware_DiscouragedEffectsWhenHighHP:: @ 81DBBC3
 	.byte EFFECT_MEMENTO
 	.byte EFFECT_GRUDGE
 	.byte EFFECT_OVERHEAT
+	.byte EFFECT_ROOST
 	.byte -1
 
 AI_HPAware_DiscouragedEffectsWhenMediumHP:: @ 81DBBD1

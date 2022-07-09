@@ -3344,3 +3344,13 @@ static void ScriptCmd_stopsound(void)
     m4aMPlayStop(&gMPlayInfo_SE2);
     sBattleAnimScriptPtr++;
 }
+
+static void Cmd_splitbgprio_all(void)
+{
+    sBattleAnimScriptPtr++;
+    if (!IsContest())
+    {
+        SetAnimBgAttribute(1, BG_ANIM_PRIORITY, 1);
+        SetAnimBgAttribute(2, BG_ANIM_PRIORITY, 2);
+    }
+}
