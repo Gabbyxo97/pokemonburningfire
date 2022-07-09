@@ -1116,9 +1116,10 @@ void CreateEgg(struct Pokemon *mon, u16 species, bool8 setHotSpringsLocation)
 
 bool8 DaycareTryMakeShinyMon(struct DayCare *daycare)
 {
-    u32 i, shinyRolls, chainBonus;
+    u32 i, chainBonus;
     u32 charmBonus = 0;
     u16 ShinyChances = 1;
+	u32 shinyRolls = 0;
 	
 	//Masuda Method
 	if(GetMonData(&daycare->mons[0].mon, MON_DATA_LANGUAGE, NULL) != GetMonData(&daycare->mons[1].mon, MON_DATA_LANGUAGE, NULL))

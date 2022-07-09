@@ -28,13 +28,13 @@ void ReshowBattleScreenAfterMenu(void)
     gBattleScripting.reshowHelperState = 0;
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
     {
-        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+        /*/if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
         {
             return;
-			/*/if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+			if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
                 SetHelpContext(HELPCONTEXT_TRAINER_BATTLE_DOUBLE);
             else
-                SetHelpContext(HELPCONTEXT_TRAINER_BATTLE_SINGLE);/*/
+                SetHelpContext(HELPCONTEXT_TRAINER_BATTLE_SINGLE);
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
         {
@@ -43,7 +43,7 @@ void ReshowBattleScreenAfterMenu(void)
         else
         {
             //SetHelpContext(HELPCONTEXT_WILD_BATTLE);
-        }
+        }/*/
     }
     SetMainCallback2(CB2_ReshowBattleScreenAfterMenu);
 }

@@ -237,8 +237,8 @@ static void Task_PlayerPcMailbox(u8 taskId)
         gPlayerPcMenuManager.cursorPos = 0;
         PCMailCompaction();
         Task_SetPageItemVars(taskId);
-        if (gPlayerPcMenuManager.notInRoom == FALSE)
-			return;
+        //if (gPlayerPcMenuManager.notInRoom == FALSE)
+			//return;
             //SetHelpContext(HELPCONTEXT_BEDROOM_PC_MAILBOX);
         //else
             //SetHelpContext(HELPCONTEXT_PLAYERS_PC_MAILBOX);
@@ -267,7 +267,7 @@ static void Task_PlayerPcTurnOff(u8 taskId)
 static void Task_CreateItemStorageSubmenu(u8 taskId, u8 cursorPos)
 {
     s16 *data = gTasks[taskId].data;
-    if (gPlayerPcMenuManager.notInRoom == FALSE)
+    //if (gPlayerPcMenuManager.notInRoom == FALSE)
         //SetHelpContext(HELPCONTEXT_BEDROOM_PC_ITEMS);
     //else
         //SetHelpContext(HELPCONTEXT_PLAYERS_PC_ITEMS);
