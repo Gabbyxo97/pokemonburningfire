@@ -18,6 +18,7 @@
 #include "help_system.h"
 #include "mevent.h"
 #include "strings.h"
+#include "constants/items.h"
 
 struct MEventTaskData1
 {
@@ -475,31 +476,216 @@ static void Task_EReaderComm(u8 taskId)
     }
 }
 
+enum {
+    CARD_TEST,
+    CARD_SPACE_DEOXYS,
+    CARD_CHARMANDER,
+	CARD_JAPANESE_DITTO,
+	CARD_MASTER_BALL,
+};
+
+#define CARD_CURRENT_VERSION 	CARD_CHARMANDER
+
+#define CARD_BG_YELLOW 			0
+#define CARD_BG_BLUE 			1
+#define CARD_BG_RED 			2
+#define CARD_BG_GREEN 			3
+#define CARD_BG_BLUE_2 			4
+#define CARD_BG_YELLOW_2 		5
+#define CARD_BG_YELLOW_SECIAL 	6
+#define CARD_BG_SILVER 			7
+
+#define CARD_TYPE_POKEMON		0
+#define CARD_TYPE_ITEM          1
+#define CARD_TYPE_OTHER         2
+
+struct WonderCard gSavedWonderCard[] =
+{
+	[CARD_TEST] =
+    {
+		.flagId 				= 0,
+		.iconSpecies 			= ITEM_POTION,
+		.idNumber 				= CARD_TEST,
+		.type 					= CARD_TYPE_ITEM,
+		.bgType 				= CARD_BG_YELLOW,
+		.sendType 				= 0,
+		.maxStamps 				= 0,
+		.titleText 				= _("titleText"),
+		.subtitleText 			= _("subtitleText"),
+		.bodyText 				= _("bodyText"),
+		.footerLine1Text 		= _("footerLine1Text"),
+		.footerLine2Text 		= _("footerLine2Text"),
+	},
+	[CARD_SPACE_DEOXYS] =
+    {
+		.flagId 				= MYSTERY_GIFT_SPACE_DEOXYS,
+		.iconSpecies 			= SPECIES_DEOXYS,
+		.idNumber 				= CARD_SPACE_DEOXYS,
+		.type 					= CARD_TYPE_POKEMON,
+		.bgType 				= CARD_BG_YELLOW_SECIAL,
+		.sendType 				= 0,
+		.maxStamps 				= 0,
+		.titleText 				= _("Wonder Card."),
+		.subtitleText 			= _("Mystery from Space!"),
+		.bodyText 				= _("Enjoy your Deoxys! Travel to Veilstone  "
+									"City to discover the secrets of this    "
+									"mysterious Pokemon!"),
+		.footerLine1Text 		= _("Please continue playing"),
+		.footerLine2Text 		= _("Pokemon Burning Fire!"),
+	},
+	[CARD_CHARMANDER] =
+    {
+		.flagId 				= MYSTERY_GIFT_CHARMANDER,
+		.iconSpecies 			= SPECIES_CHARMANDER,
+		.idNumber 				= CARD_CHARMANDER,
+		.type 					= CARD_TYPE_POKEMON,
+		.bgType 				= CARD_BG_BLUE_2,
+		.sendType 				= 0,
+		.maxStamps 				= 0,
+		.titleText 				= _("Wonder Card."),
+		.subtitleText 			= _("Special Ash-Greninja!"),
+		.bodyText 				= _("It's a Greninja with an Special Ability,"
+									"This Pokémon will be a great help on your "
+									"adventure in this game."),
+		.footerLine1Text 		= _("Please continue playing"),
+		.footerLine2Text 		= _("Pokemon Burning Fire!"),
+	},
+	[CARD_JAPANESE_DITTO] =
+    {
+		.flagId 				= MYSTERY_GIFT_FOREIGN_DITTO,
+		.iconSpecies 			= SPECIES_DITTO,
+		.idNumber 				= CARD_JAPANESE_DITTO,
+		.type 					= 0,
+		.bgType 				= CARD_BG_BLUE_2,
+		.sendType 				= 0,
+		.maxStamps 				= 0,
+		.titleText 				= _("Wonder Card."),
+		.subtitleText 			= _("A Foreign Ditto!"),
+		.bodyText 				= _("Enjoy your Ditto! Use this Pokémon to   "
+									"try the Masuda Method to get a shiny    "
+									"Pokemon!"),
+		.footerLine1Text 		= _("Please continue playing"),
+		.footerLine2Text 		= _("Pokemon Burning Fire!"),
+	},
+	[CARD_MASTER_BALL] =
+    {
+		.flagId 				= MYSTERY_GIFT_MASTER_BALL,
+		.iconSpecies 			= ITEM_MASTER_BALL,
+		.idNumber 				= CARD_TEST,
+		.type 					= CARD_TYPE_ITEM,
+		.bgType 				= CARD_BG_BLUE_2,
+		.sendType 				= 0,
+		.maxStamps 				= 10,//Quantity
+		.titleText 				= _("Wonder Card."),
+		.subtitleText 			= _("Gift from the PGL"),
+		.bodyText 				= _("Thank you for signing up for the        "
+									"Pokémon Global Link.                    "
+									"Here's a Master Ball for you!"),
+		.footerLine1Text 		= _("Please Enjoy this Gift"),
+	},
+};
+
+struct WonderCardMetadata gSavedWonderCardMetadata[] =
+{
+	[CARD_TEST] =
+    {
+		.battlesWon 				= 1,
+		.battlesLost 				= 1,
+		.numTrades 					= 1,
+		.iconSpecies 				= SPECIES_BULBASAUR,
+		.stampData 					= 1,
+	// First element is STAMP_SPECIES, second is STAMP_ID
+	},
+	[CARD_SPACE_DEOXYS] =
+    {
+		.battlesWon 				= 1,
+		.battlesLost 				= 1,
+		.numTrades 					= 1,
+		.iconSpecies 				= SPECIES_DEOXYS,
+		.stampData 					= 1,
+	},
+	[CARD_CHARMANDER] =
+    {
+		.battlesWon 				= 1,
+		.battlesLost 				= 1,
+		.numTrades 					= 1,
+		.iconSpecies 				= SPECIES_CHARMANDER,
+		.stampData 					= 1,
+	},
+	[CARD_JAPANESE_DITTO] =
+    {
+		.battlesWon 				= 1,
+		.battlesLost 				= 1,
+		.numTrades 					= 1,
+		.iconSpecies 				= SPECIES_DITTO,
+		.stampData 					= 1,
+	}
+};
+
+struct WonderNewsMetadata gSavedWonderNewsMetadata[] =
+{
+	[CARD_TEST] =
+    {
+		.unk_0_0 		= 1,//.newsType
+		.unk_0_2 		= 1,//.sentCounter
+		.unk_0_5 		= 1,//.getCounter
+		.berry 			= 1,//.rand
+	}
+};
+
+struct WonderNews gSavedWonderNews[] =
+{
+	[CARD_TEST] =
+    {
+		.newsId 		= 1,
+		.sendType 		= 1,
+		.bgType 		= 1,
+		.titleText 		= _("titleText"),
+		.bodyText 		= _
+		("bodyText"),
+	}
+};
+
+//void ClearMysteryGift(void)
 void InitMEventData(void)
 {
-    CpuFill32(0, &gSaveBlock1Ptr->mysteryGift, sizeof(gSaveBlock1Ptr->mysteryGift));
+    /*
+	CpuFill32(0, &gSaveBlock1Ptr->mysteryGift, sizeof(gSaveBlock1Ptr->mysteryGift));
     BlankMENewsJisan();
     EC_ResetMEventProfileMaybe();
+	*/
 }
+
+//-------------------------------------------------------------
+//Mystery Gift
+//-------------------------------------------------------------
 
 struct WonderNews * GetSavedWonderNews(void)
 {
-    return &gSaveBlock1Ptr->mysteryGift.news;
+    return &gSavedWonderNews[CARD_CURRENT_VERSION];
+    //return &gSaveBlock1Ptr->mysteryGift.news;
 }
 
 struct WonderCard * GetSavedWonderCard(void)
 {
-    return &gSaveBlock1Ptr->mysteryGift.card;
+    return &gSavedWonderCard[CARD_CURRENT_VERSION];
+	//return &gSaveBlock1Ptr->mysteryGift.card;
 }
 
+//-------------------------------------------------------------
+
+//struct WonderCardMetadata *GetSavedWonderCardMetadata(void)
 struct WonderCardMetadata * sav1_get_mevent_buffer_2(void)
 {
-    return &gSaveBlock1Ptr->mysteryGift.cardMetadata;
+	return &gSavedWonderCardMetadata[CARD_CURRENT_VERSION];
+	//return &gSaveBlock1Ptr->mysteryGift.cardMetadata;
 }
 
+//struct WonderNewsMetadata *GetSavedWonderNewsMetadata(void)
 struct WonderNewsMetadata * GetMENewsJisanStructPtr(void)
 {
-    return &gSaveBlock1Ptr->mysteryGift.newsMetadata;
+	return &gSavedWonderNewsMetadata[CARD_TEST];
+    //return &gSaveBlock1Ptr->mysteryGift.newsMetadata;
 }
 
 u16 * GetMEventProfileECWordsMaybe(void)

@@ -4,6 +4,7 @@
 #include "scanline_effect.h"
 #include "text_window.h"
 #include "menu.h"
+#include "item.h"
 #include "new_menu_helpers.h"
 #include "mystery_gift_menu.h"
 #include "title_screen.h"
@@ -13,12 +14,19 @@
 #include "save.h"
 #include "link.h"
 #include "event_data.h"
+#include "pokedex.h"
 #include "mevent_server.h"
 #include "menews_jisan.h"
 #include "help_system.h"
 #include "strings.h"
+#include "random.h"
 #include "constants/songs.h"
 #include "constants/union_room.h"
+#include "constants/flags.h"
+#include "constants/species.h"
+#include "constants/abilities.h"
+#include "constants/items.h"
+#include "constants/moves.h"
 
 EWRAM_DATA u8 sDownArrowCounterAndYCoordIdx[8] = {};
 EWRAM_DATA bool8 gGiftIsFromEReader = FALSE;
@@ -26,6 +34,8 @@ EWRAM_DATA bool8 gGiftIsFromEReader = FALSE;
 void task_add_00_mystery_gift(void);
 void task00_mystery_gift(u8 taskId);
 void task_add_00_ereader(void);
+static void MysteryGift_GiveMysteryGiftMon(void);
+static bool32 GiveMysteryGiftMonAndPrintMSG(u8 * state, const u8 * arg1, u16 * arg2);
 
 const u16 gUnkTextboxBorderPal[] = INCBIN_U16("graphics/interface/unk_textbox_border.gbapal");
 const u32 gUnkTextboxBorderGfx[] = INCBIN_U32("graphics/interface/unk_textbox_border.4bpp.lz");
@@ -44,6 +54,14 @@ struct MysteryGiftTaskData
     u8 source;
     u8 prevPromptWindowId;
     u8 * buffer;
+};
+
+enum {
+    CARD_TEST,
+    CARD_SPACE_DEOXYS,
+    CARD_CHARMANDER,
+	CARD_JAPANESE_DITTO,
+	CARD_MASTER_BALL,
 };
 
 const struct BgTemplate sBGTemplates[] = {
@@ -192,10 +210,16 @@ const struct WindowTemplate sWindowTemplate_7by4 = {
     .baseBlock = 0x0155
 };
 
+static const u8 gReceiveGift[] 			=  _("Receive Gift");
+static const u8 gCheckCard[]   			=  _("Check Card");
+static const u8 gText_ExitDecap[]   	=  _("Exit");
+static const u8 gText_AlreadyHaveCard[] =  _("You already have this Mystery Gift.");
+static const u8 gText_NoMysterGift[] 	=  _("You haven't received this version\nMystery Gift yet.");
+
 const struct ListMenuItem sListMenuItems_CardsOrNews[] = {
-    { gText_WonderCards,  0 },
-    { gText_WonderNews,   1 },
-    { gText_Exit3,       -2 }
+    { gReceiveGift,  	 0 },
+    { gCheckCard,    	 1 },
+    { gText_ExitDecap,  -2 }
 };
 
 const struct ListMenuItem sListMenuItems_WirelessOrFriend[] = {
@@ -935,69 +959,71 @@ bool32 mevent_save_game(u8 * state)
 const u8 * mevent_message(u32 * flag_p, u8 cardOrNews, u8 cardOrNewsSource, u32 msgId)
 {
     const u8 * msg = NULL;
-    *flag_p = 0;
+    //*a0 = 0;
+	
+	msg = gText_WonderCardReceived;
 
-    switch (msgId)
+    /*/switch (msgId)
     {
     case 0:
-        *flag_p = 0;
+        *a0 = 0;
         msg = gText_NothingSentOver;
         break;
     case 1:
-        *flag_p = 0;
+        *a0 = 0;
         msg = gText_RecordUploadedViaWireless;
         break;
     case 2:
-        *flag_p = 1;
-        msg = cardOrNewsSource == 0 ? gText_WonderCardReceived : gText_WonderCardReceivedFrom;
+        *a0 = 1;
+        msg = cardOrNews == 0 ? gText_WonderCardReceived : gText_WonderCardReceivedFrom;
         break;
     case 3:
-        *flag_p = 1;
-        msg = cardOrNewsSource == 0 ? gText_WonderNewsReceived : gText_WonderNewsReceivedFrom;
+        *a0 = 1;
+        msg = cardOrNews == 0 ? gText_WonderNewsReceived : gText_WonderNewsReceivedFrom;
         break;
     case 4:
-        *flag_p = 1;
+        *a0 = 1;
         msg = gText_NewStampReceived;
         break;
     case 5:
-        *flag_p = 0;
+        *a0 = 0;
         msg = gText_AlreadyHadCard;
         break;
     case 6:
-        *flag_p = 0;
+        *a0 = 0;
         msg = gText_AlreadyHadStamp;
         break;
     case 7:
-        *flag_p = 0;
+        *a0 = 0;
         msg = gText_AlreadyHadNews;
         break;
     case 8:
-        *flag_p = 0;
+        *a0 = 0;
         msg = gText_NoMoreRoomForStamps;
         break;
     case 9:
-        *flag_p = 0;
+        *a0 = 0;
         msg = gText_CommunicationCanceled;
         break;
     case 10:
-        *flag_p = 0;
-        msg = cardOrNews == 0 ? gText_CantAcceptCardFromTrainer : gText_CantAcceptNewsFromTrainer;
+        *a0 = 0;
+        msg = a1 == 0 ? gText_CantAcceptCardFromTrainer : gText_CantAcceptNewsFromTrainer;
         break;
     case 11:
-        *flag_p = 0;
+        *a0 = 0;
         msg = gText_CommunicationError;
         break;
     case 12:
-        *flag_p = 1;
+        *a0 = 1;
         msg = gText_NewTrainerReceived;
         break;
     case 13:
-        *flag_p = 1;
+        *a0 = 1;
         break;
     case 14:
-        *flag_p = 0;
+        *a0 = 0;
         break;
-    }
+    }/*/
 
     return msg;
 }
@@ -1090,18 +1116,254 @@ const u8 * mevent_message_stamp_card_etc_send_status(u32 * a0, u8 unused, u32 ms
     return result;
 }
 
-static bool32 PrintMGSendStatus(u8 * state, u16 * arg1, u8 arg2, u32 msgId)
+struct MysteryGiftMonStructure
 {
-    u32 flag;
-    const u8 * str = mevent_message_stamp_card_etc_send_status(&flag, arg2, msgId);
-    if (flag)
+    u16 species;
+	const u8 nickname[POKEMON_NAME_LENGTH * 2];
+    u16 helditem;
+	u8 abilityNum;
+    u8 level;
+	u8 nature;
+	u8 pokeball;
+	u16 moves[MAX_MON_MOVES];
+    bool8 isShiny;
+	u16 ivs[NUM_STATS];
+	const u8 otName[11];
+	u16 otGender:1;
+	u32 trainerIDNo;
+	u8 language;
+	bool8 isNicknamed;
+};
+
+#define FLAG_NONE 	0
+
+struct MysteryGiftMonStructure gMysteryGiftMons[] =
+{
+	[CARD_TEST] =
     {
-        return PrintMGSuccessMessage(state, str, arg1);
+		.species 			= SPECIES_BULBASAUR,
+		.helditem 			= ITEM_NONE,
+		.abilityNum 		= 0,
+		.level 				= 5,
+		.nature				= NATURE_TIMID,
+		.pokeball 			= ITEM_CHERISH_BALL,
+		.moves				= {MOVE_TACKLE, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+		.isShiny 			= FALSE,
+		.ivs 				= {31, 31, 31, 31, 31, 31},
+		.otName 			= _("PKMNSPC"),
+		.otGender 			= 0,
+		.trainerIDNo	    = 0,
+		.language           = LANGUAGE_JAPANESE,
+		.nickname 			= _("Test"),
+		.isNicknamed		= FALSE,
+	},
+	[CARD_SPACE_DEOXYS] =
+    {
+		.species 			= SPECIES_DEOXYS,
+		.helditem 			= ITEM_TWISTED_SPOON,
+		.abilityNum 		= 0,
+		.level 				= 50,
+		.nature				= NATURE_TIMID,
+		.pokeball 			= ITEM_CHERISH_BALL,
+		.moves				= {MOVE_PSYCHIC,MOVE_REFLECT,MOVE_BRICK_BREAK,MOVE_SAFEGUARD},
+		.isShiny 			= TRUE,
+		.ivs 				= {31, 31, 31, 31, 31, 31},
+		.otName 			= _("PKMNSPC"),
+		.otGender 			= 0,
+		.trainerIDNo	    = 00010,
+		.language           = LANGUAGE_ENGLISH,
+		.nickname 			= _("Deoxys"),
+		.isNicknamed		= TRUE,
+	},
+	[CARD_CHARMANDER] =
+    {
+		.species 			= SPECIES_CHARMANDER,
+		.helditem 			= ITEM_POTION,
+		.abilityNum 		= 0,
+		.level 				= 5,
+		.nature				= NATURE_TIMID,
+		.pokeball 			= ITEM_CHERISH_BALL,
+		.moves				= {MOVE_TACKLE, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+		.isShiny 			= TRUE,
+		.ivs 				= {31, 31, 31, 31, 31, 31},
+		.otName 			= _("PKMNSPC"),
+		.otGender 			= 0,
+		.trainerIDNo	    = 0,
+		.language           = LANGUAGE_JAPANESE,
+		.nickname 			= _("Charmander"),
+		.isNicknamed		= FALSE,
+	},
+	[CARD_JAPANESE_DITTO] =
+    {
+		.species 			= SPECIES_DITTO,
+		.helditem 			= ITEM_LIGHT_BALL,
+		.abilityNum 		= 0,
+		.level 				= 10,
+		.nature				= NATURE_ADAMANT,
+		.pokeball 			= ITEM_CHERISH_BALL,
+		.moves				= {MOVE_TRANSFORM, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+		.isShiny 			= FALSE,
+		.ivs 				= {31, 31, 31, 31, 31, 31},
+		.otName 			= _("カーニバル"),
+		.otGender 			= 0,
+		.trainerIDNo	    = 00132,
+		.language           = LANGUAGE_JAPANESE,
+		.nickname 			= _("メタモン"),
+		.isNicknamed		= TRUE,
+	},
+};
+
+static void MysteryGift_GiveMysteryGiftMon(void){
+	
+    int sentToPc;
+	struct Pokemon mon;
+	struct WonderCard SavedWonderCard = *GetSavedWonderCard();
+	struct MysteryGiftMonStructure SavedMysteryGiftMons = gMysteryGiftMons[SavedWonderCard.idNumber];
+	bool8 isShiny 		= SavedMysteryGiftMons.isShiny;
+	u16 species 		= SavedMysteryGiftMons.species;
+	u8 nature       	= SavedMysteryGiftMons.nature;
+	u8 pokeball     	= SavedMysteryGiftMons.pokeball;
+	u8 level 			= SavedMysteryGiftMons.level;
+	u8 abilityNum		= SavedMysteryGiftMons.abilityNum;
+	u8 otGender         = SavedMysteryGiftMons.otGender;
+	u8 metLocation 	    = METLOC_FATEFUL_ENCOUNTER;
+	u32 trainerIDNo		= SavedMysteryGiftMons.trainerIDNo;
+	u8 language			= SavedMysteryGiftMons.language;
+	u32 value;
+	bool32 isEventLegal = TRUE;
+	u16 nationalDexNum;
+	u8 i;
+	
+	//Shinyness
+    if (isShiny)
+    {
+        u32 personality;
+        /*/u32 otid = gSaveBlock2Ptr->playerTrainerId[0]
+            | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
+            | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
+            | (gSaveBlock2Ptr->playerTrainerId[3] << 24);/*/
+			
+		u32 otid = trainerIDNo + 2;
+
+        do
+        {
+            personality = Random32();
+            personality = ((((Random() % 8) ^ (HIHALF(otid) ^ LOHALF(otid))) ^ LOHALF(personality)) << 16) | LOHALF(personality);
+        } while (nature != GetNatureFromPersonality(personality));
+
+        CreateMon(&mon, species, level, 32, 1, personality, OT_ID_PRESET, otid);
     }
     else
+        CreateMonWithNature(&mon, species, level, 32, nature);
+	
+	SetMonData(&mon, MON_DATA_POKEBALL, &pokeball);
+	
+	SetMonData(&mon, MON_DATA_OT_NAME, &SavedMysteryGiftMons.otName);
+    SetMonData(&mon, MON_DATA_OT_GENDER, &otGender);
+	SetMonData(&mon, MON_DATA_MET_LOCATION, &metLocation);
+	SetMonData(&mon, MON_DATA_EVENT_LEGAL, &isEventLegal);
+	SetMonData(&mon, MON_DATA_LANGUAGE, &language);
+	
+	if(&SavedMysteryGiftMons.isNicknamed)
+		SetMonData(&mon, MON_DATA_NICKNAME, &SavedMysteryGiftMons.nickname);
+	
+	//EVs/IVs
+    for (i = 0; i < NUM_STATS; i++)
     {
-        return MG_PrintTextOnWindow1AndWaitButton(state, str);
+        if (SavedMysteryGiftMons.ivs[i] != 32 && SavedMysteryGiftMons.ivs[i] != 0xFF)
+            SetMonData(&mon, MON_DATA_HP_IV + i, &SavedMysteryGiftMons.ivs[i]);
     }
+    CalculateMonStats(&mon);
+	
+	//Held Item
+	SetMonData(&mon, MON_DATA_HELD_ITEM, &SavedMysteryGiftMons.helditem);
+	
+	//Moves
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (SavedMysteryGiftMons.moves[i] == 0 || SavedMysteryGiftMons.moves[i] == 0xFF || SavedMysteryGiftMons.moves[i] > MOVES_COUNT)
+            continue;
+
+        SetMonMoveSlot(&mon, SavedMysteryGiftMons.moves[i], i);
+    }
+
+	SetMonData(&mon, MON_DATA_ABILITY_NUM, &abilityNum);
+	
+	sentToPc = GiveMysteryGiftMon(&mon);
+	
+	//Pokedex entry
+    nationalDexNum = SpeciesToNationalPokedexNum(species); 
+    switch(sentToPc)
+    {
+    case MON_GIVEN_TO_PARTY:
+    case MON_GIVEN_TO_PC:
+        GetSetPokedexFlag(nationalDexNum, FLAG_SET_SEEN);
+        GetSetPokedexFlag(nationalDexNum, FLAG_SET_CAUGHT);
+		FlagSet(SavedWonderCard.flagId);
+        break;
+    case MON_CANT_GIVE:
+        break;
+    }
+}
+
+#define CARD_TYPE_POKEMON		0
+#define CARD_TYPE_ITEM          1
+#define CARD_TYPE_OTHER         2
+
+static bool32 GiveMysteryGiftMonAndPrintMSG(u8 * state, const u8 * arg1, u16 * arg2)
+{
+	struct WonderCard SavedWonderCard = *GetSavedWonderCard();
+	
+	switch (*state)
+    {
+    case 0:
+		if (arg1 != NULL)
+		{
+			AddTextPrinterToWindow1(arg1);
+		}
+		PlayFanfare(MUS_OBTAIN_ITEM);
+        *arg2 = 0;
+        (*state)++;
+        break;
+    case 1:
+        if (++(*arg2) > 0xF0)
+        {
+            (*state)++;
+        }
+        break;
+    case 2:
+        if (IsFanfareTaskInactive())
+        {
+            *state = 0;
+            ClearTextWindow();
+			
+			if(SavedWonderCard.type == CARD_TYPE_POKEMON)
+				MysteryGift_GiveMysteryGiftMon();
+			else if(SavedWonderCard.type == CARD_TYPE_ITEM){
+				AddBagItem(SavedWonderCard.iconSpecies, SavedWonderCard.maxStamps);
+				FlagSet(SavedWonderCard.flagId);
+			}
+			
+            return TRUE;
+        }
+        break;
+    }
+    return FALSE;
+}
+
+static bool32 PrintMGSendStatus(u8 * state, u16 * arg1, u8 arg2, u32 msgId)
+{
+    struct WonderCard SavedWonderCard = *GetSavedWonderCard();
+	//const u8 * str = mevent_message_stamp_card_etc_send_status(&flag, arg2, msgId);
+	static const u8 gText_MysteryGiftSaved[] =  _("Your Mystery Gift has been received,\nlook in your party or boxes for your Gift!$");
+	static const u8 gText_MysteryGiftSaved_Bag[] =  _("Your Mystery Gift has been received,\nlook in your Bag for your Gift!$");
+	
+	const u8 * str = gText_MysteryGiftSaved;
+	
+	if(SavedWonderCard.type == CARD_TYPE_ITEM)
+		str = gText_MysteryGiftSaved_Bag;
+	
+    return GiveMysteryGiftMonAndPrintMSG(state, str, arg1);
 }
 
 //CreateMysteryGiftTask
@@ -1127,6 +1389,7 @@ void task_add_00_mystery_gift(void)
 void task00_mystery_gift(u8 taskId)
 {
     struct MysteryGiftTaskData * data = (void *)gTasks[taskId].data;
+	struct WonderCard SavedWonderCard = *GetSavedWonderCard();
     u32 sp0, flag;
     const u8 * r1;
 
@@ -1140,23 +1403,16 @@ void task00_mystery_gift(u8 taskId)
         {
         case 0:
             data->IsCardOrNews = 0;
-            if (ValidateReceivedWonderCard() == TRUE)
-            {
-                data->state = 18;
-            }
-            else
-            {
-                data->state = 2;
-            }
+            data->state = 13;
             break;
         case 1:
             data->IsCardOrNews = 1;
-            if (ValidateReceivedWonderNews() == TRUE)
-            {
+			if(FlagGet(SavedWonderCard.flagId))
+			{
                 data->state = 18;
             }
-            else
-            {
+			else
+			{
                 data->state = 2;
             }
             break;
@@ -1167,34 +1423,17 @@ void task00_mystery_gift(u8 taskId)
         break;
     case  2:
     {
-        if (data->IsCardOrNews == 0)
+        if (MG_PrintTextOnWindow1AndWaitButton(&data->textState, gText_NoMysterGift))
         {
-            if (MG_PrintTextOnWindow1AndWaitButton(&data->textState, gText_DontHaveCardNewOneInput))
-            {
-                data->state = 3;
-                PrintMysteryGiftOrEReaderTopMenu(0, 1);
-            }
-        }
-        else
-        {
-            if (MG_PrintTextOnWindow1AndWaitButton(&data->textState, gText_DontHaveNewsNewOneInput))
-            {
-                data->state = 3;
-                PrintMysteryGiftOrEReaderTopMenu(0, 1);
-            }
+            data->state = 0;
         }
         break;
     }
     case  3:
-        if (data->IsCardOrNews == 0)
+        if (MG_PrintTextOnWindow1AndWaitButton(&data->textState, gText_AlreadyHaveCard))
         {
-            AddTextPrinterToWindow1(gText_WhereShouldCardBeAccessed);
+            data->state = 0;
         }
-        else
-        {
-            AddTextPrinterToWindow1(gText_WhereShouldNewsBeAccessed);
-        }
-        data->state = 4;
         break;
     case  4:
         switch (MysteryGift_HandleThreeOptionMenu(&data->textState, &data->curPromptWindowId, TRUE))
@@ -1372,10 +1611,10 @@ void task00_mystery_gift(u8 taskId)
         }
         break;
     case 13:
-        if (IsLinkRfuTaskFinished())
+        if (PrintStringAndWait2Seconds(&data->textState, gText_Communicating))
         {
             DestroyWirelessStatusIndicatorSprite();
-            data->state = 14;
+			data->state = 14;
         }
         break;
     case 14:
@@ -1385,7 +1624,11 @@ void task00_mystery_gift(u8 taskId)
             {
                 StringCopy(gStringVar1, gLinkPlayers[0].name);
             }
-            data->state = 15;
+			
+			if(!FlagGet(SavedWonderCard.flagId))
+				data->state = 16;
+			else
+				data->state = 3;
         }
         break;
     case 15:
@@ -1427,85 +1670,62 @@ void task00_mystery_gift(u8 taskId)
         }
         break;
     case 16:
-        if (MG_PrintTextOnWindow1AndWaitButton(&data->textState, gText_CommunicationError))
+        if (MG_PrintTextOnWindow1AndWaitButton(&data->textState, gText_WonderCardReceived))
         {
-            data->state = 0;
-            PrintMysteryGiftOrEReaderTopMenu(0, 0);
+            data->state = 17;
         }
         break;
     case 17:
         if (mevent_save_game(&data->textState))
         {
-            data->state = 0;
-            PrintMysteryGiftOrEReaderTopMenu(0, 0);
+            data->state = 18;
         }
         break;
     case 18:
-        if (HandleLoadWonderCardOrNews(&data->textState, data->IsCardOrNews))
+        if (HandleLoadWonderCardOrNews(&data->textState, 0))
         {
+			data->IsCardOrNews = 0;
             data->state = 20;
         }
         break;
     case 20:
-        if (data->IsCardOrNews == 0)
+        if (!FlagGet(SavedWonderCard.flagId))
         {
-            if (JOY_NEW(A_BUTTON))
+            if (({JOY_NEW(A_BUTTON);}))
             {
                 data->state = 21;
             }
-            if (JOY_NEW(B_BUTTON))
+            if (({JOY_NEW(B_BUTTON);}))
             {
                 data->state = 27;
             }
         }
         else
         {
-            switch (MENews_GetInput(gMain.newKeys))
+            if (({JOY_NEW(A_BUTTON);}))
             {
-            case 0:
-                MENews_RemoveScrollIndicatorArrowPair();
-                data->state = 21;
-                break;
-            case 1:
                 data->state = 27;
-                break;
+            }
+            if (({JOY_NEW(B_BUTTON);}))
+            {
+                data->state = 27;
             }
         }
         break;
     case 21:
     {
-        u32 result;
-        if (data->IsCardOrNews == 0)
-        {
-            if (WonderCard_Test_Unk_08_6())
-            {
-                result = HandleMysteryGiftListMenu(&data->textState, &data->curPromptWindowId, data->IsCardOrNews, FALSE);
-            }
-            else
-            {
-                result = HandleMysteryGiftListMenu(&data->textState, &data->curPromptWindowId, data->IsCardOrNews, TRUE);
-            }
-        }
-        else
-        {
-            if (WonderNews_Test_Unk_02())
-            {
-                result = HandleMysteryGiftListMenu(&data->textState, &data->curPromptWindowId, data->IsCardOrNews, FALSE);
-            }
-            else
-            {
-                result = HandleMysteryGiftListMenu(&data->textState, &data->curPromptWindowId, data->IsCardOrNews, TRUE);
-            }
-        }
+        //MG_STATE_HANDLE_GIFT_SELECT:
+		// A Wonder Card/News has been selected, handle its menu
+        u32 result = HandleMysteryGiftListMenu(&data->textState, &data->curPromptWindowId, data->IsCardOrNews, TRUE);
         switch (result)
         {
-        case 0:
+        case 0: // Receive
             data->state = 28;
             break;
-        case 1:
+        case 1: // Send
             data->state = 29;
             break;
-        case 2:
+        case 2: // Toss
             data->state = 22;
             break;
         case -2u:
@@ -1580,9 +1800,11 @@ void task00_mystery_gift(u8 taskId)
         }
         break;
     case 28:
+        //MG_STATE_RECEIVE:
         if (TearDownCardOrNews_ReturnToTopMenu(data->IsCardOrNews, 1))
         {
-            data->state = 3;
+            //data->state = 3;
+			data->state = 35;
         }
         break;
     case 29:
@@ -1658,16 +1880,15 @@ void task00_mystery_gift(u8 taskId)
             }
             else
             {
-                data->state = 0;
+                data->state = 36;
                 PrintMysteryGiftOrEReaderTopMenu(0, 0);
             }
         }
         break;
     case 36:
-        if (MG_PrintTextOnWindow1AndWaitButton(&data->textState, gText_CommunicationError))
+        if (mevent_save_game(&data->textState))
         {
             data->state = 0;
-            PrintMysteryGiftOrEReaderTopMenu(0, 0);
         }
         break;
     case 37:

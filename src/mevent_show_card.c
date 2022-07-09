@@ -1,12 +1,15 @@
 #include "global.h"
 #include "gflib.h"
 #include "decompress.h"
+#include "item_menu_icons.h"
 #include "menu.h"
 #include "new_menu_helpers.h"
 #include "pokemon_icon.h"
 #include "mystery_gift_menu.h"
 #include "mevent.h"
+#include "item.h"
 #include "battle_anim.h"
+#include "constants/items.h"
 
 struct MEventScreenMgr_02DC
 {
@@ -33,14 +36,17 @@ struct MEventScreenMgr
     /*02B1*/ u8 instructionsLine2[41];
     /*02DC*/ struct MEventScreenMgr_02DC recordStrings[8];
     /*045C*/ u8 buffer_045C[0x1000];
+	/*0x??*/ u8 itemMenuIconSlot;
 };
 
 static EWRAM_DATA struct MEventScreenMgr * sMEventScreenData = NULL;
+static EWRAM_DATA u8 sItemMenuIconSpriteIds[12] = {0};
 
 static void sub_8145A98(void);
 static void sub_8145D18(u8 whichWindow);
 static void sub_8146060(void);
 static void sub_81461D8(void);
+static void CreateMysteryGiftItemIcon(u16 itemId, u8 idx);
 
 static const u8 gUnknown_8467068[][3] = {
     {0, 2, 3},
@@ -103,6 +109,7 @@ static const u16 sUnknown_8467E94[] = INCBIN_U16("graphics/mevent/pal_467E94.gba
 static const u16 sUnknown_8467EB4[] = INCBIN_U16("graphics/mevent/pal_467EB4.gbapal");
 static const u16 sUnknown_8467ED4[] = INCBIN_U16("graphics/mevent/pal_467ED4.gbapal");
 static const u32 sUnknown_8467EF4[] = INCBIN_U32("graphics/mevent/gfx_467EF4.4bpp.lz");
+static const u8 sItemGraphicTest[]  = INCBIN_U8 ("graphics/items/icons/potion.4bpp.lz");
 
 static const struct CompressedSpriteSheet sShadowSpriteSheet = {
     sUnknown_8467EF4, 0x100, 0x8000
@@ -344,45 +351,63 @@ static void sub_8145A98(void)
     }
 }
 
+#define CARD_TYPE_POKEMON		0
+#define CARD_TYPE_ITEM          1
+#define CARD_TYPE_OTHER         2
+
+static const u8 sText_Qty[] = _("This gift contains {STR_VAR_1} {STR_VAR_2}");
+
 static void sub_8145D18(u8 whichWindow)
 {
-    s8 sp0C = 0;
+    struct WonderCard SavedWonderCard = *GetSavedWonderCard();
+	s8 sp0C = 0;
     s32 windowId = sMEventScreenData->windowIds[whichWindow];
     PutWindowTilemap(windowId);
     FillWindowPixelBuffer(windowId, 0);
+	
     switch (whichWindow)
     {
         case 0:
         {
-            s32 x;
+            // Print card title/subtitle
+			s32 x;
             AddTextPrinterParameterized3(windowId, 3, 0, 1, gUnknown_8467068[sMEventScreenData->bgSpec->textPal1], 0, sMEventScreenData->title);
             x = 160 - GetStringWidth(3, sMEventScreenData->subtitle, GetFontAttribute(3, 2));
             if (x < 0)
                 x = 0;
             AddTextPrinterParameterized3(windowId, 3, x, 17, gUnknown_8467068[sMEventScreenData->bgSpec->textPal1], 0, sMEventScreenData->subtitle);
-            if (sMEventScreenData->wonderCard.idNumber != 0)
-            {
-                AddTextPrinterParameterized3(windowId, 2, 166, 17, gUnknown_8467068[sMEventScreenData->bgSpec->textPal1], 0, sMEventScreenData->unk_01DD);
-            }
+			
             break;
         }
-        case 1:
+        case 1: //footerLine1Text
+			// Print body text
             for (; sp0C < 4; sp0C++)
             {
                 AddTextPrinterParameterized3(windowId, 3, 0, 16 * sp0C + 2, gUnknown_8467068[sMEventScreenData->bgSpec->textPal2], 0, sMEventScreenData->mainMessageLines[sp0C]);
             }
             break;
         case 2:
+			// Print footer line 1
             AddTextPrinterParameterized3(windowId, 3, 0, sTextYCoords[sMEventScreenData->wonderCard.type], gUnknown_8467068[sMEventScreenData->bgSpec->textPal3], 0, sMEventScreenData->instructionsLine1);
-            if (sMEventScreenData->wonderCard.type != 2)
+            
+			// Print Item Quantity
+			if(SavedWonderCard.type == CARD_TYPE_ITEM)
+			{
+				ConvertIntToDecimalStringN(gStringVar1, SavedWonderCard.maxStamps, STR_CONV_MODE_LEFT_ALIGN, 5);
+				CopyItemName(SavedWonderCard.iconSpecies, gStringVar2);
+				StringExpandPlaceholders(gStringVar4, sText_Qty);
+				AddTextPrinterParameterized3(windowId, 3, 0, 16 + sTextYCoords[sMEventScreenData->wonderCard.type], gUnknown_8467068[sMEventScreenData->bgSpec->textPal3], 0, gStringVar4);
+			}
+			else if (sMEventScreenData->wonderCard.type != 2)
             {
                 AddTextPrinterParameterized3(windowId, 3, 0, 16 + sTextYCoords[sMEventScreenData->wonderCard.type], gUnknown_8467068[sMEventScreenData->bgSpec->textPal3], 0, sMEventScreenData->instructionsLine2);
-            }
+			}
             else
             {
-                s32 x = 0;
+				s32 x = 0;
                 s32 y = sTextYCoords[sMEventScreenData->wonderCard.type] + 16;
                 s32 spacing = GetFontAttribute(3, 2);
+				
                 for (; sp0C < sMEventScreenData->recordIdx; sp0C++)
                 {
                     AddTextPrinterParameterized3(windowId, 3, x, y, gUnknown_8467068[sMEventScreenData->bgSpec->textPal3], 0, sMEventScreenData->recordStrings[sp0C].nameTxt);
@@ -399,31 +424,64 @@ static void sub_8145D18(u8 whichWindow)
     CopyWindowToVram(windowId, COPYWIN_BOTH);
 }
 
+static void CreateMysteryGiftItemIcon(u16 itemId, u8 idx)
+{
+    u8 * ptr = &sItemMenuIconSpriteIds[10];
+    u8 spriteId;
+
+    //if (ptr[idx] == 0xFF)
+    //{
+        FreeSpriteTilesByTag(102 + idx);
+        FreeSpritePaletteByTag(102 + idx);
+        spriteId = AddItemIconObject(102 + idx, 102 + idx, itemId);
+        //if (spriteId != MAX_SPRITES)
+        //{
+            ptr[idx] = spriteId;
+            gSprites[spriteId].x2 = 224; //24;
+            gSprites[spriteId].y2 = 28; //140;
+        //}
+    //}
+}
+
+//void CreateCardSprites(void)
 static void sub_8146060(void)
 {
-    u8 r7 = 0;
-    sMEventScreenData->monIconId = 0xFF;
-    if (sMEventScreenData->buff3430Sub.iconSpecies != SPECIES_NONE)
-    {
-        sMEventScreenData->monIconId = CreateMonIcon_HandleDeoxys(MailSpeciesToIconSpecies(sMEventScreenData->buff3430Sub.iconSpecies), SpriteCallbackDummy, 0xDC, 0x14, 0, FALSE);
-        gSprites[sMEventScreenData->monIconId].oam.priority = 2;
-    }
-    if (sMEventScreenData->wonderCard.maxStamps != 0 && sMEventScreenData->wonderCard.type == 1)
-    {
-        LoadCompressedSpriteSheetUsingHeap(&sShadowSpriteSheet);
-        LoadSpritePalette(&sShadowSpritePalettes[sMEventScreenData->bgSpec->index]);
-        for (; r7 < sMEventScreenData->wonderCard.maxStamps; r7++)
-        {
-            sMEventScreenData->cardIconAndShadowSprites[r7][0] = 0xFF;
-            sMEventScreenData->cardIconAndShadowSprites[r7][1] = 0xFF;
-            sMEventScreenData->cardIconAndShadowSprites[r7][0] = CreateSprite(&sShadowSpriteTemplate, 0xd8 - 32 * r7, 0x90, 8);
-            if (sMEventScreenData->buff3430Sub.stampData[0][r7] != 0)
-            {
-                sMEventScreenData->cardIconAndShadowSprites[r7][1] = CreateMonIcon_HandleDeoxys(MailSpeciesToIconSpecies(sMEventScreenData->buff3430Sub.stampData[0][r7]), SpriteCallbackDummy, 0xd8 - 32 * r7, 0x88, 0, 0);
-                gSprites[sMEventScreenData->cardIconAndShadowSprites[r7][1]].oam.priority = 2;
-            }
-        }
-    }
+	struct WonderCard SavedWonderCard = *GetSavedWonderCard();
+	u16 itemId;
+	
+	if(SavedWonderCard.type != CARD_TYPE_ITEM){
+		u8 r7 = 0;
+		sMEventScreenData->monIconId = 0xFF;
+		if (sMEventScreenData->buff3430Sub.iconSpecies != SPECIES_NONE)
+		{
+			sMEventScreenData->monIconId = CreateMonIcon_HandleDeoxys(MailSpeciesToIconSpecies(sMEventScreenData->buff3430Sub.iconSpecies), SpriteCallbackDummy, 0xDC, 0x14, 0, FALSE);
+			gSprites[sMEventScreenData->monIconId].oam.priority = 2;
+		}
+		if (sMEventScreenData->wonderCard.maxStamps != 0 && sMEventScreenData->wonderCard.type == 1)
+		{
+			LoadCompressedSpriteSheetUsingHeap(&sShadowSpriteSheet);
+			LoadSpritePalette(&sShadowSpritePalettes[sMEventScreenData->bgSpec->index]);
+			for (; r7 < sMEventScreenData->wonderCard.maxStamps; r7++)
+			{
+				sMEventScreenData->cardIconAndShadowSprites[r7][0] = 0xFF;
+				sMEventScreenData->cardIconAndShadowSprites[r7][1] = 0xFF;
+				sMEventScreenData->cardIconAndShadowSprites[r7][0] = CreateSprite(&sShadowSpriteTemplate, 0xd8 - 32 * r7, 0x90, 8);
+				if (sMEventScreenData->buff3430Sub.stampData[0][r7] != 0)
+				{
+					sMEventScreenData->cardIconAndShadowSprites[r7][1] = CreateMonIcon_HandleDeoxys(MailSpeciesToIconSpecies(sMEventScreenData->buff3430Sub.stampData[0][r7]), SpriteCallbackDummy, 0xd8 - 32 * r7, 0x88, 0, 0);
+					gSprites[sMEventScreenData->cardIconAndShadowSprites[r7][1]].oam.priority = 2;
+				}
+			}
+		}
+	}
+	else
+	{
+		sMEventScreenData->itemMenuIconSlot = 0xFF;
+		itemId = SavedWonderCard.iconSpecies;
+		CreateMysteryGiftItemIcon(itemId, sMEventScreenData->itemMenuIconSlot);
+		//sMEventScreenData->itemMenuIconSlot ^= 1;
+        //FillWindowPixelBuffer(1, 0);
+	}
 }
 
 static void sub_81461D8(void)

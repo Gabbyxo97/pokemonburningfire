@@ -329,10 +329,10 @@
 #define FLAG_0x13F               0x13F
 
 // Mystery gift and reserved for mystery gift
-#define MYSTERY_GIFT_SPACE_DEOXYS 0x140
-#define FLAG_0x141               0x141
-#define FLAG_0x142               0x142
-#define FLAG_0x143               0x143
+#define MYSTERY_GIFT_SPACE_DEOXYS 				 0x140
+#define MYSTERY_GIFT_CHARMANDER   				 0x141
+#define MYSTERY_GIFT_FOREIGN_DITTO               0x142
+#define MYSTERY_GIFT_MASTER_BALL                 0x143
 #define FLAG_0x144               0x144
 #define FLAG_0x145               0x145
 #define FLAG_0x146               0x146

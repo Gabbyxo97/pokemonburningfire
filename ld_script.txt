@@ -92,6 +92,7 @@ SECTIONS {
         src/overworld.o(.text);
         src/fieldmap.o(.text);
         src/metatile_behavior.o(.text);
+		src/mevent.o(.text);
         src/field_camera.o(.text);
         src/field_door.o(.text);
         src/field_player_avatar.o(.text);
@@ -587,7 +588,6 @@ SECTIONS {
         src/buy_menu_helpers.o(.rodata);
         src/slot_machine.o(.rodata);
         src/roamer.o(.rodata);
-        src/mystery_gift_menu.o(.rodata);
         src/mevent.o(.rodata);
         src/mevent_server_helpers.o(.rodata);
         src/mevent_client.o(.rodata);
@@ -620,6 +620,8 @@ SECTIONS {
         src/move_descriptions.o(.rodata);
         src/mgba.o(.rodata);
         src/mystery_gift.o(.rodata);
+		src/mevent.o(.rodata);
+		src/mystery_gift_menu.o(.rodata);
 
         /* These should not be moved to C files */
         src/mystery_event_msg.o(.rodata);
@@ -992,6 +994,8 @@ SECTIONS {
         src/librfu_rfu.o(.rodata);
         src/librfu_sio32id.o(.rodata);
         src/isagbprn.o(.rodata);
+		src/mevent.o(.data);
+		src/mystery_gift_menu.o(.data);
         *libgcc.a:_divdi3.o(.rodata);
         *libgcc.a:_udivdi3.o(.rodata);
         *libc.a:memcpy.o(.rodata);
