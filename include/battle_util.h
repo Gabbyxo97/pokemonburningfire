@@ -96,4 +96,6 @@ u32 IsAbilityOnField(u32 ability);
 u32 IsAbilityOnFieldExcept(u32 battlerId, u32 ability);
 bool32 CompareStat(u8 battlerId, u8 statId, u8 cmpTo, u8 cmpKind);
 
+bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags);
+
 #endif // GUARD_BATTLE_UTIL_H

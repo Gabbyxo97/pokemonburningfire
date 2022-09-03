@@ -1893,6 +1893,10 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 gBattlerAttacker = battler;
                 switch (gLastUsedAbility)
                 {
+                case ABILITY_DRY_SKIN:
+                    if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
+                        goto SOLAR_POWER_HP_DROP;
+                // Dry Skin works similarly to Rain Dish in Rain
                 case ABILITY_RAIN_DISH:
                     if (WEATHER_HAS_EFFECT && (gBattleWeather & WEATHER_RAIN_ANY)
                      && gBattleMons[battler].maxHP > gBattleMons[battler].hp)
@@ -1952,6 +1956,17 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                         effect++;
                     }
                     break;
+            SOLAR_POWER_HP_DROP:
+            case ABILITY_SOLAR_POWER:
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
+                {
+                    BattleScriptPushCursorAndCallback(BattleScript_SolarPowerActivates);
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    effect++;
+                }
+                break;
                 }
             }
             break;
@@ -3564,4 +3579,20 @@ u32 GetBattlerAbility(u8 battlerId)
         return ABILITY_NONE;
 
     return gBattleMons[battlerId].ability;
+}
+
+bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags)
+{
+    if (!WEATHER_HAS_EFFECT)
+        return FALSE;
+
+    if (gBattleWeather & weatherFlags)
+    {
+        // given weather is active -> check if its sun, rain against utility umbrella ( since only 1 weather can be active at once)
+        //if (gBattleWeather & (B_WEATHER_SUN | B_WEATHER_RAIN)) //&& GetBattlerHoldEffect(battlerId, TRUE) == HOLD_EFFECT_UTILITY_UMBRELLA)
+        //    return FALSE; // utility umbrella blocks sun, rain effects
+
+        return TRUE;
+    }
+    return FALSE;
 }
