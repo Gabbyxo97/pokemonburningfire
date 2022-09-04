@@ -518,6 +518,7 @@ static const u8 sText_AnticipationActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFI
 static const u8 sText_BadDreamsDmg[] = _("{B_DEF_NAME_WITH_PREFIX} is tormented\nby {B_ATK_ABILITY}!");
 static const u8 sText_AttackerAbilityRaisedStat[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\nraised its {B_BUFF1}!");
 static const u8 sText_SolarPowerHpDrop[] = _("The {B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\ntakes its toll!");
+static const u8 sText_FriskActivates[] = _("{B_ATK_NAME_WITH_PREFIX} frisked {B_DEF_NAME_WITH_PREFIX} and\nfound its {B_LAST_ITEM}!");
 
 const u8 *const gBattleStringsTable[] = {
     [STRINGID_TRAINER1LOSETEXT - 12]              = sText_Trainer1LoseText,
@@ -900,6 +901,7 @@ const u8 *const gBattleStringsTable[] = {
     [STRINGID_BADDREAMSDMG - 12] = sText_BadDreamsDmg,
     [STRINGID_ATTACKERABILITYSTATRAISE - 12] = sText_AttackerAbilityRaisedStat,
     [STRINGID_SOLARPOWERHPDROP - 12] = sText_SolarPowerHpDrop,
+    [STRINGID_FRISKACTIVATES - 12] = sText_FriskActivates,
 };
 
 const u16 gSwitchInAbilityStringIds[] =

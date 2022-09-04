@@ -392,8 +392,9 @@
 #define STRINGID_BADDREAMSDMG                         389
 #define STRINGID_ATTACKERABILITYSTATRAISE             390
 #define STRINGID_SOLARPOWERHPDROP                     391
+#define STRINGID_FRISKACTIVATES                       392
 
-#define BATTLESTRINGS_COUNT     392
+#define BATTLESTRINGS_COUNT     393
 
 #define B_MSG_SWITCHIN_ANTICIPATION     5
 

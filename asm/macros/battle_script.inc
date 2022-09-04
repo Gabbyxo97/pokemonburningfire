@@ -1394,3 +1394,7 @@
 	.macro setroost
 	.byte 0xf9
 	.endm
+
+	.macro tryfriskmsg battler:req
+	various \battler, VARIOUS_TRY_FRISK
+	.endm

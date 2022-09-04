@@ -475,6 +475,8 @@ struct BattleStruct
     u8 activeAbilityPopUps; // as bits for each battler
     u8 abilityPopUpSpriteIds[MAX_BATTLERS_COUNT][2];    // two per battler
     u8 roostTypes[MAX_BATTLERS_COUNT][3];
+    u8 friskedBattler; // Frisk needs to identify 2 battlers in double battles.
+    bool8 friskedAbility; // If identifies two mons, show the ability pop-up only once.
 }; // size == 0x200 bytes
 
 extern struct BattleStruct *gBattleStruct;

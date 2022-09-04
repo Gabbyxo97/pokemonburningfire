@@ -4490,3 +4490,15 @@ BattleScript_SolarPowerActivates::
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_ATTACKER, 0, NULL
 	end3
+
+BattleScript_FriskMsgWithPopup::
+	copybyte gBattlerAbility, gBattlerAttacker
+	call BattleScript_AbilityPopUp
+BattleScript_FriskMsg::
+	printstring STRINGID_FRISKACTIVATES
+	waitmessage B_WAIT_TIME_LONG
+	return
+	
+BattleScript_FriskActivates::
+	tryfriskmsg BS_ATTACKER
+	end3

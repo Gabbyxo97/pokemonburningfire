@@ -1780,6 +1780,14 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     }
                 }
                 break;
+        case ABILITY_FRISK:
+            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                BattleScriptPushCursorAndCallback(BattleScript_FriskActivates); // Try activate
+                effect++;
+            }
+            return effect; // Note: It returns effect as to not record the ability if Frisk does not activate.
         case ABILITY_DOWNLOAD:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
@@ -3595,4 +3603,34 @@ bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags)
         return TRUE;
     }
     return FALSE;
+}
+
+u32 GetBattlerHoldEffect(u8 battlerId, bool32 checkNegating)
+{
+    if (checkNegating)
+    {
+        // if (gStatuses3[battlerId] & STATUS3_EMBARGO)
+        //     return HOLD_EFFECT_NONE;
+        // if (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM)
+        //     return HOLD_EFFECT_NONE;
+        if (GetBattlerAbility(battlerId) == ABILITY_KLUTZ)
+            return HOLD_EFFECT_NONE;
+    }
+
+    gPotentialItemEffectBattler = battlerId;
+
+    // if (B_ENABLE_DEBUG && gBattleStruct->debugHoldEffects[battlerId] != 0 && gBattleMons[battlerId].item)
+    //     return gBattleStruct->debugHoldEffects[battlerId];
+    /*else*/ if (gBattleMons[battlerId].item == ITEM_ENIGMA_BERRY)
+        return gEnigmaBerries[battlerId].holdEffect;
+    else
+        return ItemId_GetHoldEffect(gBattleMons[battlerId].item);
+}
+
+u32 GetBattlerHoldEffectParam(u8 battlerId)
+{
+    if (gBattleMons[battlerId].item == ITEM_ENIGMA_BERRY)
+        return gEnigmaBerries[battlerId].holdEffectParam;
+    else
+        return ItemId_GetHoldEffectParam(gBattleMons[battlerId].item);
 }

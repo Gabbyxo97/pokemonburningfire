@@ -84,6 +84,7 @@
 #define VARIOUS_CHECK_POKEFLUTE                 11
 #define VARIOUS_WAIT_FANFARE                    12
 #define VARIOUS_ABILITY_POPUP                       13
+#define VARIOUS_TRY_FRISK                           14
 
 // atk80, dmg manipulation
 #define ATK80_DMG_CHANGE_SIGN                               0
