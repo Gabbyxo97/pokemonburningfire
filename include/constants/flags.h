@@ -183,7 +183,7 @@
 
 // New features + reserved for new features
 #define FLAG_SHINY_MON    0x0AF
-#define FLAG_0x0B0               0x0B0
+#define FLAG_SYS_NO_COLLISION               0x0B0
 #define FLAG_0x0B1               0x0B1
 #define FLAG_0x0B2               0x0B2
 #define FLAG_0x0B3               0x0B3

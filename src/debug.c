@@ -1351,14 +1351,14 @@ static void DebugAction_Flags_ToggleBadgeFlags(u8 taskId)
 }
 static void DebugAction_Flags_CollisionOnOff(u8 taskId)
 {
-    /*if(FlagGet(FLAG_SYS_NO_COLLISION))
+    if(FlagGet(FLAG_SYS_NO_COLLISION))
     {
         FlagClear(FLAG_SYS_NO_COLLISION);
         PlaySE(SE_PC_OFF);
     }else{
         FlagSet(FLAG_SYS_NO_COLLISION);
         PlaySE(SE_PC_LOGIN);
-    }*/
+    }
 }
 static void DebugAction_Flags_EncounterOnOff(u8 taskId)
 {
