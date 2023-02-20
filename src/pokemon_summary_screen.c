@@ -2480,7 +2480,7 @@ static void PrintMonLevelNickOnWindow2(const u8 * str)
         if (sMonSummaryScreen->curPageIndex != PSS_PAGE_MOVES_INFO)
             AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_LVL_NICK], 2, 4, 2, sLevelNickTextColors[1], TEXT_SPEED_FF, sMonSummaryScreen->summary.levelStrBuf);
 
-        AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_LVL_NICK], 2, 25, 2, sLevelNickTextColors[1], TEXT_SPEED_FF, sMonSummaryScreen->summary.nicknameStrBuf);
+        AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_LVL_NICK], 2, 35, 2, sLevelNickTextColors[1], TEXT_SPEED_FF, sMonSummaryScreen->summary.nicknameStrBuf);
         
         language = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_LANGUAGE);
         if (language != LANGUAGE_ENGLISH) {
